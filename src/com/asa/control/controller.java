@@ -1,4 +1,4 @@
-package control.commands;
+package com.asa.control;
 
 public class controller {
 
