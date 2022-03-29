@@ -12,4 +12,6 @@ module com.asa.asagui {
 
     opens com.asa.asagui to javafx.fxml;
     exports com.asa.asagui;
+    exports com.asa.launcher;
+    opens com.asa.launcher to javafx.fxml;
 }
