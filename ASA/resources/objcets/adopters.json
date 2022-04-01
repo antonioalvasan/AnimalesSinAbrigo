@@ -1,0 +1,17 @@
+{
+    "users": [
+        {
+            "type": "adopter",
+            "data": {
+                "ID": "000001",
+                "name": "Eneko Retolaza Ardanaz",
+                "username": "Eneko",
+                "password": "1234",
+                "mail": "eneko@ucm.es",
+                "phone": "123456789",
+                "certificate": true
+            }
+        }
+        
+    ]
+}
