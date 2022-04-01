@@ -17,7 +17,7 @@ public class Main {
     }
 
     private static void init(){
-
+        Rol actualRol =new Rol();
 
     }
 
