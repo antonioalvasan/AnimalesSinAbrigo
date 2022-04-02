@@ -5,21 +5,19 @@ import org.is2.asa.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 public class UserDao implements Dao<User> {
 
     private List<User> users = new ArrayList<>();
 
     public UserDao() {
-        users.add(new User("001", "AntoRecre", "beti", Role.REFUGE));
-        users.add(new User("002", "XxenekoretoxX", "ondarroa", Role.ADOPTER));
+        users.add(new User(1, "AntoRecre", "beti", Role.REFUGE));
+        users.add(new User(2, "XxenekoretoxX", "ondarroa", Role.ADOPTER));
     }
 
     @Override
-    public Optional<User> get(long id) {
-        return Optional.ofNullable(users.get((int) id));
+    public User get(int id) {
+        return users.get(id);
     }
 
     @Override
@@ -28,14 +26,14 @@ public class UserDao implements Dao<User> {
     }
 
     @Override
-    public void save(User user) {
+    public void add(User user) {
         users.add(user);
     }
 
     @Override
-    public void update(User user, String[] params) {
-        user.setUsername(Objects.requireNonNull(params[0], "Name cannot be null"));
-        users.add(user);
+    public void update(User user) {
+        users.get(user.getID()).setUsername(user.getUsername());
+        users.get(user.getID()).setPassword(user.getPassword());
     }
 
     @Override

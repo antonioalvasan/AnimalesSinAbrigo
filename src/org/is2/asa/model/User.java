@@ -1,23 +1,23 @@
 package org.is2.asa.model;
 
 public class User {
-    private String ID;
+    private int ID;
     private String username;
     private String password;
     private Role role;
 
-    public User(String ID, String username, String password, Role role){
+    public User(int ID, String username, String password, Role role){
         this.ID=ID;
         this.username=username;
         this.password=password;
         this.role = role;
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
