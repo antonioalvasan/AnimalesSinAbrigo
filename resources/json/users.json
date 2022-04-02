@@ -1,0 +1,60 @@
+{
+    "users": [
+        {
+            "type": "adopter",
+            "data": {
+                "ID": 1,
+                "username": "xX_TheEnekoKiller_Xx",
+                "password": "1234"
+            }
+        },
+        {
+            "type": "refuge",
+            "data": {
+                "ID": 2,
+                "username": "huelvarecre1889",
+                "password": "1234"
+            }
+        },
+        {
+            "type": "adopter",
+            "data": {
+                "ID": 3,
+                "username": "betasniper42",
+                "password": "1234"
+            }
+        },
+        {
+            "type": "adopter",
+            "data": {
+                "ID": 4,
+                "username": "gilleGamer",
+                "password": "1234"
+            }
+        },
+        {
+            "type": "adopter",
+            "data": {
+                "ID": 5,
+                "username": "_chessmaster23",
+                "password": "1234"
+            }
+        },
+        {
+            "type": "adopter",
+            "data": {
+                "ID": 6,
+                "username": "riazorblue_01",
+                "password": "1234"
+            }
+        },
+        {
+            "type": "adopter",
+            "data": {
+                "ID": 7,
+                "username": "alberpipi",
+                "password": "1234"
+            }
+        }
+    ]
+}
