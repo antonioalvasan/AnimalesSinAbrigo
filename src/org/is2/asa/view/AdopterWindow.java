@@ -28,7 +28,7 @@ public class AdopterWindow extends JPanel {
 		JButton voluntariado = new JButton("Voluntariado");
 		JButton FAQ = new JButton("FAQ");
 		JButton usuario = new JButton("Guille");
-		JButton imagen_usuario = new JButton(new ImageIcon("imagen.png"));
+		JButton imagen_usuario = new JButton(new ImageIcon("resources/images/userIcon.png"));
 		
 		JPanel x = new JPanel( new FlowLayout());
 		x.add(home);

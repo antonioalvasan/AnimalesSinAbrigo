@@ -13,7 +13,7 @@ public class AnimalPanel extends JPanel {
 
 		this.setLayout(new FlowLayout());
 
-		JButton perrillo = new JButton(new ImageIcon("perrillo.png"));
+		JButton perrillo = new JButton(new ImageIcon("resources/images/perrillo.png"));
 		this.add(perrillo, BorderLayout.EAST);
 
 		

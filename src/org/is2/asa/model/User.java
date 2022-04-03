@@ -13,6 +13,9 @@ public class User {
         this.role = role;
     }
 
+    public User(){ //empty constructor, just to try
+    }
+
     public int getID() {
         return ID;
     }
@@ -27,6 +30,10 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getPassword() {
