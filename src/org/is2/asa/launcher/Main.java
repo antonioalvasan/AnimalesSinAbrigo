@@ -39,16 +39,21 @@ public class Main {
     }
 
     private static void adopterWindow(){
-        JFrame f = new JFrame();
-        AdopterWindow w = new AdopterWindow();
+        SwingUtilities.invokeLater((new Runnable() {
+            @Override
+            public void run() {
+                JFrame f = new JFrame();
+                AdopterWindow w = new AdopterWindow();
 
-        w.prepareWindow();
-        w.setVisible(true);
+                w.prepareWindow();
+                w.setVisible(true);
 
-        f.setPreferredSize(new Dimension(1300, 600));
-        f.add(w);
-        f.pack();
-        f.setVisible(true);
+                f.setPreferredSize(new Dimension(1300, 600));
+                f.add(w);
+                f.pack();
+                f.setVisible(true);
+            }
+        }));
     }
 
     private static void refugeWindow(){
