@@ -6,8 +6,10 @@ import org.is2.asa.model.User;
 
 public class Main {
 
+    private static UserDao userDao;
+
     public static void main(String[] args) {
-        UserDao userDao = new UserDao();
+        userDao = new UserDao();
 
         for(User user : userDao.getAll()){
             System.out.println(user);
