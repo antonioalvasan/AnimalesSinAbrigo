@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 
 public class RefugeeWindow extends JFrame {
     private JPanel panel1;
-    private JButton buttonConfig;
-    private JButton annimalsButton;
+    private JButton configuraciónButton;
+    private JButton animalesButton;
     private Controller ctrl;
 
     public RefugeeWindow(Controller ctrl){
