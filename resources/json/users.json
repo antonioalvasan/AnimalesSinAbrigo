@@ -1,7 +1,7 @@
 {
     "users": [
         {
-            "type": "adopter",
+            "type": "ADOPTER",
             "data": {
                 "ID": 1,
                 "username": "xX_TheEnekoKiller_Xx",
@@ -9,7 +9,7 @@
             }
         },
         {
-            "type": "refuge",
+            "type": "REFUGE",
             "data": {
                 "ID": 2,
                 "username": "huelvarecre1889",
@@ -17,7 +17,7 @@
             }
         },
         {
-            "type": "adopter",
+            "type": "ADOPTER",
             "data": {
                 "ID": 3,
                 "username": "betasniper42",
@@ -25,7 +25,7 @@
             }
         },
         {
-            "type": "adopter",
+            "type": "ADOPTER",
             "data": {
                 "ID": 4,
                 "username": "gilleGamer",
@@ -33,7 +33,7 @@
             }
         },
         {
-            "type": "adopter",
+            "type": "ADOPTER",
             "data": {
                 "ID": 5,
                 "username": "_chessmaster23",
@@ -41,7 +41,7 @@
             }
         },
         {
-            "type": "adopter",
+            "type": "ADOPTER",
             "data": {
                 "ID": 6,
                 "username": "riazorblue_01",
@@ -49,7 +49,7 @@
             }
         },
         {
-            "type": "adopter",
+            "type": "ADOPTER",
             "data": {
                 "ID": 7,
                 "username": "alberpipi",

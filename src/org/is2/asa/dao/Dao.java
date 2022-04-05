@@ -1,17 +1,19 @@
 package org.is2.asa.dao;
 
+import java.io.InputStream;
 import java.util.List;
-import java.util.Optional;
 
 public interface Dao<T> {
 
-    T get(int id);
+    T get(int id); //Returns the item in id's position. This object can be null.
 
-    List<T> getAll();
+    List<T> getAll(); //Returns the list of objects.
 
-    void add(T t);
+    void add(T t); //Adds an object into the dao.
 
-    void update(T t);
+    void update(T t); //Updates the object if that object already exists.
 
-    void delete(T t);
+    void delete(T t); //Deletes the object if that object exists.
+
+    void load(InputStream in); //Initializes the object list from an inputStream (always a JSON file).
 }
