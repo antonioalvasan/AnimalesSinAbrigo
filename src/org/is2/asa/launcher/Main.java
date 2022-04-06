@@ -6,36 +6,73 @@ import org.is2.asa.dao.UserDao;
 import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
 import org.is2.asa.view.AdopterWindow;
+import org.is2.asa.view.LoginWindow;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class Main {
 
     private static UserDao userDao;
     private static Controller controller;
+    private static String _inFile = null; //Stores infile address as a string.
 
     public static void main(String[] args) {
-        userDao = new UserDao();
-        //User userType = //just to get user type
+        try{
+            parseArgs(args);
+            initUserDatabase();
 
-        for(User user : userDao.getAll()){
-            System.out.println(user);
-        }
+            //User userType = //just to get user type
 
-        if(loginWindow().getRole().equals(Role.REFUGE)){ //login window obtains user role
-            refugeWindow();
+            for(User user : userDao.getAll()){
+                System.out.println(user);
+            }
+
+            /*if(loginWindow().getRole().equals(Role.REFUGE)){ //login window obtains user role
+                refugeWindow();
+            }
+            else{
+                adopterWindow();
+            }*/
+            loginWindow();
         }
-        else{
-            adopterWindow();
+        catch(Exception e){
+            System.err.println("Something went wrong ...");
+            System.err.println();
+            e.printStackTrace();
         }
 
     }
 
-    private static User loginWindow(){
-        User exampleUser = new User();
-        exampleUser.setRole(Role.ADOPTER);
-        return exampleUser;
+    private static void initUserDatabase() throws FileNotFoundException {
+        userDao = new UserDao(); //Initialize the user database.
+        InputStream inFile = new FileInputStream(_inFile); //Load input stream.
+        userDao.load(inFile);
+    }
+
+    private static void loginWindow(){
+        //User exampleUser = new User();
+        //exampleUser.setRole(Role.ADOPTER);
+        //return exampleUser;
+
+        SwingUtilities.invokeLater((new Runnable(){
+            @Override
+            public void run(){
+                JFrame f = new JFrame();
+                LoginWindow l = new LoginWindow();
+
+                l.prepareWindow();
+                l.setVisible(true);
+
+                f.setPreferredSize(new Dimension(1300, 600));
+                f.add(l);
+                f.pack();
+                f.setVisible(true);
+            }
+        }));
     }
 
     private static void adopterWindow(){
@@ -76,8 +113,9 @@ public class Main {
     private static Options buildOptions() {
         Options cmdLineOptions = new Options();
 
-        // help
-        cmdLineOptions.addOption(Option.builder("h").longOpt("help").desc("Print this message.").build());
+        // inFile
+        cmdLineOptions.addOption(Option.builder("i").longOpt("input").hasArg().desc("A JSON file " +
+                "as database.").build());
 
         return cmdLineOptions;
     }
@@ -91,7 +129,8 @@ public class Main {
         try {
             CommandLine line = parser.parse(cmdLineOptions, args);
 
-            //parseModeOption(line);
+            parseInFileOption(line);
+
             // if there are some remaining arguments, then something wrong is
             // provided in the command line!
             //
@@ -108,6 +147,9 @@ public class Main {
             System.exit(1);
         }
     }
+
+    private static void parseInFileOption(CommandLine line) throws ParseException {
+        _inFile = line.getOptionValue("i");
+        if(_inFile == null) throw new ParseException("An input file is required. This file must be a JSON file.");
+    }
 }
-
-
