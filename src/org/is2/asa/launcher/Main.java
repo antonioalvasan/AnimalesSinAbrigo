@@ -13,6 +13,9 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Scanner;
 
+
+import org.is2.asa.control.AdopterController;
+
 public class Main {
 
     //Login messages
@@ -29,6 +32,7 @@ public class Main {
     private static String _inFile = null; //Stores infile address as a string.
     private static Scanner scanner;
 
+
     public static void main(String[] args) {
         try{
             scanner = new Scanner(System.in);
@@ -37,12 +41,15 @@ public class Main {
             identifyUser();
             //User userType = //just to get user type
 
+            AdopterController ctrl = generateControllers();
+
+            System.out.println("Esto es meramente visual");
             for(User user : userDao.getAll()){
                 System.out.println(user);
             }
 
             if(false){refugeWindow();}
-            else{adopterWindow();}
+            else{adopterWindow(ctrl);}
         }
         catch(Exception e){
             System.err.println("Something went wrong ...");
@@ -50,6 +57,11 @@ public class Main {
             e.printStackTrace();
         }
 
+    }
+
+    private static AdopterController generateControllers(){
+         AdopterController adopterController = new AdopterController(loggedUser);
+         return adopterController;
     }
 
     private static void identifyUser() { //We could use command pattern to control different user commands.
@@ -120,7 +132,7 @@ public class Main {
             @Override
             public void run() {
                 JFrame f = new JFrame();
-                AdopterWindow w = new AdopterWindow();
+                AdopterWindow w = new AdopterWindow(ctrl);
 
                 w.prepareWindow();
                 w.setVisible(true);

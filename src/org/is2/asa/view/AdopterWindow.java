@@ -1,12 +1,17 @@
 package org.is2.asa.view;
 
+import org.is2.asa.control.AdopterController;
+
 import java.awt.*;
 
 import javax.swing.*;
 
 public class AdopterWindow extends JPanel {
-	
-	public AdopterWindow() {
+
+	AdopterController controller;
+
+	public AdopterWindow(AdopterController ctrl) {
+		this.controller = ctrl;
 
 	}
 
@@ -27,8 +32,8 @@ public class AdopterWindow extends JPanel {
 		JButton adoptantes = new JButton("Adoptantes");
 		JButton voluntariado = new JButton("Voluntariado");
 		JButton FAQ = new JButton("FAQ");
-		JButton usuario = new JButton("Guille");
-		JButton imagen_usuario = new JButton(new ImageIcon("resources/images/userIcon.png"));
+		JLabel user = controller.getUserLabel();
+		JButton userImage = new JButton(new ImageIcon("resources/images/userIcon.png"));
 		
 		JPanel x = new JPanel( new FlowLayout());
 		x.add(home);
