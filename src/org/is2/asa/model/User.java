@@ -1,6 +1,8 @@
 package org.is2.asa.model;
 
 public class User {
+    private static int numberOfUsers; //We need a static int so users can recognize their ID when created.
+
     private int ID;
     private String username;
     private String password;
