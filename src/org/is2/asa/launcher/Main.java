@@ -3,6 +3,8 @@ package org.is2.asa.launcher;
 import org.apache.commons.cli.*;
 import org.is2.asa.control.LoginController;
 import org.is2.asa.control.RefugeeController;
+import org.is2.asa.control.commands.Command;
+import org.is2.asa.control.commands.CommandGenerator;
 import org.is2.asa.dao.UserDao;
 import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
@@ -22,19 +24,13 @@ import org.is2.asa.view.RefugeeWindow;
 
 public class Main {
 
-    //Login messages
-    private static final String welcomeMsg = "Welcome!";
-    private static final String loginOrRegisterMsg = "Are you a existing user [L], a new refuge [R] or " +
-                                                                                    "a new adoptant [A]?";
-    private static final String invalidLogin = "Invalid username or password.";
-    private static final String invalidRegistration = "That username already exists.";
-    private static final String invalidOption = "Invalid option. Please try again.";
+    private static String welcomeMsg = "Welcome!";
 
     private static UserDao userDao;
     private static LoginController controller;
     private static RefugeeController refugeeController;
     private static User loggedUser;
-    private static String _inFile = null; //Stores infile address as a string.
+    private static String _inFile; //Stores infile address as a string.
     private static Scanner scanner;
 
 
@@ -43,6 +39,14 @@ public class Main {
             scanner = new Scanner(System.in);
             parseArgs(args);
             initUserDatabase();
+
+            System.out.println(welcomeMsg);
+            String s = scanner.nextLine();
+            String[] input = s.toLowerCase().trim().split(" ");
+
+            Command command = CommandGenerator.parse(input);
+            loggedUser = command.execute(userDao, scanner);
+
             identifyUser();
             //User userType = //just to get user type
 
