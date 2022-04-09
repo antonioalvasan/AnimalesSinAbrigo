@@ -108,13 +108,14 @@ public class AdopterWindow extends JPanel {
 		animal_panel.setLayout(new BoxLayout(animal_panel, BoxLayout.Y_AXIS));
 
 		//adding animal vector
-		String[] names = {"Toby", "Marcelino", "Amadeo", "Juan", "Homosexual", "Eneko", "Antonio", "Fabri", "Javi", "Salgueiro"};
+		String[] names = {"Toby", "Marcelino", "Amadeo", "Juan", "Eneko", "Antonio", "Fabri", "Javi", "Salgueiro"};
 		AnimalPanel[] animal_vector = new AnimalPanel[names.length];
 
 		for(int i =0; i < animal_vector.length; i++) {
 			animal_vector[i] = new AnimalPanel();
 			animal_vector[i].prepareWindow(names[i]);
 			animal_panel.add(animal_vector[i]);
+      master
 		}
 
 		JScrollPane scroll = new JScrollPane();

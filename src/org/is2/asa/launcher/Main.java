@@ -54,7 +54,7 @@ public class Main {
                 refugeWindow();}
             else {
                 adopterCtrl = new AdopterController(loggedUser);
-                adopterWindow();
+                adopterWindow(adopterCtrl);
             }
         }
         catch(Exception e){
