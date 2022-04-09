@@ -1,8 +1,12 @@
 package org.is2.asa.control.commands;
 
 public class CommandGenerator {
-    private static Command[] availableCommands = {
-
+    private static final Command[] availableCommands = {
+            new LoginCommand(),
+            new HelpCommand(),
+            new ExitCommand(),
+            new NewAdopterCommand(),
+            new NewRefugeCommand()
     };
 
     public static Command parse(String[] parameters) {

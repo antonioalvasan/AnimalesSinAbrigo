@@ -10,7 +10,7 @@ public class ExitCommand extends Command{
     protected final static String name = "help";
     protected final static String shortcut = "h";
 
-    public ExitCommand(String name, String shortcut) {
+    public ExitCommand() {
         super(name, shortcut);
     }
 

@@ -1,8 +1,7 @@
 package org.is2.asa.launcher;
 
 import org.apache.commons.cli.*;
-import org.is2.asa.control.LoginController;
-import org.is2.asa.control.RefugeeController;
+import org.is2.asa.control.RefugeController;
 import org.is2.asa.control.commands.Command;
 import org.is2.asa.control.commands.CommandGenerator;
 import org.is2.asa.dao.UserDao;
@@ -20,15 +19,15 @@ import java.util.Scanner;
 
 
 import org.is2.asa.control.AdopterController;
-import org.is2.asa.view.RefugeeWindow;
+import org.is2.asa.view.RefugeWindow;
 
 public class Main {
 
-    private static String welcomeMsg = "Welcome!";
+    private static String welcomeMsg = "Welcome! Press h to show the help message.";
 
     private static UserDao userDao;
-    private static LoginController controller;
-    private static RefugeeController refugeeController;
+    private static RefugeController refugeCtrl;
+    private static AdopterController adopterCtrl;
     private static User loggedUser;
     private static String _inFile; //Stores infile address as a string.
     private static Scanner scanner;
@@ -41,95 +40,28 @@ public class Main {
             initUserDatabase();
 
             System.out.println(welcomeMsg);
-            String s = scanner.nextLine();
-            String[] input = s.toLowerCase().trim().split(" ");
 
-            Command command = CommandGenerator.parse(input);
-            loggedUser = command.execute(userDao, scanner);
+            do {
+                String s = scanner.nextLine();
+                String[] input = s.toLowerCase().trim().split(" ");
 
-            identifyUser();
-            //User userType = //just to get user type
+                Command command = CommandGenerator.parse(input);
+                loggedUser = command.execute(userDao, scanner);
+            } while(loggedUser == null);
 
-            AdopterController ctrl = generateControllers();
-
-            System.out.println("Esto es meramente visual");
-            for(User user : userDao.getAll()){
-                System.out.println(user);
-            }
-
-            if(loggedUser.getRole()== Role.REFUGE){
-                refugeeController= new RefugeeController(loggedUser);
+            if(loggedUser.getRole() == Role.REFUGE){
+                refugeCtrl = new RefugeController(loggedUser);
                 refugeWindow();}
-            else{adopterWindow(ctrl);}
+            else {
+                adopterCtrl = new AdopterController(loggedUser);
+                adopterWindow();
+            }
         }
         catch(Exception e){
             System.err.println("Something went wrong ...");
             System.err.println();
             e.printStackTrace();
         }
-
-    }
-
-    private static AdopterController generateControllers(){
-         AdopterController adopterController = new AdopterController(loggedUser);
-         return adopterController;
-    }
-
-    private static void identifyUser() { //We could use command pattern to control different user commands.
-        String answer; //To store user commands from keyboard.
-        boolean validOption = false;
-
-        System.out.println(welcomeMsg);
-        while(!validOption) {
-            System.out.println(loginOrRegisterMsg);
-            answer = scanner.nextLine();
-            if(answer.equals("L")){
-                validOption = login();
-                if(!validOption) System.out.println(invalidLogin);
-            }
-            else if(answer.equals("R")){
-                validOption = registerRefuge();
-                if(!validOption) System.out.println(invalidRegistration);
-            }
-            else if(answer.equals("A")){
-                validOption = registerAdoptant();
-                if(!validOption) System.out.println(invalidRegistration);
-            }
-            else System.out.println(invalidOption);
-
-        }
-    }
-
-    private static boolean login() {
-        //User insert his personal data
-        String username, password;
-        System.out.print("Username: ");
-        username = scanner.nextLine();
-        System.out.print("Login: ");
-        password = scanner.nextLine();
-
-        //We check if that user exists and if the password is correct
-        boolean found = false;
-        int cont = 0;
-        User userAux;
-
-        while(!found && cont < userDao.getAll().size()){
-            userAux = userDao.get(cont);
-            if(userAux.getUsername().equals(username) && userAux.getPassword().equals(password)){
-                found = true;
-                loggedUser = userAux;
-            }
-            cont++;
-        }
-        return found;
-    }
-
-    private static boolean registerRefuge(){
-        return false;
-    }
-
-    private static boolean registerAdoptant(){
-        return false;
     }
 
     private static void initUserDatabase() throws FileNotFoundException {
@@ -143,7 +75,7 @@ public class Main {
             @Override
             public void run() {
                 JFrame f = new JFrame();
-                AdopterWindow w = new AdopterWindow(ctrl);
+                AdopterWindow w = new AdopterWindow(adopterCtrl);
 
                 w.prepareWindow();
                 w.setVisible(true);
@@ -161,7 +93,7 @@ public class Main {
             @Override
             public void run() {
                 JFrame f = new JFrame();
-                RefugeeWindow w = new RefugeeWindow(refugeeController);
+                RefugeWindow w = new RefugeWindow(refugeCtrl);
 
                 try {
                     w.prepareWindow();

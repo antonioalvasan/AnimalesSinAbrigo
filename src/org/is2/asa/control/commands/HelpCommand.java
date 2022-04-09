@@ -18,7 +18,7 @@ public class HelpCommand extends Command{
             "[e]xit: exit%n"
     );
 
-    public HelpCommand(String name, String shortcut) {
+    public HelpCommand() {
         super(name, shortcut);
     }
 

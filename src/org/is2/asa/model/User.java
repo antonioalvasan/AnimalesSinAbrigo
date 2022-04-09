@@ -1,7 +1,6 @@
 package org.is2.asa.model;
 
 public class User {
-    private static int numberOfUsers; //We need a static int so users can recognize their ID when created.
 
     private int ID;
     private String username;
@@ -13,9 +12,6 @@ public class User {
         this.username=username;
         this.password=password;
         this.role = role;
-    }
-
-    public User(){ //empty constructor, just to try
     }
 
     public int getID() {

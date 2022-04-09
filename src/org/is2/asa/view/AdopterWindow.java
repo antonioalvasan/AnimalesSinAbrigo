@@ -45,8 +45,8 @@ public class AdopterWindow extends JPanel {
 		
 		
 		JPanel y = new JPanel( new FlowLayout());
-		y.add(usuario);
-		y.add(imagen_usuario);
+		//y.add(usuario);
+		//y.add(imagen_usuario);
 		panel_sup0.add(y, BorderLayout.EAST);
 
 		panel_sup0.setBorder(BorderFactory.createLineBorder(Color.black));
