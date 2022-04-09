@@ -3,6 +3,7 @@ package org.is2.asa.view;
 import org.is2.asa.control.AdopterController;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -16,90 +17,114 @@ public class AdopterWindow extends JPanel {
 	}
 
 	public void prepareWindow() {
-		// Declaracion de paneles
+		// Panel declaration
 		this.setLayout(new BorderLayout());
 		JPanel panel_sup = new JPanel((new BorderLayout()));
-		JPanel panel_inf = new JPanel();
+		panel_sup.setBackground(Color.LIGHT_GRAY);
 
-		/********* Seccion superior **********/
+
+		/********* Superior section **********/
 
 		JPanel panel_sup0 = new JPanel(new BorderLayout());
 		JPanel panel_sup1 = new JPanel(new BorderLayout());
+		panel_sup0.setBackground(Color.LIGHT_GRAY);
+		panel_sup1.setBackground(Color.LIGHT_GRAY);
 
-		// panel superior
+		// superior panel
+
+		ArrayList<JButton> buttons = new ArrayList<JButton>();
+
 		JButton home = new JButton("Home");
-		JButton refugios = new JButton("Refugios");
-		JButton adoptantes = new JButton("Adoptantes");
-		JButton voluntariado = new JButton("Voluntariado");
+		JButton refuge = new JButton("Refuge");
+		JButton adopters = new JButton("Adopters");
+		JButton volunteers = new JButton("Volunteers");
 		JButton FAQ = new JButton("FAQ");
-		JLabel user = controller.getUserLabel();
-		JButton userImage = new JButton(new ImageIcon("resources/images/userIcon.png"));
-		
+		JButton user = new JButton(controller.getUserLabel().getText());
+		JButton user_image = new JButton(new ImageIcon("imagen.png"));
+
+		buttons.add(home);
+		buttons.add(refuge);
+		buttons.add(adopters);
+		buttons.add(volunteers);
+		buttons.add(FAQ);
+		buttons.add(user);
+		buttons.add(user_image);
+
+		for(JButton b : buttons)
+			Utilities.setTransparent(b);
+
 		JPanel x = new JPanel( new FlowLayout());
+		x.setBackground(Color.lightGray);
 		x.add(home);
-		x.add(refugios);
-		x.add(adoptantes);
-		x.add(voluntariado);
+		x.add(refuge);
+		x.add(adopters);
+		x.add(volunteers);
 		x.add(FAQ);
 		panel_sup0.add(x, BorderLayout.WEST);
-		
-		
+
+
 		JPanel y = new JPanel( new FlowLayout());
-		//y.add(usuario);
-		//y.add(imagen_usuario);
+		y.setBackground(Color.LIGHT_GRAY);
+		y.add(user);
+		y.add(user_image);
 		panel_sup0.add(y, BorderLayout.EAST);
 
 		panel_sup0.setBorder(BorderFactory.createLineBorder(Color.black));
 		panel_sup0.setVisible(true);
 
-		// panel inferior
+		// Inferior panel
 
-		JTextField busqueda = new JTextField("Buscar...");
-		busqueda.setPreferredSize(new Dimension(200, 20));
-		JButton buscar = new JButton("Buscar");
+		JTextField searchBar = new JTextField("Search...");
+		searchBar.setPreferredSize(new Dimension(300, 20));
+		JButton search_button = new JButton("Search");
+		JButton filters = new JButton("Filters");
+
+		Utilities.setTransparent(search_button);
+		Utilities.setTransparent(filters);
 
 		JPanel z = new JPanel(new FlowLayout());
-		z.add(busqueda);
-		z.add(buscar);
-		
+		z.setBackground(Color.LIGHT_GRAY);
+		z.add(searchBar);
+		z.add(search_button);
+
 		panel_sup1.add(z, BorderLayout.WEST);
-		panel_sup1.add(new JButton("Filtros"), BorderLayout.EAST);
-		
+		panel_sup1.add(filters, BorderLayout.EAST);
+
 		panel_sup1.setBorder(BorderFactory.createLineBorder(Color.black));
 
 		panel_sup1.setVisible(true);
 
-		// añadimos paneles
+		// adding panels
 		panel_sup.add(panel_sup0, BorderLayout.NORTH);
 		panel_sup.add(panel_sup1, BorderLayout.SOUTH);
 
 		panel_sup.setVisible(true);
 
-		/********* Fin seccion superior ***********/
+		/********* End of superior section ***********/
 
-		/********** SECCION INFERIOR ***********/
-		
-		JPanel panel_animales = new JPanel();
-		panel_animales.setLayout(new BoxLayout(panel_animales, BoxLayout.Y_AXIS));
-		
-		//añadimos animales
-		String[] nombres = {"Toby", "Marcelino", "Amadeo", "Juan", "Homosexual", "Eneko", "Antonio", "Fabri", "Javi", "Salgueiro"};
-		AnimalPanel[] animales = new AnimalPanel[nombres.length]; 
-		
-		for(int i =0; i < animales.length; i++) {
-			animales[i] = new AnimalPanel();
-			animales[i].prepareWindow(nombres[i]);
-			panel_animales.add(animales[i]);
+		/********** Inferior section ***********/
+
+		JPanel animal_panel = new JPanel();
+		animal_panel.setLayout(new BoxLayout(animal_panel, BoxLayout.Y_AXIS));
+
+		//adding animal vector
+		String[] names = {"Toby", "Marcelino", "Amadeo", "Juan", "Homosexual", "Eneko", "Antonio", "Fabri", "Javi", "Salgueiro"};
+		AnimalPanel[] animal_vector = new AnimalPanel[names.length];
+
+		for(int i =0; i < animal_vector.length; i++) {
+			animal_vector[i] = new AnimalPanel();
+			animal_vector[i].prepareWindow(names[i]);
+			animal_panel.add(animal_vector[i]);
 		}
-		
+
 		JScrollPane scroll = new JScrollPane();
 		scroll.setPreferredSize(new Dimension(500,300));
-		scroll.setViewportView(panel_animales);
-		
-		
-		/********** FIN SECCION INFERIOR *********/
+		scroll.setViewportView(animal_panel);
 
-		// Añadimos paneles al principal
+
+		/********** End of inferior section *********/
+
+		// Adding both panels to main one
 
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.add(panel_sup, BorderLayout.NORTH);
