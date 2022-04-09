@@ -32,7 +32,7 @@ public class AdopterWindow extends JPanel {
 
 		// superior panel
 
-		ArrayList<JButton> buttons = new ArrayList<>();
+		ArrayList<JButton> buttons = new ArrayList<JButton>();
 
 		JButton home = new JButton("Home");
 		JButton refuge = new JButton("Refuge");

@@ -11,7 +11,7 @@ public class AnimalPanel extends JPanel {
 
 	public void prepareWindow(String name) {
 
-		this.setBackground(Color.gray);
+		this.setBackground(Color.GRAY);
 		this.setLayout(new FlowLayout());
 
 		JButton dog_image = new JButton(new ImageIcon("perrillo.png"));
