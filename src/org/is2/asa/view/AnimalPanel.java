@@ -9,33 +9,42 @@ public class AnimalPanel extends JPanel {
 
 	}
 
-	public void prepareWindow(String nombre) {
+	public void prepareWindow(String name) {
 
+		this.setBackground(Color.GRAY);
 		this.setLayout(new FlowLayout());
 
-		JButton perrillo = new JButton(new ImageIcon("resources/images/perrillo.png"));
-		this.add(perrillo, BorderLayout.EAST);
+		JButton dog_image = new JButton(new ImageIcon("perrillo.png"));
+		this.add(dog_image, BorderLayout.EAST);
 
-		
-		JPanel panel_centro = new JPanel(new BorderLayout());
-		
-		Label nombre_perro = new Label(nombre);
-		Label descripcion = new Label(
+		Utilities.setTransparent(dog_image);
+
+		JPanel panel_centre = new JPanel(new BorderLayout());
+
+		Label dog_name = new Label(name);
+		Label dog_description = new Label(
 				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et magna a velit mollis sagittis at nec nisi. ");
-		
-		panel_centro.add(nombre_perro, BorderLayout.NORTH);
-		panel_centro.add(descripcion, BorderLayout.CENTER);
-		
-		this.add(panel_centro);
-		
-		
-		JButton adoptar = new JButton("Adoptar");
+		dog_name.setBackground(Color.GRAY);
+		dog_description.setBackground(Color.GRAY);
+
+
+		panel_centre.add(dog_name, BorderLayout.NORTH);
+		panel_centre.add(dog_description, BorderLayout.CENTER);
+
+		this.add(panel_centre);
+
+
+		JButton adopt = new JButton("Adopt");
 		JButton info = new JButton("info");
+
+
+		adopt.setBackground(Color.LIGHT_GRAY);
+		info.setBackground(Color.LIGHT_GRAY);
+
 		this.add(info, FlowLayout.RIGHT);
-		this.add(adoptar, FlowLayout.RIGHT);
+		this.add(adopt, FlowLayout.RIGHT);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setPreferredSize(new Dimension(600, 100));
-
 	}
 
 	public AnimalPanel(LayoutManager layout) {

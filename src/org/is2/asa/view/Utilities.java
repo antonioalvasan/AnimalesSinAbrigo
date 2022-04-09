@@ -4,9 +4,10 @@ import javax.swing.*;
 
 public class Utilities {
 
-    public static void setTransparent(JButton boton) {
-        boton.setOpaque(false);
-        boton.setContentAreaFilled(false);
-        boton.setBorderPainted(false);
+    public static void setTransparent(JButton button) {
+        button.setOpaque(false);
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+
     }
 }
