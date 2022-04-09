@@ -28,9 +28,9 @@ public class AdopterWindow extends JPanel {
 
 		// panel superior
 		JButton home = new JButton("Home");
-		JButton refugios = new JButton("Refugios");
-		JButton adoptantes = new JButton("Adoptantes");
-		JButton voluntariado = new JButton("Voluntariado");
+		JButton refugios = new JButton("Refuges");
+		JButton adoptantes = new JButton("Adopters");
+		JButton voluntariado = new JButton("Volunteers");
 		JButton FAQ = new JButton("FAQ");
 		JLabel user = controller.getUserLabel();
 		JButton userImage = new JButton(new ImageIcon("resources/images/userIcon.png"));
@@ -83,7 +83,7 @@ public class AdopterWindow extends JPanel {
 		panel_animales.setLayout(new BoxLayout(panel_animales, BoxLayout.Y_AXIS));
 		
 		//añadimos animales
-		String[] nombres = {"Toby", "Marcelino", "Amadeo", "Juan", "Homosexual", "Eneko", "Antonio", "Fabri", "Javi", "Salgueiro"};
+		String[] nombres = {"Toby", "Marcelino", "Amadeo", "Juan", "Guille", "Eneko", "Antonio", "Fabrizio", "Javier", "Salgueiro"};
 		AnimalPanel[] animales = new AnimalPanel[nombres.length]; 
 		
 		for(int i =0; i < animales.length; i++) {

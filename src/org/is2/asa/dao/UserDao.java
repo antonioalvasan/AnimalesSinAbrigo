@@ -15,8 +15,7 @@ public class UserDao implements Dao<User> {
     private List<User> users = new ArrayList<>();
 
     public UserDao() {
-        users.add(new User(1, "AntoRecre", "beti", Role.REFUGE));
-        users.add(new User(2, "XxenekoretoxX", "ondarroa", Role.ADOPTER));
+
     }
 
     @Override
