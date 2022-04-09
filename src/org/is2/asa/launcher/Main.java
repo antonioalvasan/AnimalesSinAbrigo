@@ -2,7 +2,9 @@ package org.is2.asa.launcher;
 
 import org.apache.commons.cli.*;
 import org.is2.asa.control.LoginController;
+import org.is2.asa.control.RefugeeController;
 import org.is2.asa.dao.UserDao;
+import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
 import org.is2.asa.view.AdopterWindow;
 
@@ -10,11 +12,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
 
 
 import org.is2.asa.control.AdopterController;
+import org.is2.asa.view.RefugeeWindow;
 
 public class Main {
 
@@ -28,6 +32,7 @@ public class Main {
 
     private static UserDao userDao;
     private static LoginController controller;
+    private static RefugeeController refugeeController;
     private static User loggedUser;
     private static String _inFile = null; //Stores infile address as a string.
     private static Scanner scanner;
@@ -48,7 +53,9 @@ public class Main {
                 System.out.println(user);
             }
 
-            if(false){refugeWindow();}
+            if(loggedUser.getRole()== Role.REFUGE){
+                refugeeController= new RefugeeController(loggedUser);
+                refugeWindow();}
             else{adopterWindow(ctrl);}
         }
         catch(Exception e){
@@ -149,11 +156,20 @@ public class Main {
         SwingUtilities.invokeLater((new Runnable() {
             @Override
             public void run() {
-                User usuario = null;
-                JFrame frame= new org.is2.asa.view.RefugeeWindow(controller);
-                frame.setSize(400,300);
-                frame.setVisible(true);
+                JFrame f = new JFrame();
+                RefugeeWindow w = new RefugeeWindow(refugeeController);
 
+                try {
+                    w.prepareWindow();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                w.setVisible(true);
+
+                f.setPreferredSize(new Dimension(1300, 600));
+                f.add(w);
+                f.pack();
+                f.setVisible(true);
             }
         }));
     }
