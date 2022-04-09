@@ -1,6 +1,6 @@
 package org.is2.asa.view;
 
-import org.is2.asa.control.RefugeeController;
+import org.is2.asa.control.RefugeController;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -9,9 +9,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class RefugeeWindow extends JPanel {
-    private RefugeeController ctrl;
-    public RefugeeWindow(RefugeeController ctrl){
+public class RefugeWindow extends JPanel {
+    private RefugeController ctrl;
+    public RefugeWindow(RefugeController ctrl){
         this.ctrl=ctrl;
 
     }
