@@ -115,7 +115,7 @@ public class AdopterWindow extends JPanel {
 			animal_vector[i] = new AnimalPanel();
 			animal_vector[i].prepareWindow(names[i]);
 			animal_panel.add(animal_vector[i]);
-      master
+      //master
 		}
 
 		JScrollPane scroll = new JScrollPane();
