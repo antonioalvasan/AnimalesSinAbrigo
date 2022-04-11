@@ -51,7 +51,8 @@ public class Main {
 
             if(loggedUser.getRole() == Role.REFUGE){
                 refugeCtrl = new RefugeController(loggedUser);
-                refugeWindow();}
+                refugeWindow();
+            }
             else {
                 adopterCtrl = new AdopterController(loggedUser);
                 adopterWindow();
