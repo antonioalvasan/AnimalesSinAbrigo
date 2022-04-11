@@ -5,7 +5,12 @@
             "data": {
                 "ID": 1,
                 "username": "xX_TheEnekoKiller_Xx",
-                "password": "1234"
+                "password": "1234",
+                "name": "x",
+                "province": "Ondarroa",
+                "address": "Av. de Concha Espina, 1, 28036 Madrid",
+                "description": "Lorem ipsum",
+                "tlf": "600 00 00 00"
             }
         },
         {
@@ -13,7 +18,12 @@
             "data": {
                 "ID": 2,
                 "username": "huelvarecre1889",
-                "password": "1234"
+                "password": "1234",
+                "name": "y",
+                "province": "Huelva",
+                "address": "Av. del Decano del Fútbol Español, 21001 Huelva",
+                "description": "Lorem ipsum",
+                "tlf": "611 11 11 11"
             }
         },
         {
@@ -21,7 +31,12 @@
             "data": {
                 "ID": 3,
                 "username": "betasniper42",
-                "password": "1234"
+                "password": "1234",
+                "name": "z",
+                "province": "Madrid",
+                "address": "Calle las garzas 24",
+                "description": "Lorem ipsum",
+                "tlf": "622 22 22 22"
             }
         },
         {
@@ -29,7 +44,12 @@
             "data": {
                 "ID": 4,
                 "username": "gilleGamer",
-                "password": "1234"
+                "password": "1234",
+                "name": "a",
+                "province": "Valladolid",
+                "address": "Av. Mundial 82, s/n, 47014 Valladolid",
+                "description": "Lorem ipsum",
+                "tlf": "633 33 33 33"
             }
         },
         {
@@ -37,7 +57,12 @@
             "data": {
                 "ID": 5,
                 "username": "_chessmaster23",
-                "password": "1234"
+                "password": "1234",
+                "name": "b",
+                "province": "Madrid",
+                "address": "Calle las urracas 24",
+                "description": "Lorem ipsum",
+                "tlf": "644 44 44 44"
             }
         },
         {
@@ -45,7 +70,12 @@
             "data": {
                 "ID": 6,
                 "username": "riazorblue_01",
-                "password": "1234"
+                "password": "1234",
+                "name": "c",
+                "province": "La Coruña",
+                "address": "Rúa Manuel Murguía, S/N, 15011 A Coruña",
+                "description": "Lorem ipsum",
+                "tlf": "655 55 55 55"
             }
         },
         {
@@ -53,7 +83,12 @@
             "data": {
                 "ID": 7,
                 "username": "alberpipi",
-                "password": "1234"
+                "password": "1234",
+                "name": "d",
+                "province": "Madrid",
+                "address": "Calle las gaviotas 24",
+                "description": "Lorem ipsum",
+                "tlf": "666 66 66 66"
             }
         }
     ]
