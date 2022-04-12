@@ -9,8 +9,8 @@ import javax.swing.*;
 public class RefugeContactWindow extends JPanel {
 
     private static class Pair {
-        private final JLabel first;
-        private final JLabel second;
+        private JLabel first;
+        private JLabel second;
 
         public Pair(JLabel first, JLabel second) {
             this.first = first;
