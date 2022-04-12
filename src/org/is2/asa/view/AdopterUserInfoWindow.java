@@ -1,8 +1,78 @@
 package org.is2.asa.view;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.*;
 
 public class AdopterUserInfoWindow extends JPanel {
+    private static class Pair {
+        private final JLabel first;
+        private final JLabel second;
 
+        public Pair(JLabel first, JLabel second) {
+            this.first = first;
+            this.second = second;
+        }
+
+        public JLabel getFirst() {
+            return first;
+        }
+
+        public JLabel getSecond() {
+            return second;
+        }
+
+    }
+
+    public void prepare_panel() {
+
+        this.setLayout(new BorderLayout());
+
+        AdopterBar bar = new AdopterBar();
+        bar.prepare_panel();
+
+        JButton modify = new JButton("Change your data here");
+        modify.setBackground(Color.LIGHT_GRAY);
+
+        JPanel center = new JPanel(new BorderLayout());
+        center.setBackground(Color.gray);
+
+        JButton user_image = new JButton(new ImageIcon("imagen.png"));
+        Utilities.setTransparent(user_image);
+
+        center.add(user_image, BorderLayout.WEST);
+
+        Pair username = new Pair( new JLabel("Username:"), new JLabel("gilleGamer"));
+        Pair password = new Pair( new JLabel("Password:"),new JLabel("1234"));
+        Pair name = new Pair( new JLabel("Name:"),new JLabel("a"));
+        Pair province = new Pair( new JLabel("Province:"), new JLabel("Valladolid"));
+        Pair address = new Pair( new JLabel("Address:"), new JLabel("Av. Mundial 82, s/n, 47014 Valladolid"));
+        Pair tlf = new Pair( new JLabel("Phone number:"), new JLabel("633 33 33 33"));
+
+        ArrayList<Pair> data = new ArrayList<>(Arrays.asList(username, password, name, province, address, tlf));
+        ArrayList<JPanel> panels = new ArrayList<>();
+        JPanel leftP = new JPanel();
+        leftP.setLayout(new BoxLayout(leftP, BoxLayout.Y_AXIS));
+
+        for(int i =0; i < 6; i++) {
+            panels.add(new JPanel(new FlowLayout()));
+            panels.get(i).setBackground(Color.GRAY);
+            data.get(i).getFirst().setFont(new Font("Arial", Font.BOLD, 25));
+            data.get(i).getSecond().setFont(new Font("Arial", Font.BOLD, 25));
+            panels.get(i).add(data.get(i).getFirst());
+            panels.get(i).add(data.get(i).getSecond());
+            leftP.add(panels.get(i));
+        }
+
+        leftP.setAlignmentY(JPanel.CENTER_ALIGNMENT);
+        center.setAlignmentY(JPanel.CENTER_ALIGNMENT);
+        center.add(leftP, BorderLayout.CENTER);
+
+
+        this.add(bar, BorderLayout.NORTH);
+        this.add(center, BorderLayout.CENTER);
+        this.add(modify, BorderLayout.SOUTH);
+    }
 
 }

@@ -1,53 +1,98 @@
 package org.is2.asa.view;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.*;
 
 public class SecondaryAdoptionWindow1 extends JPanel {
 
+    private static class Pair {
+
+        private final JLabel label;
+        private final JTextField textField;
+
+        public Pair(JLabel label, JTextField button) {
+            this.label = label;
+            this.textField = button;
+        }
+
+        public JLabel getLabel() {
+            return label;
+        }
+
+        public JTextField getTextField() {
+            return textField;
+        }
+
+    }
+
     public void prepare_panel() {
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setLayout(new BorderLayout());
 
-        //Panel superior
-        JPanel topPanel = new JPanel();
+        JPanel top = new JPanel(new BorderLayout());
+        top.setBackground(Color.LIGHT_GRAY);
+        top.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-        JLabel topMessage = new JLabel("¿Quieres adoptar a Toby?");
-        topMessage.setBounds(100, 100, 100, 100);
+        JLabel message = new JLabel("¿Quieres adoptar a Toby?");
+        message.setFont(new Font("Arial", Font.BOLD, 40));
+        message.setHorizontalAlignment(JLabel.CENTER);
 
-        topPanel.add(topMessage);
-        topPanel.setVisible(true);
+        top.add(message, BorderLayout.CENTER);
 
-        //Panel inferior
-        JPanel supPanel = new JPanel();
+        JPanel bottom = new JPanel(new BorderLayout());
+        bottom.setBackground(Color.GRAY);
+        bottom.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-        JLabel supMessage = new JLabel("Datos");
-        supMessage.setBounds(100, 100, 100, 100);
+        JLabel data_text = new JLabel("Datos");
+        data_text.setFont(new Font("Arial", Font.BOLD, 20));
+        data_text.setHorizontalAlignment(JLabel.CENTER);
 
-        JLabel name = new JLabel("Nombre");
-        name.setBounds(100, 100, 100, 100);
-        JLabel surname = new JLabel("Apellido");
-        surname.setBounds(200, 100, 100, 100);
-        JLabel address = new JLabel("Direccion");
-        address.setBounds(100, 80, 100, 100);
-        JLabel age = new JLabel("Edad");
-        age.setBounds(200, 100, 80, 100);
-        JLabel curse = new JLabel("Curse");
-        curse.setBounds(100, 60, 100, 100);
-        JLabel income =  new JLabel("Renta");
-        income.setBounds(200, 60, 100, 100);
+        bottom.add(data_text, BorderLayout.NORTH);
 
-        JTextField textName = new JTextField();
-        JTextField textSurname = new JTextField();
-        JTextField textAddress = new JTextField();
-        JTextField textAge = new JTextField();
+        Pair name = new Pair(new JLabel("Usuario:"), new JTextField("Escribe tu usuario aquí..."));
+        Pair surname = new Pair(new JLabel("Contraseña:"), new JPasswordField("Escribe tu contraseña aquí..."));
+        Pair province = new Pair(new JLabel("Provincia:"), new JTextField("Escribe tu provincia aquí..."));
+        Pair address = new Pair(new JLabel("Direccion:"), new JTextField("Escribe tu dirección aquí..."));
+        Pair tlf = new Pair(new JLabel("Número de teléfono:"), new JTextField("Escribe tu número de teléfono aquí..."));
+        JLabel request_testL = new JLabel("Texto de peticion:");
+        JTextArea request_textA = new JTextArea("\"Escribe tu petición aquí...\"");
+        request_textA.setPreferredSize(new Dimension(300,100));
 
-        JComboBox Combocurse = new JComboBox();
-        JComboBox Comboincome = new JComboBox();
+        ArrayList<Pair> dataX = new ArrayList<>(Arrays.asList(name, surname, province, address, tlf));
+        ArrayList<JPanel> panels = new ArrayList<>();
+        JPanel request_data = new JPanel();
+        request_data.setLayout(new BoxLayout(request_data, BoxLayout.Y_AXIS));
 
-        JButton supButton = new JButton("Solicitar");
-        supPanel.add(supButton);
+        for (int i = 0; i < dataX.size(); i++)
+        {
+            panels.add(new JPanel(new FlowLayout()));
+            panels.get(i).setBackground(Color.GRAY);
+            panels.get(i).add(dataX.get(i).getLabel());
+            panels.get(i).add(dataX.get(i).getTextField());
+            request_data.add(panels.get(i));
+        }
 
-        supPanel.setVisible(true);
+        JPanel p = new JPanel(new FlowLayout());
+        p.setBackground(Color.GRAY);
+        p.add(request_testL);
+        p.add(request_textA);
+        request_data.add(p);
+
+        bottom.add(request_data, BorderLayout.CENTER);
+
+        JButton send_button = new JButton("Enviar petición");
+        send_button.setFont(new Font("Arial", Font.BOLD, 20));
+        send_button.setOpaque(true);
+        send_button.setBackground(Color.LIGHT_GRAY);
+
+        bottom.add(send_button, BorderLayout.SOUTH);
+
+        this.add(top, BorderLayout.NORTH);
+        this.add(bottom, BorderLayout.CENTER);
+        this.setBackground(Color.LIGHT_GRAY);
+
     }
 
 }
