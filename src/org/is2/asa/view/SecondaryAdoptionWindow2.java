@@ -9,15 +9,19 @@ public class SecondaryAdoptionWindow2 extends JPanel {
 
         this.setLayout(new BorderLayout());
 
-        JLabel mensaje = new JLabel("Tu solicitud ha sido enviada con exito");
-        mensaje.setBounds(100, 100, 100, 100);
+        JLabel message = new JLabel("Tu solicitud ha sido enviada con éxito.");
+        message.setFont(new Font("Arial", Font.BOLD, 25));
+        message.setHorizontalAlignment(JLabel.CENTER);
 
-        JPanel panel = new JPanel();
-        panel.add(mensaje, BorderLayout.CENTER);
+        JButton button = new JButton("Volver al refugio");
+        button.setHorizontalAlignment(JButton.CENTER);
+        button.setBackground(Color.GRAY);
+        button.setBorderPainted(false);
 
-        JButton boton = new JButton("Volver al refugio");
-        panel.add(boton, BorderLayout.CENTER);
-        panel.setVisible(true);
+
+        this.add(message, BorderLayout.CENTER);
+        this.add(button, BorderLayout.SOUTH);
+        this.setBackground(Color.LIGHT_GRAY);
 
     }
 }
