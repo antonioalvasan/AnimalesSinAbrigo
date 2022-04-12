@@ -55,7 +55,7 @@ public class Main {
             }
             else {
                 adopterCtrl = new AdopterController(loggedUser);
-                adopterWindow(adopterCtrl);
+                adopterWindow();
             }
         }
         catch(Exception e){
