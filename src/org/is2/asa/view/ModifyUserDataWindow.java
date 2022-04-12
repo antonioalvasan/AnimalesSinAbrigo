@@ -39,7 +39,7 @@ public class ModifyUserDataWindow extends JPanel {
         modify.setHorizontalAlignment(JLabel.CENTER);
         modify.setBackground(Color.LIGHT_GRAY);
         modify.setOpaque(true);
-        modify.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        modify.setBorder(BorderFactory.createLineBorder(Color.black));
 
         JButton save = new JButton("Save data");
         save.setOpaque(true);
