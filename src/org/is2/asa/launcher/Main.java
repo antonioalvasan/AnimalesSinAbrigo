@@ -5,6 +5,9 @@ import org.is2.asa.control.RefugeController;
 import org.is2.asa.control.commands.Command;
 import org.is2.asa.control.commands.CommandGenerator;
 import org.is2.asa.dao.UserDao;
+import org.is2.asa.factories.AbstractFactory;
+import org.is2.asa.factories.AnimalFactory;
+import org.is2.asa.model.Animal;
 import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
 import org.is2.asa.view.AdopterWindow;
@@ -31,10 +34,12 @@ public class Main {
     private static User loggedUser;
     private static String _inFile; //Stores infile address as a string.
     private static Scanner scanner;
+    private static AbstractFactory<Animal> animalFactory;
 
 
     public static void main(String[] args) {
         try{
+            animalFactory = new AnimalFactory();
             scanner = new Scanner(System.in);
             parseArgs(args);
             initUserDatabase();
