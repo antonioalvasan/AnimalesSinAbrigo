@@ -1,0 +1,44 @@
+{
+  "animals": [
+    {
+      "species" : "DOG",
+      "data": {
+        "Identifier":  1,
+        "Name": "Toby",
+        "Age": 40,
+        "Weight": 80.03,
+        "Description": "Soy bueno :)"
+      }
+    },
+    {
+      "species" : "CAT",
+      "data": {
+        "Identifier":  2,
+        "Name": "Amancio",
+        "Age": 10,
+        "Weight": 140.03,
+        "Description": "jeje"
+      }
+    },
+    {
+      "species" : "DOG",
+      "data": {
+        "Identifier":  3,
+        "Name": "Marcelino",
+        "Age": 40,
+        "Weight": 80.03,
+        "Description": "Soy bueno :)"
+      }
+    },
+    {
+      "species" : "CAT",
+      "data": {
+        "Identifier":  4,
+        "Name": "Gato",
+        "Age": 40,
+        "Weight": 80.03,
+        "Description": "Soy bueno :)"
+      }
+    }
+  ]
+}
