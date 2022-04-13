@@ -29,7 +29,19 @@ public class NewAdopterCommand extends Command{
             passwordConf = scanner.nextLine();
         }
 
-        User loggedUser = new User(userDao.getAll().size()+1, username, password, Role.ADOPTER);
+        System.out.print("Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Province: ");
+        String province = scanner.nextLine();
+        System.out.print("Address: ");
+        String address = scanner.nextLine();
+        System.out.print("Phone Number: ");
+        String tlf = scanner.nextLine();
+        System.out.print("Description (optional): ");
+        String desc = scanner.nextLine();
+
+        User loggedUser = new User(Role.ADOPTER, userDao.getAll().size()+1, username, password, name, province,
+                address, tlf, desc);
         userDao.add(loggedUser);
 
         return loggedUser;
