@@ -16,32 +16,32 @@ import static java.awt.SystemColor.info;
 
 //DAO design pattern used
 
-public class DogAnimalDao implements Dao<Dog>{
+public class AnimalDao implements Dao<Animal>{
 
-    private List<Dog> animals = new ArrayList<Dog>();
+    private List<Animal> animals = new ArrayList<>();
 
-    public DogAnimalDao(List<Dog> animals) {
+    public AnimalDao(List<Animal> animals) {
         this.animals = animals;
     }
 
     @Override
-    public Dog get(int id) {
+    public Animal get(int id) {
         return animals.get(id);
     }
 
     @Override
-    public List<Dog> getAll() {
+    public List<Animal> getAll() {
         return animals;
     }
 
     @Override
-    public void add(Dog animal) {
+    public void add(Animal animal) {
         if(!existsAnimal(animal))  animals.add(animal);
         else System.out.println("This animal already exists. Please try again.");
     }
 
     @Override
-    public void update(Dog animal) {
+    public void update(Animal animal) {
         if(existsAnimal(animal)){
             animals.get(animal.getIdentifier()).setName(animal.getName());
             animals.get(animal.getIdentifier()).setAge(animal.getAge());
@@ -51,7 +51,7 @@ public class DogAnimalDao implements Dao<Dog>{
         }
     }
 
-    public boolean existsAnimal(Dog animal){
+    public boolean existsAnimal(Animal animal){
         int i = 0;
         boolean exists = false;
         while(!exists && i < animals.size()){
@@ -62,7 +62,7 @@ public class DogAnimalDao implements Dao<Dog>{
     }
 
     @Override
-    public void delete(Dog animal) {
+    public void delete(Animal animal) {
         animals.remove(animal);
     }
 
@@ -70,35 +70,8 @@ public class DogAnimalDao implements Dao<Dog>{
     public void load(InputStream in) {
         JSONObject jsonInput = new JSONObject(new JSONTokener(in));
         JSONArray animalArray = jsonInput.getJSONArray("animals");
-        Dog animalAux;
+        Animal animalAux;
 
-        for (int i = 0; i < animalArray.length(); i++){
-           // animalAux = createInstance(animalArray.getJSONObject(i));
-           // animals.add(animalAux);
-        }
-        
     }
 
-    //Factory need - *temporary*
-    /*
-    private Dog createInstance(JSONObject info) {
-        int identifier, age;
-        String name, description;
-        Species species;
-        double weight;
-
-
-        if(info.getString("species").equals("DOG")) species = Species.DOG;
-        else return null;
-
-        JSONObject data = info.getJSONObject("data");
-        identifier = data.getInt("Identifier");
-        name = data.getString("Name");
-        age = data.getInt("Age");
-        weight = data.getDouble("Weight");
-        description = data.getString("Description");
-
-        return new Dog(identifier, name, age, weight, description, species);
-
-    }*/
 }
