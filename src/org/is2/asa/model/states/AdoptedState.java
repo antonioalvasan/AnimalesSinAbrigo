@@ -1,8 +1,8 @@
-package org.is2.asa.model;
+package org.is2.asa.model.states;
 
 //State design pattern is used
 
-public class AdoptedState extends AnimalState{
+public class AdoptedState extends AnimalState {
 
     AdoptedState(org.is2.asa.model.Animal animal) {
         super(animal);

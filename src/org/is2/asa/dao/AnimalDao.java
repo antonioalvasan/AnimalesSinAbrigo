@@ -48,6 +48,7 @@ public class AnimalDao implements Dao<Animal>{
             animals.get(animal.getIdentifier()).setWeight(animal.getWeight());
             animals.get(animal.getIdentifier()).setDescription(animal.getDescription());
             animals.get(animal.getIdentifier()).changeState(animal.getState());
+            animals.get(animal.getIdentifier()).setLinkedUser(animal.getLinkedUser());
         }
     }
 

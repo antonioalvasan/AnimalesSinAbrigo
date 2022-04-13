@@ -1,4 +1,4 @@
-package org.is2.asa.model;
+package org.is2.asa.model.states;
 import org.is2.asa.model.Animal;
 
 //State design pattern is used

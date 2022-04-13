@@ -2,6 +2,9 @@ package org.is2.asa.model;
 
 //State design pattern is used
 
+import org.is2.asa.model.states.AnimalState;
+import org.is2.asa.model.states.NotAdoptedState;
+
 public abstract class Animal {
 
     private int identifier;
@@ -38,6 +41,14 @@ public abstract class Animal {
 
     public void setIdentifier(int identifier) {
         this.identifier = identifier;
+    }
+
+    public int getLinkedUser() {
+        return linkedUser;
+    }
+
+    public void setLinkedUser(int linkedUser) {
+        this.linkedUser = linkedUser;
     }
 
     public String getName() {
