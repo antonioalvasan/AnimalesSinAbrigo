@@ -5,12 +5,12 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ModifyUserDataWindow extends JPanel {
+public class AdopterUserInfoWindow2 extends JPanel {
 
     private static class Pair {
 
-        private JLabel label;
-        private JTextField button;
+        private final JLabel label;
+        private final JTextField button;
 
         public Pair(JLabel label, JTextField button) {
             this.label = label;
@@ -47,7 +47,7 @@ public class ModifyUserDataWindow extends JPanel {
 
 
         Pair username = new Pair( new JLabel("Username"), new JTextField("Write your new username here..."));
-        Pair password = new Pair( new JLabel("Password"), new JTextField("Write your new password here..."));
+        Pair password = new Pair( new JLabel("Password"),new JPasswordField("Write your new password"));
         Pair name = new Pair( new JLabel("Name"), new JTextField("Write your new name here..."));
         Pair province = new Pair( new JLabel("Province"), new JTextField("Write your new province here..."));
         Pair address = new Pair( new JLabel("Address"), new JTextField("Write your new address here..."));
