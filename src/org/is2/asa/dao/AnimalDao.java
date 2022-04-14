@@ -13,12 +13,14 @@ import java.util.List;
 import java.util.Objects;
 
 import static java.awt.SystemColor.info;
+import org.is2.asa.factories.*;
 
 //DAO design pattern used
 
 public class AnimalDao implements Dao<Animal>{
 
     private List<Animal> animals = new ArrayList<>();
+    private AbstractFactory<Animal> animalAbstractFactory;
 
     public AnimalDao(List<Animal> animals) {
         this.animals = animals;
@@ -72,6 +74,10 @@ public class AnimalDao implements Dao<Animal>{
         JSONObject jsonInput = new JSONObject(new JSONTokener(in));
         JSONArray animalArray = jsonInput.getJSONArray("animals");
         Animal animalAux;
+
+        for(int i = 0; i < animalArray.length(); i++){
+            add(animalAbstractFactory.generateObject(animalArray.getJSONObject(i)));
+        }
 
     }
 
