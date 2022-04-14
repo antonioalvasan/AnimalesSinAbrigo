@@ -3,49 +3,49 @@
     {
       "species" : "DOG",
       "data": {
-        "Race": "Golden Retriever",
-        "Identifier":  1,
-        "LinkedUser": 1,
-        "Name": "Toby",
-        "Age": 40,
-        "Weight": 80.03,
-        "Description": "Soy bueno :)"
+        "race": "Golden Retriever",
+        "identifier":  1,
+        "linkedUser": 1,
+        "name": "Toby",
+        "age": 40,
+        "weight": 80.03,
+        "description": "Soy bueno :)"
       }
     },
     {
       "species" : "CAT",
       "data": {
-        "Race": "Tom",
-        "Identifier":  2,
-        "LinkedUser": 1,
-        "Name": "Amancio",
-        "Age": 10,
-        "Weight": 140.03,
-        "Description": "jeje"
+        "race": "Tom",
+        "identifier":  2,
+        "linkedUser": 1,
+        "name": "Amancio",
+        "age": 10,
+        "weight": 140.03,
+        "description": "jeje"
       }
     },
     {
       "species" : "DOG",
       "data": {
-        "Race": "Golden Retriever",
-        "Identifier":  3,
-        "LinkedUser": 1,
-        "Name": "Marcelino",
-        "Age": 40,
-        "Weight": 80.03,
-        "Description": "Soy bueno :)"
+        "race": "Golden Retriever",
+        "identifier":  3,
+        "linkedUser": 1,
+        "name": "Marcelino",
+        "age": 40,
+        "weight": 80.03,
+        "description": "Soy bueno :)"
       }
     },
     {
       "species" : "CAT",
       "data": {
-        "Race": "Meowth",
-        "Identifier":  4,
-        "LinkedUser": 2,
-        "Name": "Gato",
-        "Age": 40,
-        "Weight": 80.03,
-        "Description": "Soy bueno :)"
+        "race": "Meowth",
+        "identifier":  4,
+        "linkedUser": 2,
+        "name": "Gato",
+        "age": 40,
+        "weight": 80.03,
+        "description": "Soy bueno :)"
       }
     }
   ]

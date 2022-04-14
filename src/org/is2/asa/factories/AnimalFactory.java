@@ -3,8 +3,6 @@ package org.is2.asa.factories;
 import org.is2.asa.model.*;
 import org.json.JSONObject;
 
-import java.util.Objects;
-
 public class AnimalFactory extends AbstractFactory<Animal>{
 
 
@@ -25,25 +23,25 @@ public class AnimalFactory extends AbstractFactory<Animal>{
 
     private Animal CreateDog(JSONObject dogData) {
 
-        DogRace race = DogRace.valueOf(dogData.getString("Race"));
-        int ID = dogData.getInt("Identifier");
-        int linkedUser = dogData.getInt("LinkedUser");
-        String name = dogData.getString("Name");
-        int age = dogData.getInt("Age");
-        double weight = dogData.getDouble("Weight");
-        String desc = dogData.getString("Descrption");
+        DogRace race = DogRace.valueOf(dogData.getString("race"));
+        int ID = dogData.getInt("identifier");
+        int linkedUser = dogData.getInt("linkedUser");
+        String name = dogData.getString("name");
+        int age = dogData.getInt("age");
+        double weight = dogData.getDouble("weight");
+        String desc = dogData.getString("description");
 
         return new Dog(ID, linkedUser, name, age, weight, desc, race);
     }
 
     private Animal CreateCat(JSONObject catData) {
-        CatRace race = CatRace.valueOf(catData.getString("Race"));
-        int ID = catData.getInt("Identifier");
-        int linkedUser = catData.getInt("LinkedUser");
-        String name = catData.getString("Name");
-        int age = catData.getInt("Age");
-        double weight = catData.getDouble("Weight");
-        String desc = catData.getString("Descrption");
+        CatRace race = CatRace.valueOf(catData.getString("race"));
+        int ID = catData.getInt("identifier");
+        int linkedUser = catData.getInt("linkedUser");
+        String name = catData.getString("name");
+        int age = catData.getInt("age");
+        double weight = catData.getDouble("weight");
+        String desc = catData.getString("description");
 
         return new Cat(ID, linkedUser, name, age, weight, desc, race);
     }

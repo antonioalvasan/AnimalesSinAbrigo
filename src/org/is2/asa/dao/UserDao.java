@@ -75,17 +75,23 @@ public class UserDao implements Dao<User> {
 
     private User createInstance(JSONObject info){
         int ID;
-        String username, password;
+        String username, password, name, province, address, desc, tlf;
         Role role;
 
         if(info.getString("type").equals("ADOPTER")) role = Role.ADOPTER;
         else role = Role.REFUGE;
 
         JSONObject data = info.getJSONObject("data");
+
+        ID = data.getInt("ID");
         username = data.getString("username");
         password = data.getString("password");
-        ID = data.getInt("ID");
+        name = data.getString("name");
+        province = data.getString("province");
+        desc = data.getString("data");
+        address = data.getString("address");
+        tlf = data.getString("tlf");
 
-        return new User(ID, username, password, role);
+        return new User(role, ID, username, password, name, province, address, desc, tlf);
     }
 }

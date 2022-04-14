@@ -11,5 +11,4 @@ public class RefugeBar extends JPanel{
 
     }
 
-    public void prepare
 }
