@@ -8,7 +8,7 @@ import org.is2.asa.model.states.NotAdoptedState;
 
 public class AdoptionRequestedState extends AnimalState {
 
-    AdoptionRequestedState(org.is2.asa.model.Animal animal) {
+    public AdoptionRequestedState(org.is2.asa.model.Animal animal) {
         super(animal);
     }
 

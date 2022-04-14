@@ -7,7 +7,7 @@ public abstract class AnimalState {
 
     Animal animal;
 
-    AnimalState(Animal animal){
+    public AnimalState(Animal animal){
         this.animal = animal;
     }
 

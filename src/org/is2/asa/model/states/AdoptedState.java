@@ -4,7 +4,7 @@ package org.is2.asa.model.states;
 
 public class AdoptedState extends AnimalState {
 
-    AdoptedState(org.is2.asa.model.Animal animal) {
+    public AdoptedState(org.is2.asa.model.Animal animal) {
         super(animal);
     }
 

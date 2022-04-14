@@ -4,9 +4,10 @@ package org.is2.asa.model.states;
 
 public class NotAdoptedState extends AnimalState {
 
-    NotAdoptedState(org.is2.asa.model.Animal animal) {
+    public NotAdoptedState(org.is2.asa.model.Animal animal) {
         super(animal);
     }
+
 
 
     @Override
