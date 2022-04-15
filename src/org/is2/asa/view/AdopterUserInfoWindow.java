@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.*;
 
-public class AdopterUserInfoWindow extends JPanel {
-    private static class Pair {
-        private final JLabel first;
-        private final JLabel second;
+public class AdopterUserInfoWindow extends windowClass {
 
-        public Pair(JLabel first, JLabel second) {
-            this.first = first;
-            this.second = second;
-        }
+    private static final String keyCode = "AUIW1";
+
+    public AdopterUserInfoWindow() {
+        super(keyCode);
+    }
+
+    private record Pair(JLabel first, JLabel second) {
 
         public JLabel getFirst() {
             return first;

@@ -5,7 +5,13 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class AdopterUserInfoWindow2 extends JPanel {
+public class AdopterUserInfoWindow2 extends windowClass {
+
+    private static final String keyCode = "AUIW2";
+
+    public AdopterUserInfoWindow2() {
+        super(keyCode);
+    }
 
     private static class Pair {
 

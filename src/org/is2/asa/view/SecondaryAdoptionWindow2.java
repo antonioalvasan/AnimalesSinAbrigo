@@ -3,7 +3,13 @@ package org.is2.asa.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class SecondaryAdoptionWindow2 extends JPanel {
+public class SecondaryAdoptionWindow2 extends windowClass {
+
+    private static final String keyCode = "SAW2";
+
+    public SecondaryAdoptionWindow2() {
+        super(keyCode);
+    }
 
     public void prepare_panel() {
 

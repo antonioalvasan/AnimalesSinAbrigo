@@ -3,12 +3,17 @@ package org.is2.asa.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class AdopterHomeWindow extends JPanel {
+public class AdopterHomeWindow extends windowClass {
 
+    private static final String keyCode = "AHW";
+
+    public AdopterHomeWindow() {
+        super(keyCode);
+    }
 
     public void prepare_panel() {
 
-        this.setLayout(new BorderLayout());
+        super.setLayout(new BorderLayout());
 
         AdopterBar bar = new  AdopterBar();
         bar.prepare_panel();

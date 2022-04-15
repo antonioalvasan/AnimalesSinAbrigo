@@ -11,7 +11,7 @@ public class Home_refuge extends JPanel {
         this.setLayout(new BorderLayout());
 
         RefugeBar bar = new RefugeBar();
-        bar.prepare_panel();
+       // bar.prepare_panel();
 
     }
 

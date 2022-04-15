@@ -10,6 +10,7 @@ import org.is2.asa.factories.AnimalFactory;
 import org.is2.asa.model.Animal;
 import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
+import org.is2.asa.view.AdopterHomeWindow;
 import org.is2.asa.view.AdopterWindow;
 
 import javax.swing.*;
@@ -26,7 +27,7 @@ import org.is2.asa.view.RefugeWindow;
 
 public class Main {
 
-    private static String welcomeMsg = "Welcome! Press h to show the help message.";
+    private static final String welcomeMsg = "Welcome! Press h to show the help message.";
 
     private static UserDao userDao;
     private static RefugeController refugeCtrl;
@@ -77,21 +78,7 @@ public class Main {
     }
 
     private static void adopterWindow(){
-        SwingUtilities.invokeLater((new Runnable() {
-            @Override
-            public void run() {
-                JFrame f = new JFrame();
-                AdopterWindow w = new AdopterWindow(adopterCtrl);
-
-                w.prepareWindow();
-                w.setVisible(true);
-
-                f.setPreferredSize(new Dimension(1300, 600));
-                f.add(w);
-                f.pack();
-                f.setVisible(true);
-            }
-        }));
+        adopterCtrl.run();
     }
 
     private static void refugeWindow(){

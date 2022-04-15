@@ -88,7 +88,7 @@ public class UserDao implements Dao<User> {
         password = data.getString("password");
         name = data.getString("name");
         province = data.getString("province");
-        desc = data.getString("data");
+        desc = data.getString("description");
         address = data.getString("address");
         tlf = data.getString("tlf");
 

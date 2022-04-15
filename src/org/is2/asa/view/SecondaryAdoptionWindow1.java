@@ -5,7 +5,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.*;
 
-public class SecondaryAdoptionWindow1 extends JPanel {
+public class SecondaryAdoptionWindow1 extends windowClass {
+
+    private static final String keyCode = "SAW1";
+
+    public SecondaryAdoptionWindow1() {
+        super(keyCode);
+    }
 
     private static class Pair {
 
