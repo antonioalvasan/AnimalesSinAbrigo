@@ -1,5 +1,7 @@
 package org.is2.asa.view;
 
+import org.is2.asa.control.AdopterController;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,9 +10,11 @@ import javax.swing.*;
 public class AdopterUserInfoWindow extends windowClass {
 
     private static final String keyCode = "AUIW1";
+    AdopterController adopterController;
 
-    public AdopterUserInfoWindow() {
+    public AdopterUserInfoWindow(AdopterController adopterController) {
         super(keyCode);
+        this.adopterController = adopterController;
     }
 
     private record Pair(JLabel first, JLabel second) {

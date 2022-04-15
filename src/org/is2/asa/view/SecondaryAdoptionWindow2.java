@@ -1,14 +1,18 @@
 package org.is2.asa.view;
 
+import org.is2.asa.control.AdopterController;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class SecondaryAdoptionWindow2 extends windowClass {
 
     private static final String keyCode = "SAW2";
+    AdopterController adopterController;
 
-    public SecondaryAdoptionWindow2() {
+    public SecondaryAdoptionWindow2(AdopterController adopterController) {
         super(keyCode);
+        this.adopterController = adopterController;
     }
 
     public void prepare_panel() {

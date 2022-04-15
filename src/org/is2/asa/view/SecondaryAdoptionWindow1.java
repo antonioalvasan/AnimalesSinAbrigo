@@ -1,5 +1,7 @@
 package org.is2.asa.view;
 
+import org.is2.asa.control.AdopterController;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,29 +10,20 @@ import javax.swing.*;
 public class SecondaryAdoptionWindow1 extends windowClass {
 
     private static final String keyCode = "SAW1";
+    AdopterController adopterController;
 
-    public SecondaryAdoptionWindow1() {
+    public SecondaryAdoptionWindow1(AdopterController adopterController) {
         super(keyCode);
+        this.adopterController = adopterController;
     }
 
-    private static class Pair {
-
-        private final JLabel label;
-        private final JTextField textField;
-
-        public Pair(JLabel label, JTextField button) {
-            this.label = label;
-            this.textField = button;
-        }
-
+    private record Pair(JLabel first, JTextField second){
         public JLabel getLabel() {
-            return label;
+            return first;
         }
-
         public JTextField getTextField() {
-            return textField;
+            return second;
         }
-
     }
 
     public void prepare_panel() {

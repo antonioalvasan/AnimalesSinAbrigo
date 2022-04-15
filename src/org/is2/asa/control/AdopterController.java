@@ -22,13 +22,13 @@ public class AdopterController {
         this.viewFrame = new JFrame();
 
         this.viewList = new ArrayList<>();
-        viewList.add(new AdopterHomeWindow());
-        viewList.add(new AdopterUserInfoWindow());
-        viewList.add(new AdopterUserInfoWindow2());
-        viewList.add(new SecondaryAdoptionWindow1());
-        viewList.add(new SecondaryAdoptionWindow2());
+        viewList.add(new AdopterHomeWindow(this));
+        viewList.add(new AdopterUserInfoWindow(this));
+        viewList.add(new AdopterUserInfoWindow2(this));
+        viewList.add(new SecondaryAdoptionWindow1(this));
+        viewList.add(new SecondaryAdoptionWindow2(this));
 
-        currentView = new AdopterHomeWindow();
+        currentView = new AdopterHomeWindow(this);
     }
 
     private windowClass findView(String key) throws IllegalArgumentException{
@@ -40,7 +40,7 @@ public class AdopterController {
     }
 
     private void changeWindow(String key){
-        windowClass w = new AdopterHomeWindow();
+        windowClass w = new AdopterHomeWindow(this);
         try {
             w = findView(key);
         }catch(IllegalArgumentException e){

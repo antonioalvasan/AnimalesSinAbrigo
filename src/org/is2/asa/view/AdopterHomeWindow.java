@@ -1,14 +1,18 @@
 package org.is2.asa.view;
 
+import org.is2.asa.control.AdopterController;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class AdopterHomeWindow extends windowClass {
 
     private static final String keyCode = "AHW";
+    AdopterController adopterController;
 
-    public AdopterHomeWindow() {
+    public AdopterHomeWindow(AdopterController adopterController) {
         super(keyCode);
+        this.adopterController = adopterController;
     }
 
     public void prepare_panel() {
