@@ -2,21 +2,21 @@ package org.is2.asa.control;
 
 import org.is2.asa.model.User;
 import org.is2.asa.view.*;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class AdopterController {
 
     private final JLabel userLabel;
-    User user;
-    ArrayList<windowClass> viewList;
-    JFrame viewFrame;
-    windowClass currentView;
+    private User user;
+    private ArrayList<windowClass> viewList;
+    private JFrame viewFrame;
+    private windowClass currentView;
 
-    public AdopterController(User user) {
+    public AdopterController(@NotNull User user) {
         this.user = user;
         this.userLabel = new JLabel(user.getUsername());
         this.viewFrame = new JFrame();
@@ -28,28 +28,25 @@ public class AdopterController {
         viewList.add(new SecondaryAdoptionWindow1(this));
         viewList.add(new SecondaryAdoptionWindow2(this));
 
-        currentView = new AdopterHomeWindow(this);
+        currentView = viewList.get(0);
     }
 
-    private windowClass findView(String key) throws IllegalArgumentException{
+    private @NotNull windowClass findView(String key) throws IllegalArgumentException{
         for(windowClass w : viewList)
             if(w.equalsKey(key))
                 return w;
-
         throw new IllegalArgumentException("view not found in viewList");
     }
 
-    private void changeWindow(String key){
+    public void changeWindow(String key){
         windowClass w = new AdopterHomeWindow(this);
         try {
             w = findView(key);
-        }catch(IllegalArgumentException e){
+        }catch(IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        viewFrame.removeAll();
-        viewFrame.revalidate();
         currentView = w;
-        viewFrame.repaint();
+        viewFrame.getContentPane().removeAll();
     }
 
     public JLabel getUserLabel() {
@@ -66,7 +63,6 @@ public class AdopterController {
             viewFrame.pack();
             viewFrame.setVisible(true);
         }));
-
     }
     }
 

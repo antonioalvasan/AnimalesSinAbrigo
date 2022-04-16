@@ -1,14 +1,19 @@
 package org.is2.asa.view;
 
+import org.is2.asa.control.AdopterController;
 import org.is2.asa.view.Utilities;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class AdopterBar extends JPanel {
 
-	public AdopterBar() {
-		
+	AdopterController adopterController;
+
+	public AdopterBar(AdopterController adopterController) {
+		this.adopterController = adopterController;
 	}
 	
 	public void prepare_panel(){
@@ -19,6 +24,11 @@ public class AdopterBar extends JPanel {
 		JButton refuge = new JButton("Refuge");
 		JButton contact = new JButton("Contact");
 		JButton FAQ = new JButton("Faq");
+
+		home.addActionListener(arg0 -> {
+			adopterController.changeWindow(AdopterUserInfoWindow.keyCode);
+			adopterController.run();
+		});
 		
 		JPanel left = new JPanel(new FlowLayout());
 		left.setBackground(Color.LIGHT_GRAY);

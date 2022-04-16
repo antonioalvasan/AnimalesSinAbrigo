@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class SecondaryAdoptionWindow2 extends windowClass {
 
-    private static final String keyCode = "SAW2";
+    public static final String keyCode = "SAW2";
     AdopterController adopterController;
 
     public SecondaryAdoptionWindow2(AdopterController adopterController) {

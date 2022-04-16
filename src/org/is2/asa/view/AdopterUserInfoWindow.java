@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class AdopterUserInfoWindow extends windowClass {
 
-    private static final String keyCode = "AUIW1";
+    public static final String keyCode = "AUIW1";
     AdopterController adopterController;
 
     public AdopterUserInfoWindow(AdopterController adopterController) {
@@ -33,7 +33,7 @@ public class AdopterUserInfoWindow extends windowClass {
 
         this.setLayout(new BorderLayout());
 
-        AdopterBar bar = new AdopterBar();
+        AdopterBar bar = new AdopterBar(this.adopterController);
         bar.prepare_panel();
 
         JButton modify = new JButton("Change your data here");

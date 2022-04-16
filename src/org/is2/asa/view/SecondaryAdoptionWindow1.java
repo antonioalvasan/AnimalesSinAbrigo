@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class SecondaryAdoptionWindow1 extends windowClass {
 
-    private static final String keyCode = "SAW1";
+    public static final String keyCode = "SAW1";
     AdopterController adopterController;
 
     public SecondaryAdoptionWindow1(AdopterController adopterController) {

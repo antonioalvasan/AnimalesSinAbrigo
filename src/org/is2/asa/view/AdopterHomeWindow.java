@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class AdopterHomeWindow extends windowClass {
 
-    private static final String keyCode = "AHW";
+    public static final String keyCode = "AHW";
     AdopterController adopterController;
 
     public AdopterHomeWindow(AdopterController adopterController) {
@@ -17,9 +17,9 @@ public class AdopterHomeWindow extends windowClass {
 
     public void prepare_panel() {
 
-        super.setLayout(new BorderLayout());
+        setLayout(new BorderLayout());
 
-        AdopterBar bar = new  AdopterBar();
+        AdopterBar bar = new  AdopterBar(this.adopterController);
         bar.prepare_panel();
         this.add(bar, BorderLayout.NORTH);
 
