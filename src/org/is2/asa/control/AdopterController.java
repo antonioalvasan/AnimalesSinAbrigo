@@ -53,6 +53,15 @@ public class AdopterController {
         return userLabel;
     }
 
+    public void changeUserData(String username, String password, String name, String province, String address, String tlf){
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setName(name);
+        user.setProvince(province);
+        user.setAddress(address);
+        user.setTlf(tlf);
+    }
+
     public void run(){
         SwingUtilities.invokeLater((() -> {
             currentView.prepare_panel();

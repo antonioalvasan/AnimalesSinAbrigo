@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class AdopterUserInfoWindow2 extends windowClass {
 
-    private static final String keyCode = "AUIW2";
+    public static final String keyCode = "AUIW2";
     AdopterController adopterController;
 
     public AdopterUserInfoWindow2(AdopterController adopterController) {
@@ -17,14 +17,14 @@ public class AdopterUserInfoWindow2 extends windowClass {
         this.adopterController = adopterController;
     }
 
-    private record Pair(JLabel label, JTextField button) {
+    private record Pair(JLabel label, JTextField textField) {
 
         public JLabel getLabel() {
             return label;
         }
 
-        public JTextField getButton() {
-            return button;
+        public JTextField getTextField() {
+            return textField;
         }
 
     }
@@ -43,9 +43,8 @@ public class AdopterUserInfoWindow2 extends windowClass {
         modify.setOpaque(true);
         modify.setBorder(BorderFactory.createLineBorder(Color.black));
 
-        JButton save = new JButton("Save data");
-        save.setOpaque(true);
-        save.setBackground(Color.LIGHT_GRAY);
+
+
 
 
         Pair username = new Pair( new JLabel("Username"), new JTextField("Write your new username here..."));
@@ -54,6 +53,7 @@ public class AdopterUserInfoWindow2 extends windowClass {
         Pair province = new Pair( new JLabel("Province"), new JTextField("Write your new province here..."));
         Pair address = new Pair( new JLabel("Address"), new JTextField("Write your new address here..."));
         Pair tlf = new Pair( new JLabel("Phone number"), new JTextField("Write your new phone number here..."));
+        JButton save = new JButton("Save data");
 
         ArrayList<Pair> data = new ArrayList<>(Arrays.asList(username, password, name, province, address, tlf));
         ArrayList<JPanel> panels = new ArrayList<>();
@@ -62,9 +62,20 @@ public class AdopterUserInfoWindow2 extends windowClass {
             panels.add(new JPanel(new FlowLayout()));
             panels.get(i).setBackground(Color.GRAY);
             panels.get(i).add(data.get(i).getLabel());
-            panels.get(i).add(data.get(i).getButton());
+            panels.get(i).add(data.get(i).getTextField());
             change_data_here.add(panels.get(i));
         }
+
+        save.setOpaque(true);
+        save.setBackground(Color.LIGHT_GRAY);
+        save.addActionListener(e -> {
+           // adopterController.changeUserData(username.getTextField().getText(),password.getTextField().getText(),
+             //       name.getTextField().getText(), province.getTextField().getText(), address.getTextField().getText(),
+               //     tlf.getTextField().getText());
+            adopterController.changeWindow(AdopterUserInfoWindow.keyCode);
+            adopterController.run();
+        });
+
 
         this.add(modify, BorderLayout.NORTH);
         this.add(change_data_here, BorderLayout.CENTER);

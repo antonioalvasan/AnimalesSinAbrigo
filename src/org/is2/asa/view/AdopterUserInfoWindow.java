@@ -12,6 +12,7 @@ public class AdopterUserInfoWindow extends windowClass {
     public static final String keyCode = "AUIW1";
     AdopterController adopterController;
 
+
     public AdopterUserInfoWindow(AdopterController adopterController) {
         super(keyCode);
         this.adopterController = adopterController;
@@ -38,6 +39,10 @@ public class AdopterUserInfoWindow extends windowClass {
 
         JButton modify = new JButton("Change your data here");
         modify.setBackground(Color.LIGHT_GRAY);
+        modify.addActionListener(e -> {
+            adopterController.changeWindow( AdopterUserInfoWindow2.keyCode);
+            adopterController.run();
+        });
 
         JPanel center = new JPanel(new BorderLayout());
         center.setBackground(Color.gray);

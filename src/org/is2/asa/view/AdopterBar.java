@@ -23,10 +23,9 @@ public class AdopterBar extends JPanel {
 		JButton home = new JButton("Home");
 		JButton refuge = new JButton("Refuge");
 		JButton contact = new JButton("Contact");
-		JButton FAQ = new JButton("Faq");
 
-		home.addActionListener(arg0 -> {
-			adopterController.changeWindow(AdopterUserInfoWindow.keyCode);
+		home.addActionListener(e -> {
+			adopterController.changeWindow(AdopterHomeWindow.keyCode);
 			adopterController.run();
 		});
 		
@@ -36,18 +35,25 @@ public class AdopterBar extends JPanel {
 		left.add(home);
 		left.add(refuge);
 		left.add(contact);
-		left.add(FAQ);
 		
 		Utilities.setTransparent(home);
 		Utilities.setTransparent(refuge);
 		Utilities.setTransparent(contact);
-		Utilities.setTransparent(FAQ);
 		
 		JPanel right = new JPanel(new FlowLayout());
 		right.setBackground(Color.LIGHT_GRAY);
 		
 		JButton user_name = new JButton("Guille"); 
 		JButton user_icon = new JButton(new ImageIcon("imagen.png"));
+
+		user_name.addActionListener(e ->{
+			adopterController.changeWindow(AdopterUserInfoWindow.keyCode);
+			adopterController.run();
+		});
+		user_icon.addActionListener(e ->{
+			adopterController.changeWindow(AdopterUserInfoWindow.keyCode);
+			adopterController.run();
+		});
 
 		Utilities.setTransparent(user_name);
 		Utilities.setTransparent(user_icon);
