@@ -10,20 +10,16 @@ import org.is2.asa.factories.AnimalFactory;
 import org.is2.asa.model.Animal;
 import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
-import org.is2.asa.view.AdopterHomeWindow;
-import org.is2.asa.view.AdopterWindow;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
 
 
 import org.is2.asa.control.AdopterController;
-import org.is2.asa.view.RefugeWindow;
 
 public class Main {
 
@@ -85,20 +81,12 @@ public class Main {
         SwingUtilities.invokeLater((new Runnable() {
             @Override
             public void run() {
-                JFrame f = new JFrame();
-                RefugeWindow w = new RefugeWindow(refugeCtrl);
-
-                try {
-                    w.prepareWindow();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                w.setVisible(true);
-
-                f.setPreferredSize(new Dimension(1300, 600));
-                f.add(w);
-                f.pack();
-                f.setVisible(true);
+                String parametro= "Home";
+                refugeCtrl.mostrar(parametro);
+                refugeCtrl.setPreferredSize(new Dimension(1300, 600));
+                refugeCtrl.pack();
+                refugeCtrl.setLocationRelativeTo(null);
+                refugeCtrl.setVisible(true);
             }
         }));
     }
