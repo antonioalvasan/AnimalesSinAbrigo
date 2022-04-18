@@ -34,7 +34,7 @@ public class RefugeController extends JFrame{
         animalsrefuge.prepare_panel();
         infowindow.prepare_panel();
         requestrefuge.prepare_panel();
-        listapantallas= new ArrayList<>(Arrays.asList(homerefuge,animalsrefuge));
+        listapantallas= new ArrayList<>(Arrays.asList(homerefuge,animalsrefuge,infowindow,requestrefuge));
 
     }
     public void mostrar(String ventana){
