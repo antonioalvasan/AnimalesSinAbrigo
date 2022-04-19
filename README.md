@@ -15,3 +15,4 @@ Editar las configuraciones de ejecución, poniendo como argumento el archivo jso
 
 **DOCUMENTOS DISEÑO Y ARQUITECTURA**
 Dentro de las carpetas del programa, en el apartado de resources, se encuentra la carpeta de UML, en la que se localizarán todos los documentos correspondientes a la entrega del Sprint actual.
+El Documento Scrum, por su parte, se encuentra visible desde fuera de las carpetas del proyecto
