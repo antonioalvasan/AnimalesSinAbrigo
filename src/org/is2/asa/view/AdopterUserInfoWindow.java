@@ -52,12 +52,12 @@ public class AdopterUserInfoWindow extends windowClass {
 
         center.add(user_image, BorderLayout.WEST);
 
-        Pair username = new Pair( new JLabel("Username:"), new JLabel("gilleGamer"));
-        Pair password = new Pair( new JLabel("Password:"),new JLabel("1234"));
-        Pair name = new Pair( new JLabel("Name:"),new JLabel("a"));
-        Pair province = new Pair( new JLabel("Province:"), new JLabel("Valladolid"));
-        Pair address = new Pair( new JLabel("Address:"), new JLabel("Av. Mundial 82, s/n, 47014 Valladolid"));
-        Pair tlf = new Pair( new JLabel("Phone number:"), new JLabel("633 33 33 33"));
+        Pair username = new Pair( new JLabel("Username:"), new JLabel(adopterController.getUsername()));
+        Pair password = new Pair( new JLabel("Password:"),new JLabel(adopterController.getPassword()));
+        Pair name = new Pair( new JLabel("Name:"),new JLabel(adopterController.getName()));
+        Pair province = new Pair( new JLabel("Province:"), new JLabel(adopterController.getProvince()));
+        Pair address = new Pair( new JLabel("Address:"), new JLabel(adopterController.getAddress()));
+        Pair tlf = new Pair( new JLabel("Phone number:"), new JLabel(adopterController.getTlf()));
 
         ArrayList<Pair> data = new ArrayList<>(Arrays.asList(username, password, name, province, address, tlf));
         ArrayList<JPanel> panels = new ArrayList<>();

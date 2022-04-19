@@ -43,7 +43,7 @@ public class AdopterBar extends JPanel {
 		JPanel right = new JPanel(new FlowLayout());
 		right.setBackground(Color.LIGHT_GRAY);
 		
-		JButton user_name = new JButton("Guille"); 
+		JButton user_name = new JButton(adopterController.getUsername());
 		JButton user_icon = new JButton(new ImageIcon("imagen.png"));
 
 		user_name.addActionListener(e ->{

@@ -1,6 +1,7 @@
 package org.is2.asa.view.Refuge;
 
-import view.Utilities;
+import org.is2.asa.view.Utilities;
+
 
 import javax.swing.*;
 import java.awt.*;

@@ -2,7 +2,7 @@ package org.is2.asa.control;
 
 import org.is2.asa.model.User;
 import org.is2.asa.view.*;
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,15 +10,14 @@ import java.util.ArrayList;
 
 public class AdopterController {
 
-    private final JLabel userLabel;
+
     private User user;
     private ArrayList<windowClass> viewList;
     private JFrame viewFrame;
     private windowClass currentView;
 
-    public AdopterController(@NotNull User user) {
+    public AdopterController(User user) {
         this.user = user;
-        this.userLabel = new JLabel(user.getUsername());
         this.viewFrame = new JFrame();
 
         this.viewList = new ArrayList<>();
@@ -31,7 +30,7 @@ public class AdopterController {
         currentView = viewList.get(0);
     }
 
-    private @NotNull windowClass findView(String key) throws IllegalArgumentException{
+    private windowClass findView(String key) throws IllegalArgumentException{
         for(windowClass w : viewList)
             if(w.equalsKey(key))
                 return w;
@@ -49,9 +48,34 @@ public class AdopterController {
         viewFrame.getContentPane().removeAll();
     }
 
-    public JLabel getUserLabel() {
-        return userLabel;
+    public String getUsername() {
+        return user.getUsername();
     }
+
+    public String getPassword() {
+        return user.getPassword();
+    }
+
+    public String getProvince() {
+        return user.getProvince();
+    }
+
+    public String getAddress(){
+        return user.getAddress();
+    }
+
+    public String getTlf() {
+        return user.getTlf();
+    }
+
+    public String getName() {
+        return user.getName();
+    }
+
+    public String getDescription() {
+        return user.getDescription();
+    }
+
 
     public void changeUserData(String username, String password, String name, String province, String address, String tlf){
         user.setUsername(username);

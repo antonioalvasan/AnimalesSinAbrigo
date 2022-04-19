@@ -1,12 +1,15 @@
 package org.is2.asa.view;
 
+import org.is2.asa.control.AnimalController;
+
 import java.awt.*;
 import javax.swing.*;
 
 public class AnimalPanel extends JPanel {
 
-	public AnimalPanel() {
-
+	AnimalController animalController;
+	public AnimalPanel(AnimalController animalController) {
+		this.animalController = animalController;
 	}
 
 	public void prepareWindow(String name) {
@@ -14,10 +17,10 @@ public class AnimalPanel extends JPanel {
 		this.setBackground(Color.GRAY);
 		this.setLayout(new FlowLayout());
 
-		JButton dog_image = new JButton(new ImageIcon("perrillo.png"));
-		this.add(dog_image, BorderLayout.EAST);
+		JButton animalImg = new JButton(new ImageIcon("perrillo.png"));
+		this.add(animalImg, BorderLayout.EAST);
 
-		Utilities.setTransparent(dog_image);
+		Utilities.setTransparent(animalImg);
 
 		JPanel panel_centre = new JPanel(new BorderLayout());
 

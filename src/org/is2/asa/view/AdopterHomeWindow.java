@@ -46,7 +46,7 @@ public class AdopterHomeWindow extends windowClass {
         //bottom panel 1
         bottom_panel_1.setBackground(Color.LIGHT_GRAY);
 
-        JLabel description1 = new JLabel("<html><body><br>Bienvenido, Guille<body><html>");
+        JLabel description1 = new JLabel("<html><body><br>Bienvenido," + adopterController.getName() + "<body><html>");
         JLabel description2 = new JLabel("<html><body>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt " +
                 "<br>ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip " +
                 "<br>ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat" +

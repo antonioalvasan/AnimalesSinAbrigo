@@ -1,6 +1,7 @@
 package org.is2.asa.view;
 
 import org.is2.asa.control.AdopterController;
+import org.is2.asa.control.AnimalController;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -9,11 +10,13 @@ import javax.swing.*;
 
 public class AdopterWindow extends JPanel {
 
-	AdopterController controller;
+	AdopterController adopterController;
+	AnimalController animalController;
 
-	public AdopterWindow(AdopterController ctrl) {
-		this.controller = ctrl;
-
+	//Se mandan los dos controllers porque necesitas los animales en esta pantalla.
+	public AdopterWindow(AdopterController adopterController, AnimalController animalController) {
+		this.adopterController = adopterController;
+		this.animalController = animalController;
 	}
 
 	public void prepareWindow() {
@@ -39,7 +42,7 @@ public class AdopterWindow extends JPanel {
 		JButton adopters = new JButton("Adopters");
 		JButton volunteers = new JButton("Volunteers");
 		JButton FAQ = new JButton("FAQ");
-		JButton user = new JButton(controller.getUserLabel().getText());
+		JButton user = new JButton(adopterController.getUsername());
 		JButton user_image = new JButton(new ImageIcon("imagen.png"));
 
 		buttons.add(home);
@@ -112,7 +115,7 @@ public class AdopterWindow extends JPanel {
 		AnimalPanel[] animal_vector = new AnimalPanel[names.length];
 
 		for(int i =0; i < animal_vector.length; i++) {
-			animal_vector[i] = new AnimalPanel();
+			animal_vector[i] = new AnimalPanel(animalController);
 			animal_vector[i].prepareWindow(names[i]);
 			animal_panel.add(animal_vector[i]);
       //master
