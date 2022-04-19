@@ -9,19 +9,21 @@
         "name": "Toby",
         "age": 40,
         "weight": 80.03,
-        "description": "Soy bueno :)"
+        "description": "Soy bueno :)",
+        "img": "images/dogs/goldenRetriever1.jpg"
       }
     },
     {
       "species" : "CAT",
       "data": {
-        "race": "Tom",
+        "race": "Persian",
         "identifier":  2,
         "linkedUser": 1,
         "name": "Amancio",
         "age": 10,
         "weight": 140.03,
-        "description": "jeje"
+        "description": "jeje",
+        "img": "images/cats/persian.jpg"
       }
     },
     {
@@ -33,19 +35,21 @@
         "name": "Marcelino",
         "age": 40,
         "weight": 80.03,
-        "description": "Soy bueno :)"
+        "description": "Soy bueno :)",
+        "img": "images/dogs/goldenRetriever2.jpg"
       }
     },
     {
       "species" : "CAT",
       "data": {
-        "race": "Meowth",
+        "race": "Abisinio",
         "identifier":  4,
         "linkedUser": 2,
         "name": "Gato",
         "age": 40,
         "weight": 80.03,
-        "description": "Soy bueno :)"
+        "description": "Soy bueno :)",
+        "img": "images/cats/abisinio.jpg"
       }
     }
   ]
