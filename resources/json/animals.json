@@ -10,7 +10,7 @@
         "age": 40,
         "weight": 80.03,
         "description": "Soy bueno :)",
-        "img": "images/dogs/goldenRetriever1.jpg"
+        "img": "images/animals/dogs/goldenRetriever1.jpg"
       }
     },
     {
@@ -23,7 +23,7 @@
         "age": 10,
         "weight": 140.03,
         "description": "jeje",
-        "img": "images/cats/persian.jpg"
+        "img": "images/animals/cats/persian.jpg"
       }
     },
     {
@@ -36,7 +36,7 @@
         "age": 40,
         "weight": 80.03,
         "description": "Soy bueno :)",
-        "img": "images/dogs/goldenRetriever2.jpg"
+        "img": "images/animals/dogs/goldenRetriever2.jpg"
       }
     },
     {
@@ -49,7 +49,7 @@
         "age": 40,
         "weight": 80.03,
         "description": "Soy bueno :)",
-        "img": "images/cats/abisinio.jpg"
+        "img": "images/animals/cats/abisinio.jpg"
       }
     }
   ]
