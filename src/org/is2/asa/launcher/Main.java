@@ -4,6 +4,7 @@ import org.apache.commons.cli.*;
 import org.is2.asa.control.RefugeController;
 import org.is2.asa.control.commands.Command;
 import org.is2.asa.control.commands.CommandGenerator;
+import org.is2.asa.dao.AnimalDao;
 import org.is2.asa.dao.UserDao;
 import org.is2.asa.factories.AbstractFactory;
 import org.is2.asa.factories.AnimalFactory;
@@ -49,10 +50,11 @@ public class Main {
 
                 Command command = CommandGenerator.parse(input);
                 loggedUser = command.execute(userDao, scanner);
+
             } while(loggedUser == null);
 
             if(loggedUser.getRole() == Role.REFUGE){
-                refugeCtrl = new RefugeController(loggedUser);
+                refugeCtrl = new RefugeController(loggedUser, );
                 refugeWindow();
             }
             else {

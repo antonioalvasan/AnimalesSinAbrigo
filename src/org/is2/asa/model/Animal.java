@@ -87,6 +87,11 @@ public abstract class Animal {
         return state;
     }
 
+    public String getRace(){
+        return null;
+    }
 
+    public abstract String getSpecies();
 
+    ;
 }
