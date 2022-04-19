@@ -12,3 +12,6 @@ Para ejecutar el programa, es necesario establecer un archivo como entrada (inpu
 Para ello:
 
 Editar las configuraciones de ejecución, poniendo como argumento el archivo json de los usuarios, utilizando la -i como parámetro. Si no funciona, simplemente copia la dirección a continuación: -i/resources/json/users.json
+
+**DOCUMENTOS DISEÑO Y ARQUITECTURA**
+Dentro de las carpetas del programa, en el apartado de resources, se encuentra la carpeta de UML, en la que se localizarán todos los documentos correspondientes a la entrega del Sprint actual.
