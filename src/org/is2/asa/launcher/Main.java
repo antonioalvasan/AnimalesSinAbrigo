@@ -54,7 +54,7 @@ public class Main {
             } while(loggedUser == null);
 
             if(loggedUser.getRole() == Role.REFUGE){
-                refugeCtrl = new RefugeController(loggedUser, );
+                //refugeCtrl = new RefugeController(loggedUser, );
                 refugeWindow();
             }
             else {

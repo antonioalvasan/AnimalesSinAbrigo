@@ -90,7 +90,7 @@ public class AnimalsRefuge extends JPanel {
         AnimalPanel[] animalPanels = new AnimalPanel[animals.size()];
 
         for(int i =0; i < animalPanels.length; i++) {
-            AnimalController animalController = new AnimalController(animals.get(i))
+            AnimalController animalController = new AnimalController(animals.get(i));
             animalPanels[i] = new AnimalPanel(animalController);
             animalPanels[i].prepare_panel(animalController.getName());
             animal_panel.add(animalPanels[i]);
