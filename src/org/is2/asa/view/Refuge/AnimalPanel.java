@@ -1,5 +1,6 @@
 package org.is2.asa.view.Refuge;
 
+import org.is2.asa.control.AnimalController;
 import org.is2.asa.view.Utilities;
 
 
@@ -10,8 +11,10 @@ import java.awt.event.ActionListener;
 
 public class AnimalPanel extends JPanel {
 
-    public AnimalPanel( ) {
 
+    AnimalController animalController;
+    public AnimalPanel(AnimalController animalController) {
+        this.animalController = animalController;
 
     }
 
@@ -43,7 +46,7 @@ public class AnimalPanel extends JPanel {
 
 
         JButton info = new JButton("info");
-        InfoAnimalRefuge info2= new InfoAnimalRefuge();
+        InfoAnimalRefuge info2= new InfoAnimalRefuge(animalController);
         info2.prepare_panel();
         info2.setVisible(true);
         JDialog dialogo= new JDialog();

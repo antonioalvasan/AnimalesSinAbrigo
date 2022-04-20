@@ -9,4 +9,16 @@ public class Cat extends Animal{
         this.race = race;
     }
 
+    @Override
+    public String getRace() {
+        return this.race.DisplayName();
+    }
+
+    public void setRace(CatRace race) {
+        this.race = race;
+    }
+
+    public String getSpecies(){
+        return Species.CAT.DisplayName();
+    }
 }

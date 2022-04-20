@@ -1,5 +1,8 @@
 package org.is2.asa.view.Refuge;
 
+import org.is2.asa.control.AnimalController;
+import org.is2.asa.control.RefugeController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,6 +12,14 @@ import java.util.Arrays;
 
 public class InfoAnimalRefuge extends JPanel {
 
+
+
+    AnimalController animalController;
+
+    public InfoAnimalRefuge(AnimalController animalController){
+        this.animalController = animalController;
+    }
+
     public void prepare_panel() {
 
 
@@ -17,7 +28,7 @@ public class InfoAnimalRefuge extends JPanel {
             //Panel superior
             JPanel topPanel = new JPanel();
 
-            JLabel topMessage = new JLabel("Información de Toby");
+            JLabel topMessage = new JLabel("Información de " + animalController.getName());
             topMessage.setFont(new Font("Arial", Font.BOLD, 30));
             topMessage.setHorizontalAlignment(JLabel.CENTER);
             topMessage.setBackground(Color.LIGHT_GRAY);
@@ -106,14 +117,14 @@ public class InfoAnimalRefuge extends JPanel {
         supButton2.setBackground(Color.LIGHT_GRAY);
 
 
-            JLabel specie = new JLabel("Specie: Dog");
-            JLabel Race = new JLabel("Race: Golden Retriever");
-            JLabel Identifier = new JLabel("Identifier: 1");
-            JLabel LinkedUser = new JLabel("LinkedUser: null");
-            JLabel Name = new JLabel("Name: Toby");
-            JLabel Age = new JLabel("Age: 10");
-            JLabel Weight = new JLabel("Weight: 80.03");
-            JLabel Description = new JLabel("Description: Soy bueno :)");
+            JLabel specie = new JLabel("Specie: " + animalController.getSpecies());
+            JLabel Race = new JLabel("Race: " + animalController.getRace());
+            JLabel Identifier = new JLabel("Identifier: " + animalController.getId());
+            JLabel LinkedUser = new JLabel("LinkedUser: " + animalController.getLinkedUser());
+            JLabel Name = new JLabel("Name: " + animalController.getName());
+            JLabel Age = new JLabel("Age: " + animalController.getAge());
+            JLabel Weight = new JLabel("Weight: " + animalController.getWeight());
+            JLabel Description = new JLabel("Description: " + animalController.getDescription());
         ArrayList<JLabel >data = new ArrayList<>(Arrays.asList(specie, Race, Identifier, LinkedUser, Name,Weight,Description));
         ArrayList<JPanel> panels = new ArrayList<>();
 

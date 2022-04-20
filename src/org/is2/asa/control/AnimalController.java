@@ -37,5 +37,15 @@ public class AnimalController {
         return animal.getState();
     }
 
+    public String getRace(){
+        return animal.getRace();
+    }
 
+    public String getSpecies() {
+        return animal.getSpecies();
+    }
+
+    public int getLinkedUser(){
+        return animal.getLinkedUser();
+    }
 }

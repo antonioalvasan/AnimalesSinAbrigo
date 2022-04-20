@@ -2,19 +2,25 @@ package org.is2.asa.view.Refuge;
 
 
 
+import org.is2.asa.control.AnimalController;
+import org.is2.asa.control.AnimalListController;
 import org.is2.asa.control.RefugeController;
+import org.is2.asa.model.Animal;
 import org.is2.asa.view.Utilities;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class AnimalsRefuge extends JPanel {
     public RefugeController controladorventanas;
-    public AnimalsRefuge(RefugeController ctrl){
-        controladorventanas= ctrl;
+    public AnimalListController animalListController;
 
+    public AnimalsRefuge(RefugeController ctrl, AnimalListController animalListController){
+        controladorventanas= ctrl;
+        this.animalListController = animalListController;
     }
 
     public void prepare_panel() {
@@ -80,13 +86,14 @@ public class AnimalsRefuge extends JPanel {
         animal_panel.setLayout(new BoxLayout(animal_panel, BoxLayout.Y_AXIS));
 
         //adding animal vector
-        String[] names = {"Toby", "Marcelino", "Amadeo", "Juan", "Eneko", "Antonio", "Fabri", "Javi", "Salgueiro"};
-        AnimalPanel[] animal_vector = new AnimalPanel[names.length];
+        List<Animal> animals = animalListController.getAll();
+        AnimalPanel[] animalPanels = new AnimalPanel[animals.size()];
 
-        for(int i =0; i < animal_vector.length; i++) {
-            animal_vector[i] = new AnimalPanel();
-            animal_vector[i].prepare_panel(names[i]);
-            animal_panel.add(animal_vector[i]);
+        for(int i =0; i < animalPanels.length; i++) {
+            AnimalController animalController = new AnimalController(animals.get(i))
+            animalPanels[i] = new AnimalPanel(animalController);
+            animalPanels[i].prepare_panel(animalController.getName());
+            animal_panel.add(animalPanels[i]);
 
         }
 

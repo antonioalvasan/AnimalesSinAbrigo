@@ -92,6 +92,11 @@ public abstract class Animal {
     public void setImg(String img) { this.img = img; }
 
 
+    public String getRace(){
+        return null;
+    }
 
+    public abstract String getSpecies();
 
+    ;
 }
