@@ -1,18 +1,16 @@
 package org.is2.asa.view;
 
 import org.is2.asa.control.AdopterController;
+import org.is2.asa.control.AnimalListController;
+import org.is2.asa.dao.UserDao;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class AdopterHomeWindow extends windowClass {
+public class AdopterHomeWindow extends AdopterWindow{
 
-    public static final String keyCode = "AHW";
-    AdopterController adopterController;
-
-    public AdopterHomeWindow(AdopterController adopterController) {
-        super(keyCode);
-        this.adopterController = adopterController;
+    public AdopterHomeWindow(AdopterController adopterController, UserDao userDao, AnimalListController animalListController) {
+        super(adopterController, userDao, animalListController);
     }
 
     public void prepare_panel() {

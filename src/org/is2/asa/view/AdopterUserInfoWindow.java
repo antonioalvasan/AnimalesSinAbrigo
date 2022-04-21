@@ -1,21 +1,18 @@
 package org.is2.asa.view;
 
 import org.is2.asa.control.AdopterController;
+import org.is2.asa.control.AnimalListController;
+import org.is2.asa.dao.UserDao;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.*;
 
-public class AdopterUserInfoWindow extends windowClass {
+public class AdopterUserInfoWindow extends AdopterWindow {
 
-    public static final String keyCode = "AUIW1";
-    AdopterController adopterController;
-
-
-    public AdopterUserInfoWindow(AdopterController adopterController) {
-        super(keyCode);
-        this.adopterController = adopterController;
+    public AdopterUserInfoWindow(AdopterController adopterController, UserDao userDao, AnimalListController animalListController) {
+        super(adopterController, userDao, animalListController);
     }
 
     private record Pair(JLabel first, JLabel second) {
@@ -40,7 +37,7 @@ public class AdopterUserInfoWindow extends windowClass {
         JButton modify = new JButton("Change your data here");
         modify.setBackground(Color.LIGHT_GRAY);
         modify.addActionListener(e -> {
-            adopterController.changeWindow( AdopterUserInfoWindow2.keyCode);
+            adopterController.changeWindow(AdopterWindowCodes.ADOPTERUSERINFOWINDOW2.getCode());
             adopterController.run();
         });
 

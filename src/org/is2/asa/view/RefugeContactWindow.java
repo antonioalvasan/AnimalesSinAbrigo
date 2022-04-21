@@ -1,12 +1,18 @@
 package org.is2.asa.view;
 
+import org.is2.asa.control.AdopterController;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.*;
 
 
-public class RefugeContactWindow extends JPanel {
+public class RefugeContactWindow extends AdopterWindow {
+
+    public RefugeContactWindow(AdopterController adopterController) {
+        super(adopterController);
+    }
 
     private static class Pair {
         private JLabel first;

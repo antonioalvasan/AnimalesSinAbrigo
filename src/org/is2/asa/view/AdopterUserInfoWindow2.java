@@ -1,28 +1,24 @@
 package org.is2.asa.view;
 
 import org.is2.asa.control.AdopterController;
+import org.is2.asa.control.AnimalListController;
+import org.is2.asa.dao.UserDao;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class AdopterUserInfoWindow2 extends windowClass {
+public class AdopterUserInfoWindow2 extends AdopterWindow {
 
-    public static final String keyCode = "AUIW2";
-    AdopterController adopterController;
-
-    public AdopterUserInfoWindow2(AdopterController adopterController) {
-        super(keyCode);
-        this.adopterController = adopterController;
+    public AdopterUserInfoWindow2(AdopterController adopterController, UserDao userDao, AnimalListController animalListController) {
+        super(adopterController, userDao, animalListController);
     }
 
     private record Pair(JLabel label, JTextField textField) {
-
         public JLabel getLabel() {
             return label;
         }
-
         public JTextField getTextField() {
             return textField;
         }
@@ -72,7 +68,7 @@ public class AdopterUserInfoWindow2 extends windowClass {
            // adopterController.changeUserData(username.getTextField().getText(),password.getTextField().getText(),
              //       name.getTextField().getText(), province.getTextField().getText(), address.getTextField().getText(),
                //     tlf.getTextField().getText());
-            adopterController.changeWindow(AdopterUserInfoWindow.keyCode);
+            adopterController.changeWindow(AdopterWindowCodes.ADOPTERUSERINFOWINDOW.getCode());
             adopterController.run();
         });
 

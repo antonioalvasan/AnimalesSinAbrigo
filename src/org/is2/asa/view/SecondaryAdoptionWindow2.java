@@ -5,14 +5,10 @@ import org.is2.asa.control.AdopterController;
 import javax.swing.*;
 import java.awt.*;
 
-public class SecondaryAdoptionWindow2 extends windowClass {
-
-    public static final String keyCode = "SAW2";
-    AdopterController adopterController;
+public class SecondaryAdoptionWindow2 extends AdopterWindow {
 
     public SecondaryAdoptionWindow2(AdopterController adopterController) {
-        super(keyCode);
-        this.adopterController = adopterController;
+        super(adopterController);
     }
 
     public void prepare_panel() {

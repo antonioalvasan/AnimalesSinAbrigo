@@ -7,14 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.*;
 
-public class SecondaryAdoptionWindow1 extends windowClass {
-
-    public static final String keyCode = "SAW1";
-    AdopterController adopterController;
-
+public class SecondaryAdoptionWindow1 extends AdopterWindow{
     public SecondaryAdoptionWindow1(AdopterController adopterController) {
-        super(keyCode);
-        this.adopterController = adopterController;
+        super(adopterController);
     }
 
     private record Pair(JLabel first, JTextField second){
