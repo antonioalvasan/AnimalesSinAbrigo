@@ -90,6 +90,32 @@
                 "description": "Lorem ipsum",
                 "tlf": "666 66 66 66"
             }
+        },
+        {
+            "type": "ADOPTER",
+            "data": {
+                "ID": 8,
+                "username": "adopterTest",
+                "password": "1234",
+                "name": "d",
+                "province": "Valencia",
+                "address": "Gran via",
+                "description": "Lorem ipsum",
+                "tlf": "677 77 77 77"
+            }
+        },
+        {
+            "type": "REFUGE",
+            "data": {
+                "ID": 9,
+                "username": "refugeTest",
+                "password": "1234",
+                "name": "d",
+                "province": "Granada",
+                "address": "Gran via",
+                "description": "Lorem ipsum",
+                "tlf": "688 88 88 88"
+            }
         }
     ]
 }

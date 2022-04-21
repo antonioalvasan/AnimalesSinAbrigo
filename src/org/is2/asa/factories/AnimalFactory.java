@@ -30,8 +30,9 @@ public class AnimalFactory extends AbstractFactory<Animal>{
         int age = dogData.getInt("age");
         double weight = dogData.getDouble("weight");
         String desc = dogData.getString("description");
+        String img = dogData.getString("img");
 
-        return new Dog(ID, linkedUser, name, age, weight, desc, race);
+        return new Dog(ID, linkedUser, name, age, weight, desc, race, img);
     }
 
     private Animal CreateCat(JSONObject catData) {
@@ -42,7 +43,8 @@ public class AnimalFactory extends AbstractFactory<Animal>{
         int age = catData.getInt("age");
         double weight = catData.getDouble("weight");
         String desc = catData.getString("description");
+        String img = catData.getString("img");
 
-        return new Cat(ID, linkedUser, name, age, weight, desc, race);
+        return new Cat(ID, linkedUser, name, age, weight, desc, race, img);
     }
 }

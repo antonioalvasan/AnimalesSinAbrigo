@@ -30,6 +30,7 @@ public class AdopterController {
     public AdopterController(User user) {
         this.loggedUser = user;
         this.viewFrame = new JFrame();
+        this.viewFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.viewList = new ArrayList<>();
         viewList.add(new AdopterHomeWindow(this));

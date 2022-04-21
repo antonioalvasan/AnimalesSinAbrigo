@@ -3,7 +3,7 @@
     {
       "species" : "DOG",
       "data": {
-        "race": "Golden Retriever",
+        "race": "GOLDEN_RETRIEVER",
         "identifier":  1,
         "linkedUser": 1,
         "name": "Toby",
@@ -16,7 +16,7 @@
     {
       "species" : "CAT",
       "data": {
-        "race": "Persian",
+        "race": "PERSIAN",
         "identifier":  2,
         "linkedUser": 1,
         "name": "Amancio",
@@ -29,7 +29,7 @@
     {
       "species" : "DOG",
       "data": {
-        "race": "Golden Retriever",
+        "race": "GOLDEN_RETRIEVER",
         "identifier":  3,
         "linkedUser": 1,
         "name": "Marcelino",
@@ -42,7 +42,7 @@
     {
       "species" : "CAT",
       "data": {
-        "race": "Abisinio",
+        "race": "AKITA",
         "identifier":  4,
         "linkedUser": 2,
         "name": "Gato",

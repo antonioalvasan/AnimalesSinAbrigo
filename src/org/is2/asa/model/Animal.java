@@ -17,7 +17,7 @@ public abstract class Animal {
 
     private AnimalState state;
 
-    public Animal(int identifier, int linkedUser, String name, int age, double weight, String description) {
+    public Animal(int identifier, int linkedUser, String name, int age, double weight, String description, String img) {
         this.identifier = identifier;
         this.linkedUser = linkedUser;
         this.name = name;
@@ -25,7 +25,7 @@ public abstract class Animal {
         this.weight = weight;
         this.description = description;
         this.state= new NotAdoptedState(this);
-        //this.img = img;
+        this.img = img;
     }
 
 

@@ -4,8 +4,9 @@ public class Cat extends Animal{
 
     CatRace race;
 
-    public Cat(int identifier, int linkedUser, String name, int age, double weight, String description, CatRace race) {
-        super(identifier, linkedUser, name, age, weight, description);
+    public Cat(int identifier, int linkedUser, String name, int age, double weight, String description, CatRace race,
+               String img) {
+        super(identifier, linkedUser, name, age, weight, description, img);
         this.race = race;
     }
 

@@ -1,6 +1,7 @@
 package org.is2.asa.model;
 
 public enum DogRace {
+    GOLDEN_RETRIEVER ("Golden Retriever"),
     BORDER_COLLIE ("Border Collie"),
     ALASKAN_MALAMUTE ("Alaskan Malamute"),
     BULLDOG ("Perro toro"),

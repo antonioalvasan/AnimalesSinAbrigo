@@ -22,8 +22,8 @@ public class AnimalDao implements Dao<Animal>{
     private List<Animal> animals = new ArrayList<>();
     private AbstractFactory<Animal> animalAbstractFactory;
 
-    public AnimalDao(List<Animal> animals) {
-        this.animals = animals;
+    public AnimalDao() {
+        this.animalAbstractFactory = new AnimalFactory();
     }
 
     @Override
