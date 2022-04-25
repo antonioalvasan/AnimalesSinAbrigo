@@ -1,6 +1,7 @@
 package org.is2.asa.view.adopter.viewFactories;
 
 import org.is2.asa.control.AdopterController;
+import org.is2.asa.view.adopter.views.AdopterRefugeListWindow;
 import org.is2.asa.view.windowClass;
 
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class BuilderBasedWindowFactory {
         builders.add(new RefugeContactWindowBuilder());
         builders.add(new SecondaryAdoptionWindow1Builder());
         builders.add(new SecondaryAdoptionWindow2Builder());
+        builders.add(new AdopterRefugeListWindowBuilder());
+        builders.add(new RefugeAnimalListBuilder());
     }
 
     public windowClass createInstance(String key){

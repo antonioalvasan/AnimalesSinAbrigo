@@ -42,7 +42,7 @@ public class AdopterUserInfoWindow extends windowClass {
         JButton modify = new JButton("Change your data here");
         modify.setBackground(Color.LIGHT_GRAY);
         modify.addActionListener(e -> {
-            adopterController.changeWindow( AdopterUserInfoWindow2.keyCode);
+            adopterController.changeWindow( AdopterUserInfoWindow2.key);
             adopterController.run();
         });
 

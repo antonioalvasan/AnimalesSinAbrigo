@@ -30,7 +30,12 @@ public class AdopterBar extends JPanel {
 		JButton contact = new JButton("Contact");
 
 		home.addActionListener(e -> {
-			adopterController.changeWindow(AdopterHomeWindow.keyCode);
+			adopterController.changeWindow(AdopterHomeWindow.key);
+			adopterController.run();
+		});
+
+		refuge.addActionListener(e ->{
+			adopterController.changeWindow(AdopterRefugeListWindow.key);
 			adopterController.run();
 		});
 

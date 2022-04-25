@@ -1,6 +1,7 @@
 package org.is2.asa.view.adopter.views;
 
 import org.is2.asa.control.AnimalController;
+import org.is2.asa.model.Animal;
 import org.is2.asa.view.Utilities;
 
 import java.awt.*;
@@ -8,26 +9,26 @@ import javax.swing.*;
 
 public class AnimalPanel extends JPanel {
 
-	AnimalController animalController;
-	public AnimalPanel(AnimalController animalController) {
-		this.animalController = animalController;
+	Animal animal;
+
+	public AnimalPanel(Animal animal) {
+		this.animal = animal;
 	}
 
-	public void prepareWindow(String name) {
+	public void prepare_panel() {
 
 		this.setBackground(Color.GRAY);
 		this.setLayout(new FlowLayout());
 
-		JButton animalImg = new JButton(new ImageIcon("perrillo.png"));
+		JButton animalImg = new JButton("foto del perro");
 		this.add(animalImg, BorderLayout.EAST);
 
 		Utilities.setTransparent(animalImg);
 
 		JPanel panel_centre = new JPanel(new BorderLayout());
 
-		Label dog_name = new Label(name);
-		Label dog_description = new Label(
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et magna a velit mollis sagittis at nec nisi. ");
+		Label dog_name = new Label(animal.getName());
+		Label dog_description = new Label(animal.getDescription());
 		dog_name.setBackground(Color.GRAY);
 		dog_description.setBackground(Color.GRAY);
 
