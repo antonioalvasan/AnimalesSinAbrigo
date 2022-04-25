@@ -10,11 +10,11 @@ import java.util.Arrays;
 
 public class AdopterUserInfoWindow2 extends windowClass {
 
-    public static final String keyCode = "AUIW2";
+    public static final String key = "AUIW2";
     AdopterController adopterController;
 
     public AdopterUserInfoWindow2(AdopterController adopterController) {
-        super(keyCode);
+        super(key);
         this.adopterController = adopterController;
     }
 
@@ -70,9 +70,9 @@ public class AdopterUserInfoWindow2 extends windowClass {
         save.setOpaque(true);
         save.setBackground(Color.LIGHT_GRAY);
         save.addActionListener(e -> {
-           // adopterController.changeUserData(username.getTextField().getText(),password.getTextField().getText(),
-             //       name.getTextField().getText(), province.getTextField().getText(), address.getTextField().getText(),
-               //     tlf.getTextField().getText());
+           adopterController.changeUserData(username.getTextField().getText(),password.getTextField().getText(),
+                    name.getTextField().getText(), province.getTextField().getText(), address.getTextField().getText(),
+                    tlf.getTextField().getText());
             adopterController.changeWindow(AdopterUserInfoWindow.keyCode);
             adopterController.run();
         });

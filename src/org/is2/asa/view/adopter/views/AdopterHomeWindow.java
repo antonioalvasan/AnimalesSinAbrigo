@@ -8,11 +8,11 @@ import java.awt.*;
 
 public class AdopterHomeWindow extends windowClass {
 
-    public static final String keyCode = "AHW";
+    public static final String key = "AHW";
     AdopterController adopterController;
 
     public AdopterHomeWindow(AdopterController adopterController) {
-        super(keyCode);
+        super(key);
         this.adopterController = adopterController;
     }
 
