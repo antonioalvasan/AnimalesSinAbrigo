@@ -8,6 +8,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 public class AdopterUserInfoWindow2 extends windowClass {
 
     public static final String key = "AUIW2";

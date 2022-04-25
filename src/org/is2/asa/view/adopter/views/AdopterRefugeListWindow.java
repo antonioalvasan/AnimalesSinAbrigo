@@ -1,26 +1,31 @@
 package org.is2.asa.view.adopter.views;
 
 import org.is2.asa.control.AdopterController;
+import org.is2.asa.control.AnimalListController;
+import org.is2.asa.control.UserListController;
+import org.is2.asa.model.Animal;
 import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
-import org.is2.asa.view.adopter.AdopterWindowCodes;
 import org.is2.asa.view.windowClass;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.util.*;
 
 public class AdopterRefugeListWindow extends windowClass {
 
     public static final String key = "ARLW";
+    AnimalListController animalListController;
+    UserListController userListController;
     AdopterController adopterController;
 
     private class refugePanel extends JPanel{
 
-        private User user;
+        AnimalListController animalListController;
+        User user;
 
-        public refugePanel(User user){
+        public refugePanel(User user, AnimalListController animalListController){
+            this.animalListController = animalListController;
             this.user = user;
         }
 
@@ -43,7 +48,18 @@ public class AdopterRefugeListWindow extends windowClass {
 
             JButton viewAnimals = new JButton("Ver animales de este refugio");
 
-            viewAnimals.addActionListener(e ->{
+            viewAnimals.addActionListener( e ->{
+                //AdopterRefugeListWindow
+                JPanel animal_panel = new JPanel();
+                animal_panel.setLayout(new BoxLayout(animal_panel, BoxLayout.Y_AXIS));
+
+                ArrayList<Animal> animalList = (ArrayList<Animal>) animalListController.getAll();
+                ArrayList<AnimalPanel> animal_panels = new ArrayList<>();
+
+                for(int i =0; i < animalList.size(); i++) {
+                    animal_panels.add(new AnimalPanel(animalList.get(i)));
+                    animal_panels.get(i).prepare_panel();
+                }
 
             });
 
@@ -58,9 +74,11 @@ public class AdopterRefugeListWindow extends windowClass {
 
     }
 
-    public AdopterRefugeListWindow(AdopterController adopterController) {
+    public AdopterRefugeListWindow(AdopterController adopterController, UserListController userListController, AnimalListController animalListController) {
         super(key);
         this.adopterController = adopterController;
+        this.userListController = userListController;
+        this.animalListController = animalListController;
     }
 
     @Override
@@ -95,7 +113,7 @@ public class AdopterRefugeListWindow extends windowClass {
         JPanel bottom = new JPanel();
         bottom.setLayout(new BoxLayout(bottom, BoxLayout.Y_AXIS));
 
-        ArrayList<User> userList = (ArrayList<User>) adopterController.getUsers();
+        ArrayList<User> userList = (ArrayList<User>) userListController.getAll();
         JPanel refugeListPanel = new JPanel();
         refugeListPanel.setLayout(new BoxLayout(refugeListPanel, BoxLayout.Y_AXIS));
 
@@ -103,7 +121,7 @@ public class AdopterRefugeListWindow extends windowClass {
         {
             if(s.getRole() == Role.REFUGE)
             {
-                refugePanel p = new refugePanel(s);
+                refugePanel p = new refugePanel(s,animalListController);
                 p.prepare_panel();
                 refugeListPanel.add(p);
             }
@@ -124,7 +142,7 @@ public class AdopterRefugeListWindow extends windowClass {
             {
                 if(s.getRole() == Role.REFUGE && s.getName().equals(searchBar.getText()))
                 {
-                    refugePanel p = new refugePanel(s);
+                    refugePanel p = new refugePanel(s,animalListController);
                     p.prepare_panel();
                     refugeListPanel.add(p);
                 }

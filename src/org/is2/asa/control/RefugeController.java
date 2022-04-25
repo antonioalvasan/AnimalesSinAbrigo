@@ -9,6 +9,7 @@ import org.is2.asa.view.Refuge.RequestRefuge;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -77,6 +78,8 @@ public class RefugeController extends JFrame{
 
 
     }
+
+
 
     public Home_refuge getHomerefuge() {
         return homerefuge;

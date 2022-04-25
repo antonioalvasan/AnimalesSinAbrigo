@@ -46,8 +46,8 @@ public class AdopterController {
     * Initializes the frame and the viewList, with every existing AdopterWindow. Sets AdopterHomeWindow as default.
     * */
     public AdopterController(User user, UserDao userDao, AnimalDao animalDao, String usersFile, String animalsFile,
-                             AnimalListController animalListController) {
-        this.builderBasedWindowFactory = new BuilderBasedWindowFactory(this);
+                             AnimalListController animalListController, UserListController userListController) {
+        this.builderBasedWindowFactory = new BuilderBasedWindowFactory(this, userListController, animalListController, null);
         this.loggedUser = user;
         this.userDao = userDao;
         this.animalDao = animalDao;
