@@ -1,5 +1,7 @@
 package org.is2.asa.model;
 
+import org.json.JSONObject;
+
 public class Dog extends Animal{
 
     DogRace race;
@@ -21,5 +23,24 @@ public class Dog extends Animal{
 
     public String getSpecies(){
         return Species.DOG.DisplayName();
+    }
+
+    @Override
+    public JSONObject toJson(){
+        JSONObject dog = new JSONObject();
+        dog.put("species", "DOG");
+
+        JSONObject data = new JSONObject();
+        data.put("race", race.toString());
+        data.put("identifier", getIdentifier());
+        data.put("linkedUser", getLinkedUser());
+        data.put("name", getName());
+        data.put("age", getAge());
+        data.put("weight", getWeight());
+        data.put("description", getDescription());
+        data.put("img", getImg());
+        dog.put("data", data);
+
+        return dog;
     }
 }

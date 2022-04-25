@@ -1,20 +1,23 @@
 package org.is2.asa.control;
 
+import org.is2.asa.dao.AnimalDao;
 import org.is2.asa.dao.UserDao;
 import org.is2.asa.model.User;
 import org.is2.asa.view.*;
 import org.is2.asa.view.adopter.AdopterWindowCodes;
 import org.is2.asa.view.adopter.viewFactories.BuilderBasedWindowFactory;
-import org.is2.asa.view.adopter.views.*;
 //import org.jetbrains.annotations.NotNull;
 
+import javax.print.attribute.standard.PrinterName;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.concurrent.Flow;
 
 public class AdopterController {
 
@@ -27,6 +30,9 @@ public class AdopterController {
 
     private final User loggedUser;
     private final UserDao userDao;
+    private final AnimalDao animalDao;
+    private final String _usersFile;
+    private final String _animalsFile;
     private ArrayList<windowClass> viewList;
     private final JFrame viewFrame;
     private windowClass currentView;
@@ -37,42 +43,73 @@ public class AdopterController {
     * Parameters: loggedUser, animalDao and userDao.
     * Initializes the frame and the viewList, with every existing AdopterWindow. Sets AdopterHomeWindow as default.
     * */
-    public AdopterController(User user, UserDao userDao) {
+    public AdopterController(User user, UserDao userDao, AnimalDao animalDao, String usersFile, String animalsFile) {
         this.builderBasedWindowFactory = new BuilderBasedWindowFactory(this);
         this.loggedUser = user;
         this.userDao = userDao;
+        this.animalDao = animalDao;
+        this._usersFile = usersFile;
+        this._animalsFile = animalsFile;
         this.viewFrame = new JFrame();
         prepareFrame();
         currentView = builderBasedWindowFactory.createInstance(AdopterWindowCodes.ADOPTERHOMEWINDOW.getWindowCode());
     }
 
+    /*
+    * prepareFrame() function
+    * This functions prepares the window behaviour. When closing, it appears a dialog to choose whether to save
+    * data or not. In case of choosing 'yes', the data will overwrite the existing file.
+    */
     private void prepareFrame() {
         viewFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                // Do what you want when the window is closing.
-                JDialog saveData = new JDialog();
-                JLabel label = new JLabel("Do you want to save data before closing?");
-                JButton yes = new JButton("Yes");
-                JButton no = new JButton("No");
+
+                JDialog saveDataDialog = new JDialog();
+                JLabel label = new JLabel("Do you want to save data before closing? Data will be overwritten!");
+                JButton yesButton = new JButton("Yes");
+                JButton noButton = new JButton("No");
 
 
-                saveData.add(label, BorderLayout.NORTH);
-                saveData.add(yes, BorderLayout.WEST);
-                saveData.add(no, BorderLayout.EAST);
+                saveDataDialog.add(label, BorderLayout.NORTH);
+                saveDataDialog.add(yesButton, BorderLayout.WEST);
+                saveDataDialog.add(noButton, BorderLayout.EAST);
 
-                yes.addActionListener(new ActionListener() {
+                yesButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent ae) {
-                        //guardarArchivo();
+                        try {
+                            saveData();
+                        } catch (FileNotFoundException ex) {
+                            ex.printStackTrace();
+                        }
                         System.exit(0);
                     }
                 });
 
-                saveData.setSize(560, 200);
-                saveData.setLocationRelativeTo(null);
-                saveData.setVisible(true);
+                noButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent ae) {
+                        System.exit(0);
+                    }
+                });
+
+                saveDataDialog.setSize(560, 200);
+                saveDataDialog.setLocationRelativeTo(null);
+                saveDataDialog.setVisible(true);
 
             }
         });
+    }
+
+    /*
+    * Stores data into the files given as input if the user chooses to do so.
+    */
+    private void saveData() throws FileNotFoundException {
+        OutputStream outUsers = new FileOutputStream(_usersFile);
+        PrintStream printUsers = new PrintStream(outUsers);
+        printUsers.print(userDao.storeAsJSON());
+
+        OutputStream outAnimals = new FileOutputStream(_animalsFile);
+        PrintStream printAnimals = new PrintStream(outAnimals);
+        printAnimals.print(animalDao.storeAsJSON());
     }
 
     /*
@@ -90,7 +127,6 @@ public class AdopterController {
             viewFrame.setVisible(true);
         }));
     }
-
 
     public void changeWindow(String key) {
         currentView = builderBasedWindowFactory.createInstance(key);

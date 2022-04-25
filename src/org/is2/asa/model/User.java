@@ -1,5 +1,7 @@
 package org.is2.asa.model;
 
+import org.json.JSONObject;
+
 public class User {
 
     private Role role;
@@ -103,5 +105,27 @@ public class User {
                 "\nRole: " + this.role +
                 "\nCity: " + this.province +
                 "\nPhone Number: " + this.tlf;
+    }
+
+    /*
+    * Converts the User object into a JSONObject. Note that you can´t rely on JSONObject's order, so type will
+    * appear after data. This doesn't affect JSONObject's utility as it is a HashMap.
+    */
+    public JSONObject toJson(){
+        JSONObject user = new JSONObject();
+        user.put("type", role.toString());
+
+        JSONObject data = new JSONObject();
+        data.put("ID", ID);
+        data.put("username", username);
+        data.put("password", password);
+        data.put("name", name);
+        data.put("province", province);
+        data.put("address", address);
+        data.put("description", description);
+        data.put("tlf", tlf);
+        user.put("data", data);
+
+        return user;
     }
 }

@@ -6,9 +6,6 @@ import org.is2.asa.control.commands.Command;
 import org.is2.asa.control.commands.CommandGenerator;
 import org.is2.asa.dao.AnimalDao;
 import org.is2.asa.dao.UserDao;
-import org.is2.asa.factories.AbstractFactory;
-import org.is2.asa.factories.AnimalFactory;
-import org.is2.asa.model.Animal;
 import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
 
@@ -39,8 +36,8 @@ public class Main {
     private static User loggedUser;
 
     //JSON input file for animals and users
-    private static String _inFileUsers; //Stores infile address as a string.
-    private static String _inFileAnimals; //Stores infile address as a string.
+    private static String _usersFile; //Stores infile address as a string.
+    private static String _animalsFile; //Stores infile address as a string.
 
     //Scanner
     private static Scanner scanner;
@@ -69,7 +66,7 @@ public class Main {
                 refugeWindow();
             }
             else {
-                adopterCtrl = new AdopterController(loggedUser, userDao);
+                adopterCtrl = new AdopterController(loggedUser, userDao, animalDao, _usersFile, _animalsFile);
                 adopterWindow();
             }
         }
@@ -82,13 +79,13 @@ public class Main {
 
     private static void initUserDatabase() throws FileNotFoundException {
         userDao = new UserDao(); //Initialize the user database.
-        InputStream inFile = new FileInputStream(_inFileUsers); //Load input stream.
+        InputStream inFile = new FileInputStream(_usersFile); //Load input stream.
         userDao.load(inFile);
     }
 
     private static void initAnimalsDatabase() throws FileNotFoundException {
         animalDao = new AnimalDao(); //Initialize the user database.
-        InputStream inFile = new FileInputStream(_inFileAnimals); //Load input stream.
+        InputStream inFile = new FileInputStream(_animalsFile); //Load input stream.
         animalDao.load(inFile);
     }
 
@@ -154,14 +151,14 @@ public class Main {
     }
 
     private static void parseInUsersOption(CommandLine line) throws ParseException {
-        _inFileUsers = line.getOptionValue("iusers");
-        if(_inFileUsers == null) throw new ParseException("An input file is required for " +
+        _usersFile = line.getOptionValue("iusers");
+        if(_usersFile == null) throw new ParseException("An input file is required for " +
                 "users data. This file must be a JSON file.");
     }
 
     private static void parseInAnimalsOption(CommandLine line) throws ParseException {
-        _inFileAnimals = line.getOptionValue("ianimals");
-        if(_inFileAnimals == null) throw new ParseException("An input file is required for" +
+        _animalsFile = line.getOptionValue("ianimals");
+        if(_animalsFile == null) throw new ParseException("An input file is required for" +
                 "animals data. This file must be a JSON file.");
     }
 }

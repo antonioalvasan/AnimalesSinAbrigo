@@ -4,6 +4,7 @@ package org.is2.asa.model;
 
 import org.is2.asa.model.states.AnimalState;
 import org.is2.asa.model.states.NotAdoptedState;
+import org.json.JSONObject;
 
 public abstract class Animal {
 
@@ -97,5 +98,5 @@ public abstract class Animal {
 
     public abstract String getSpecies();
 
-    ;
+    public abstract JSONObject toJson();
 }

@@ -3,6 +3,7 @@ package org.is2.asa.dao;
 import org.is2.asa.model.Animal;
 import org.is2.asa.model.Dog;
 import org.is2.asa.model.Species;
+import org.is2.asa.model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -79,6 +80,18 @@ public class AnimalDao implements Dao<Animal>{
             add(animalAbstractFactory.generateObject(animalArray.getJSONObject(i)));
         }
 
+    }
+
+    public String storeAsJSON(){
+        JSONObject animalsJSON = new JSONObject();
+        JSONArray animalsJSONArray = new JSONArray();
+
+        for(Animal a : animals){
+            animalsJSONArray.put(a.toJson());
+        }
+        animalsJSON.put("animals", animalsJSONArray);
+
+        return animalsJSON.toString();
     }
 
 }

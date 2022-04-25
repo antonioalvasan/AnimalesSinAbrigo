@@ -94,4 +94,16 @@ public class UserDao implements Dao<User> {
 
         return new User(role, ID, username, password, name, province, address, desc, tlf);
     }
+
+    public String storeAsJSON(){
+        JSONObject usersJSON = new JSONObject();
+        JSONArray usersJSONArray = new JSONArray();
+
+        for(User u : users){
+            usersJSONArray.put(u.toJson());
+        }
+        usersJSON.put("users", usersJSONArray);
+
+        return usersJSON.toString();
+    }
 }
