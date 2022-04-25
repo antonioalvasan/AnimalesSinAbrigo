@@ -92,7 +92,7 @@ public class UserDao implements Dao<User> {
         address = data.getString("address");
         tlf = data.getString("tlf");
 
-        return new User(role, ID, username, password, name, province, address, desc, tlf);
+        return new User(role, ID, username, password, name, province, address, tlf, desc);
     }
 
     public String storeAsJSON(){

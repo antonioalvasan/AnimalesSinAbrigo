@@ -169,8 +169,8 @@ public class AdopterController {
         return loggedUser.getDescription();
     }
 
-    public List getUsers(){
-        return userDao.getAll();
+    public ArrayList<User> getUsers(){
+        return (ArrayList<User>) userDao.getAll();
     }
 
     public void changeUserData(String username, String password, String name, String province, String address, String tlf) {
