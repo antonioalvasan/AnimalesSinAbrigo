@@ -1,6 +1,7 @@
 package org.is2.asa.launcher;
 
 import org.apache.commons.cli.*;
+import org.is2.asa.control.AnimalListController;
 import org.is2.asa.control.RefugeController;
 import org.is2.asa.control.commands.Command;
 import org.is2.asa.control.commands.CommandGenerator;
@@ -31,6 +32,7 @@ public class Main {
     //Controllers for windows and usage
     private static RefugeController refugeCtrl;
     private static AdopterController adopterCtrl;
+    private static AnimalListController animalListController;
 
     //Logged User
     private static User loggedUser;
@@ -66,7 +68,8 @@ public class Main {
                 refugeWindow();
             }
             else {
-                adopterCtrl = new AdopterController(loggedUser, userDao, animalDao, _usersFile, _animalsFile);
+                adopterCtrl = new AdopterController(loggedUser, userDao, animalDao, _usersFile, _animalsFile,
+                        animalListController);
                 adopterWindow();
             }
         }

@@ -37,19 +37,24 @@ public class AdopterController {
     private final JFrame viewFrame;
     private windowClass currentView;
     BuilderBasedWindowFactory builderBasedWindowFactory;
+    private AnimalListController animalListController;
+    private User currentRefuge;
 
     /*
     * ADOPTER CONTROLLER CONSTRUCTOR
     * Parameters: loggedUser, animalDao and userDao.
     * Initializes the frame and the viewList, with every existing AdopterWindow. Sets AdopterHomeWindow as default.
     * */
-    public AdopterController(User user, UserDao userDao, AnimalDao animalDao, String usersFile, String animalsFile) {
+    public AdopterController(User user, UserDao userDao, AnimalDao animalDao, String usersFile, String animalsFile,
+                             AnimalListController animalListController) {
         this.builderBasedWindowFactory = new BuilderBasedWindowFactory(this);
         this.loggedUser = user;
         this.userDao = userDao;
         this.animalDao = animalDao;
         this._usersFile = usersFile;
         this._animalsFile = animalsFile;
+        this.animalListController = animalListController;
+        this.currentRefuge = null;
         this.viewFrame = new JFrame();
         prepareFrame();
         currentView = builderBasedWindowFactory.createInstance(AdopterWindowCodes.ADOPTERHOMEWINDOW.getWindowCode());
@@ -162,6 +167,31 @@ public class AdopterController {
 
     public String getDescription() {
         return loggedUser.getDescription();
+    }
+
+    public List getUsers(){
+        return userDao.getAll();
+    }
+
+    public void changeUserData(String username, String password, String name, String province, String address, String tlf) {
+        loggedUser.setUsername(username);
+        loggedUser.setPassword(password);
+        loggedUser.setName(name);
+        loggedUser.setProvince(province);
+        loggedUser.setAddress(address);
+        loggedUser.setTlf(tlf);
+    }
+
+    public User getCurrentRefuge(){
+        return currentRefuge;
+    }
+
+    public AnimalListController getAnimalList(){
+        return animalListController;
+    }
+
+    public void setCurrentRefuge(User currentRefuge){
+        this.currentRefuge = currentRefuge;
     }
 }
 

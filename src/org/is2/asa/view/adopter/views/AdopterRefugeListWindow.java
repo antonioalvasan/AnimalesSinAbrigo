@@ -58,10 +58,6 @@ public class AdopterRefugeListWindow extends windowClass {
 
     }
 
-
-
-
-
     public AdopterRefugeListWindow(AdopterController adopterController) {
         super(key);
         this.adopterController = adopterController;
