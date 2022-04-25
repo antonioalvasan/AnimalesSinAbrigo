@@ -10,6 +10,10 @@ import org.is2.asa.view.adopter.views.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 public class AdopterController {
@@ -38,8 +42,37 @@ public class AdopterController {
         this.loggedUser = user;
         this.userDao = userDao;
         this.viewFrame = new JFrame();
-        this.viewFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        prepareFrame();
         currentView = builderBasedWindowFactory.createInstance(AdopterWindowCodes.ADOPTERHOMEWINDOW.getWindowCode());
+    }
+
+    private void prepareFrame() {
+        viewFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                // Do what you want when the window is closing.
+                JDialog saveData = new JDialog();
+                JLabel label = new JLabel("Do you want to save data before closing?");
+                JButton yes = new JButton("Yes");
+                JButton no = new JButton("No");
+
+
+                saveData.add(label, BorderLayout.NORTH);
+                saveData.add(yes, BorderLayout.WEST);
+                saveData.add(no, BorderLayout.EAST);
+
+                yes.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent ae) {
+                        //guardarArchivo();
+                        System.exit(0);
+                    }
+                });
+
+                saveData.setSize(560, 200);
+                saveData.setLocationRelativeTo(null);
+                saveData.setVisible(true);
+
+            }
+        });
     }
 
     /*
