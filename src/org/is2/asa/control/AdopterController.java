@@ -1,7 +1,11 @@
 package org.is2.asa.control;
 
+import org.is2.asa.dao.UserDao;
 import org.is2.asa.model.User;
 import org.is2.asa.view.*;
+import org.is2.asa.view.adopter.AdopterWindowCodes;
+import org.is2.asa.view.adopter.viewFactories.BuilderBasedWindowFactory;
+import org.is2.asa.view.adopter.views.*;
 //import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -17,29 +21,25 @@ public class AdopterController {
     *
     */
 
-    private User loggedUser;
+    private final User loggedUser;
+    private final UserDao userDao;
     private ArrayList<windowClass> viewList;
-    private JFrame viewFrame;
+    private final JFrame viewFrame;
     private windowClass currentView;
+    BuilderBasedWindowFactory builderBasedWindowFactory;
 
     /*
     * ADOPTER CONTROLLER CONSTRUCTOR
     * Parameters: loggedUser, animalDao and userDao.
     * Initializes the frame and the viewList, with every existing AdopterWindow. Sets AdopterHomeWindow as default.
     * */
-    public AdopterController(User user) {
+    public AdopterController(User user, UserDao userDao) {
+        this.builderBasedWindowFactory = new BuilderBasedWindowFactory(this);
         this.loggedUser = user;
+        this.userDao = userDao;
         this.viewFrame = new JFrame();
         this.viewFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        this.viewList = new ArrayList<>();
-        viewList.add(new AdopterHomeWindow(this));
-        viewList.add(new AdopterUserInfoWindow(this));
-        viewList.add(new AdopterUserInfoWindow2(this));
-        viewList.add(new SecondaryAdoptionWindow1(this));
-        viewList.add(new SecondaryAdoptionWindow2(this));
-
-        currentView = viewList.get(0);
+        currentView = builderBasedWindowFactory.createInstance(AdopterWindowCodes.ADOPTERHOMEWINDOW.getWindowCode());
     }
 
     /*
@@ -58,26 +58,9 @@ public class AdopterController {
         }));
     }
 
-    /*
-    * findView(String key)
-    * Parameters: String used  to identify window and enable it. Launches IllegalArgumentException
-    * if view is not recognized.
-    * */
-    private windowClass findView(String key) throws IllegalArgumentException{
-        for(windowClass w : viewList)
-            if(w.equalsKey(key))
-                return w;
-        throw new IllegalArgumentException("view not found in viewList");
-    }
 
-    public void changeWindow(String key){
-        windowClass w = new AdopterHomeWindow(this);
-        try {
-            w = findView(key);
-        }catch(IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-        currentView = w;
+    public void changeWindow(String key) {
+        currentView = builderBasedWindowFactory.createInstance(key);
         viewFrame.getContentPane().removeAll();
     }
 

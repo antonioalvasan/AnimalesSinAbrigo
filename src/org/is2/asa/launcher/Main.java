@@ -69,7 +69,7 @@ public class Main {
                 refugeWindow();
             }
             else {
-                adopterCtrl = new AdopterController(loggedUser);
+                adopterCtrl = new AdopterController(loggedUser, userDao);
                 adopterWindow();
             }
         }
