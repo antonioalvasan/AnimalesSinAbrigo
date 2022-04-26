@@ -10,7 +10,6 @@ import org.is2.asa.view.adopter.AdopterWindowCodes;
 import org.is2.asa.view.adopter.viewFactories.BuilderBasedWindowFactory;
 //import org.jetbrains.annotations.NotNull;
 
-import javax.print.attribute.standard.PrinterName;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,7 +19,6 @@ import java.awt.event.WindowEvent;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Flow;
 
 public class AdopterController {
 
@@ -207,10 +205,10 @@ public class AdopterController {
         return refugesList;
     }
 
-    public List<Animal> getAvailableAnimals(){
+    public List<Animal> getAnimalsFromRefuge(){
         List<Animal> availableAnimals = new ArrayList<>();
         for(Animal a: animalDao.getAll()){
-            if(a.getLinkedUser() == currentRefuge.getID() && a.getState().toString().equals("Not Adopted")){
+            if(a.getLinkedUser() == currentRefuge.getID() && a.getState().toString().equals("Not adopted")){
                 availableAnimals.add(a);
             }
         }
