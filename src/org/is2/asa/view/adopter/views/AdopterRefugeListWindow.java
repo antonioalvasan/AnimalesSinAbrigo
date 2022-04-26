@@ -45,7 +45,9 @@ public class AdopterRefugeListWindow extends windowClass {
             JButton viewAnimals = new JButton("Ver animales de este refugio");
 
             viewAnimals.addActionListener(e ->{
-
+                adopterController.setCurrentRefuge(user);
+                adopterController.changeWindow(AvailableAnimalListWindow.key);
+                adopterController.run();
             });
 
             this.add(center, BorderLayout.CENTER);
@@ -96,18 +98,15 @@ public class AdopterRefugeListWindow extends windowClass {
         JPanel bottom = new JPanel();
         bottom.setLayout(new BoxLayout(bottom, BoxLayout.Y_AXIS));
 
-        ArrayList<User> userList = (ArrayList<User>) adopterController.getUsers();
+        ArrayList<User> refugeList = (ArrayList<User>) adopterController.getRefuges();
         JPanel refugeListPanel = new JPanel();
         refugeListPanel.setLayout(new BoxLayout(refugeListPanel, BoxLayout.Y_AXIS));
 
-        for(User s : userList )
+        for(User s : refugeList )
         {
-            if(s.getRole() == Role.REFUGE)
-            {
                 refugePanel p = new refugePanel(s);
                 p.prepare_panel();
                 refugeListPanel.add(p);
-            }
         }
 
         JScrollPane scroll = new JScrollPane();
@@ -121,7 +120,7 @@ public class AdopterRefugeListWindow extends windowClass {
         search_button.addActionListener(e ->{
             refugeListPanel.removeAll();
             refugeListPanel.revalidate();
-            for(User s : userList )
+            for(User s : refugeList )
             {
                 if(s.getRole() == Role.REFUGE && s.getName().equals(searchBar.getText()))
                 {
