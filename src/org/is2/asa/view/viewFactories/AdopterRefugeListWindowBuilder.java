@@ -1,7 +1,6 @@
-package org.is2.asa.view.adopter.viewFactories;
+package org.is2.asa.view.viewFactories;
 
 import org.is2.asa.control.AdopterController;
-import org.is2.asa.view.adopter.views.AdopterHomeWindow;
 import org.is2.asa.view.adopter.views.AdopterRefugeListWindow;
 import org.is2.asa.view.windowClass;
 

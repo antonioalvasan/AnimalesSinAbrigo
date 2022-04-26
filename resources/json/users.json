@@ -116,6 +116,19 @@
         "tlf": "Lorem ipsum"
       },
       "type": "REFUGE"
+    },
+    {
+      "data": {
+        "password": "motomami",
+        "address": "Calle Coqueta",
+        "province": "motomami",
+        "name": "motomami",
+        "description": "A de alta, altura, alien",
+        "ID": 10,
+        "username": "motomami",
+        "tlf": "123 45 67 89"
+      },
+      "type": "REFUGE"
     }
   ]
 }
