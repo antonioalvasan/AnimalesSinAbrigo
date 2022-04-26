@@ -2,6 +2,8 @@ package org.is2.asa.control;
 
 import org.is2.asa.dao.AnimalDao;
 import org.is2.asa.dao.UserDao;
+import org.is2.asa.model.Animal;
+import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
 import org.is2.asa.view.*;
 import org.is2.asa.view.adopter.AdopterWindowCodes;
@@ -17,6 +19,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Flow;
 
 public class AdopterController {
@@ -192,6 +195,26 @@ public class AdopterController {
 
     public void setCurrentRefuge(User currentRefuge){
         this.currentRefuge = currentRefuge;
+    }
+
+    public List<User> getRefuges() {
+        List<User> refugesList = new ArrayList<>();
+
+        for(User u : userDao.getAll()){
+            if(u.getRole() == Role.REFUGE) refugesList.add(u);
+        }
+
+        return refugesList;
+    }
+
+    public List<Animal> getAvailableAnimals(){
+        List<Animal> availableAnimals = new ArrayList<>();
+        for(Animal a: animalDao.getAll()){
+            if(a.getLinkedUser() == currentRefuge.getID() && a.getState().toString().equals("Not Adopted")){
+                availableAnimals.add(a);
+            }
+        }
+        return availableAnimals;
     }
 }
 
