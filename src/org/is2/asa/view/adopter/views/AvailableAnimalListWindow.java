@@ -17,8 +17,6 @@ public class AvailableAnimalListWindow extends windowClass {
     public AvailableAnimalListWindow(AdopterController adopterController) {
         super(key);
         this.adopterController = adopterController;
-
-
     }
 
     public void prepare_panel() {

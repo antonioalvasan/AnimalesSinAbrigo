@@ -6,8 +6,8 @@ import org.is2.asa.model.Animal;
 import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
 import org.is2.asa.view.*;
-import org.is2.asa.view.adopter.AdopterWindowCodes;
-import org.is2.asa.view.adopter.viewFactories.BuilderBasedWindowFactory;
+import org.is2.asa.view.viewFactories.BuilderBasedWindowFactory;
+import org.is2.asa.view.adopter.views.AdopterHomeWindow;
 //import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -48,7 +48,7 @@ public class AdopterController {
     * */
     public AdopterController(User user, UserDao userDao, AnimalDao animalDao, String usersFile, String animalsFile,
                              AnimalListController animalListController) {
-        this.builderBasedWindowFactory = new BuilderBasedWindowFactory(this);
+        this.builderBasedWindowFactory = new BuilderBasedWindowFactory(this, null);
         this.loggedUser = user;
         this.userDao = userDao;
         this.animalDao = animalDao;
@@ -58,7 +58,7 @@ public class AdopterController {
         this.currentRefuge = null;
         this.viewFrame = new JFrame();
         prepareFrame();
-        currentView = builderBasedWindowFactory.createInstance(AdopterWindowCodes.ADOPTERHOMEWINDOW.getWindowCode());
+        currentView = builderBasedWindowFactory.createInstance(AdopterHomeWindow.key);
     }
 
     /*

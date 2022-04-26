@@ -2,17 +2,22 @@ package org.is2.asa.view.Refuge;
 
 import org.is2.asa.control.RefugeController;
 import org.is2.asa.view.Utilities;
+import org.is2.asa.view.adopter.views.AdopterHomeWindow;
+import org.is2.asa.view.windowClass;
 
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RefugeBar extends JPanel{
-   public RefugeController controladorventanas;
+public class RefugeBar extends windowClass {
+
+    public final static String key = "RB";
+    public RefugeController refugeCtrl;
+
     public RefugeBar(RefugeController ctrl) {
-    controladorventanas= ctrl;
+        super(key);
+        refugeCtrl = ctrl;
 
     }
     public void prepare_panel(){
@@ -20,36 +25,11 @@ public class RefugeBar extends JPanel{
         this.setLayout(new BorderLayout());
 
         JButton home = new JButton("Home");
-        home.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controladorventanas.mostrar("Home");
-            }
-
-        });
         JButton animals = new JButton("Animals");
-        animals.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controladorventanas.mostrar("animals");
-            }
-
-        });
-
-
-
-
-
         JButton requests = new JButton("Requests");
-        requests.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controladorventanas.mostrar("request");
-            }
-
+        requests.addActionListener(e->{
+            refugeCtrl.changeWindow(RefugeRequestWindow.key);
+            refugeCtrl.run();
         });
         JButton contact = new JButton("Contact");
 
@@ -70,14 +50,6 @@ public class RefugeBar extends JPanel{
         right.setBackground(Color.LIGHT_GRAY);
 
         JButton user_name = new JButton("Refugio 1");
-        user_name.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controladorventanas.mostrar("info");
-            }
-
-        });
         JButton user_icon = new JButton(new ImageIcon("imagen.png"));
 
         Utilities.setTransparent(user_name);

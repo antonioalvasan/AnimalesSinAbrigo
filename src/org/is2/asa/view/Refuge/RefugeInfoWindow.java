@@ -2,7 +2,7 @@ package org.is2.asa.view.Refuge;
 
 import org.is2.asa.control.RefugeController;
 import org.is2.asa.view.Utilities;
-
+import org.is2.asa.view.windowClass;
 
 
 import javax.swing.*;
@@ -12,10 +12,14 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class RefugeInfoWindow extends JPanel {
-    public RefugeController controladorventanas;
+public class RefugeInfoWindow extends windowClass {
+
+    public final static String key = "RIW";
+    private static RefugeController refugeCtrl;
+
     public RefugeInfoWindow(RefugeController ctrl){
-        controladorventanas= ctrl;
+        super(key);
+        refugeCtrl = ctrl;
 
     }
     private record Pair(JLabel first, JLabel second) {
@@ -34,14 +38,14 @@ public class RefugeInfoWindow extends JPanel {
 
         this.setLayout(new BorderLayout());
 
-        RefugeBar bar = new RefugeBar(controladorventanas);
+        RefugeBar bar = new RefugeBar(refugeCtrl);
         bar.prepare_panel();
 
         JButton modify = new JButton("Change your data here");
-        RefugeInfoWindowModify info= new RefugeInfoWindowModify();
+        RefugeModifyWindow info= new RefugeModifyWindow(refugeCtrl);
         info.prepare_panel();
         info.setSize(500,400);
-        info.setLocationRelativeTo(null);
+        //fo.setLocationRelativeTo(null);
         modify.addActionListener(new ActionListener() {
 
             @Override

@@ -1,136 +1,132 @@
 package org.is2.asa.control;
 
+import org.is2.asa.dao.AnimalDao;
+import org.is2.asa.dao.UserDao;
 import org.is2.asa.model.User;
-import org.is2.asa.view.Refuge.AnimalsRefuge;
-import org.is2.asa.view.Refuge.Home_refuge;
-import org.is2.asa.view.Refuge.RefugeInfoWindow;
-import org.is2.asa.view.Refuge.RequestRefuge;
+import org.is2.asa.view.Refuge.RefugeHomeWindow;
+import org.is2.asa.view.viewFactories.AdopterHomeWindowBuilder;
+import org.is2.asa.view.viewFactories.BuilderBasedWindowFactory;
+import org.is2.asa.view.windowClass;
 
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
-public class RefugeController extends JFrame{
-    public Home_refuge homerefuge;
-    public AnimalsRefuge animalsrefuge;
-    public RefugeInfoWindow infowindow;
-    public RequestRefuge requestrefuge;
+public class RefugeController extends JFrame {
 
-    public User loggeduser;
-    public  JPanel panelvisible;
-    public   ArrayList<JPanel> listapantallas;
+    //Dao Info
+    private UserDao userDao;
+    private AnimalDao animalDao;
 
-    public RefugeController(User loggeduser, AnimalListController animalListController){
-        this.loggeduser=loggeduser;
-        homerefuge = new Home_refuge(this);
-        animalsrefuge= new AnimalsRefuge(this, animalListController);
-        infowindow= new RefugeInfoWindow(this);
-        requestrefuge= new RequestRefuge(this);
+    //Files info
+    private String usersFile;
+    private String animalsFile;
 
-        homerefuge.prepare_panel();
-        animalsrefuge.prepare_panel();
-        infowindow.prepare_panel();
-        requestrefuge.prepare_panel();
-        listapantallas= new ArrayList<>(Arrays.asList(homerefuge,animalsrefuge,infowindow,requestrefuge));
+    //LoggedUser info
+    private User loggeduser;
 
-    }
-    public void mostrar(String ventana){
-        switch(ventana){
+    //Frame and windows info
+    private final JFrame viewFrame; //Global Frame. Is always visible.
+    private windowClass currentView; //Panel visible inside frame. It changes depending on the window.
+    BuilderBasedWindowFactory builderBasedWindowFactory;
 
-            case "Home":
-                ocultar();
-                homerefuge.setVisible(true);
-                panelvisible=homerefuge;
-                break;
-            case "animals":
-               ocultar();
-                animalsrefuge.setVisible(true);
-                panelvisible=animalsrefuge;
-                break;
-            case "info":
-                ocultar();
-                infowindow.setVisible(true);
-                panelvisible=infowindow;
-                break;
-            case "request":
-                ocultar();
-                requestrefuge.setVisible(true);
-                panelvisible= requestrefuge;
-        }
-        this.getContentPane().removeAll();
-        this.getContentPane().add(panelvisible);
+    public RefugeController(User user, UserDao userDao, AnimalDao animalDao, String usersFile, String animalsFile) {
+        this.loggeduser = user;
+        this.userDao = userDao;
+        this.animalDao = animalDao;
+        this.usersFile = usersFile;
+        this.animalsFile = animalsFile;
+        this.builderBasedWindowFactory = new BuilderBasedWindowFactory(null, this);
+        this.viewFrame = new JFrame();
+        prepareFrame();
 
-
-
-        this.setPreferredSize(new Dimension(1300, 600));
-         this.pack();
-        this.setVisible(true);
-
-    }
-    public void ocultar(){
-        for(int i=0; i<listapantallas.size();i++){
-            listapantallas.get(i).setVisible(false);
-
-        }
-
-
+        currentView = builderBasedWindowFactory.createInstance(RefugeHomeWindow.key);
     }
 
-    public Home_refuge getHomerefuge() {
-        return homerefuge;
+    /*
+     * run()
+     * Executes the window, preparing it depending on the currentView.
+     * */
+    public void run(){
+        SwingUtilities.invokeLater((() -> {
+            currentView.prepare_panel();
+            currentView.setVisible(true);
+
+            viewFrame.setPreferredSize(new Dimension(1300, 600));
+            viewFrame.add(currentView);
+            viewFrame.pack();
+            viewFrame.setVisible(true);
+        }));
     }
 
-    public void setHomerefuge(Home_refuge homerefuge) {
-        this.homerefuge = homerefuge;
+    /*
+     * prepareFrame() function
+     * This functions prepares the window behaviour. When closing, it appears a dialog to choose whether to save
+     * data or not. In case of choosing 'yes', the data will overwrite the existing file.
+     */
+    private void prepareFrame() {
+        viewFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+
+                JDialog saveDataDialog = new JDialog();
+                JLabel label = new JLabel("Do you want to save data before closing? Data will be overwritten!");
+                JButton yesButton = new JButton("Yes");
+                JButton noButton = new JButton("No");
+
+
+                saveDataDialog.add(label, BorderLayout.NORTH);
+                saveDataDialog.add(yesButton, BorderLayout.WEST);
+                saveDataDialog.add(noButton, BorderLayout.EAST);
+
+                yesButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent ae) {
+                        try {
+                            saveData();
+                        } catch (FileNotFoundException ex) {
+                            ex.printStackTrace();
+                        }
+                        System.exit(0);
+                    }
+                });
+
+                noButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent ae) {
+                        System.exit(0);
+                    }
+                });
+
+                saveDataDialog.setSize(560, 200);
+                saveDataDialog.setLocationRelativeTo(null);
+                saveDataDialog.setVisible(true);
+
+            }
+        });
     }
 
-    public AnimalsRefuge getAnimalsrefuge() {
-        return animalsrefuge;
+    /*
+     * Stores data into the files given as input if the user chooses to do so.
+     */
+    private void saveData() throws FileNotFoundException {
+        OutputStream outUsers = new FileOutputStream(usersFile);
+        PrintStream printUsers = new PrintStream(outUsers);
+        printUsers.print(userDao.storeAsJSON());
+
+        OutputStream outAnimals = new FileOutputStream(animalsFile);
+        PrintStream printAnimals = new PrintStream(outAnimals);
+        printAnimals.print(animalDao.storeAsJSON());
     }
 
-    public void setAnimalsrefuge(AnimalsRefuge animalsrefuge) {
-        this.animalsrefuge = animalsrefuge;
+    public void changeWindow(String key) {
+        currentView = builderBasedWindowFactory.createInstance(key);
+        viewFrame.getContentPane().removeAll();
     }
 
-    public RefugeInfoWindow getInfowindow() {
-        return infowindow;
-    }
-
-    public void setInfowindow(RefugeInfoWindow infowindow) {
-        this.infowindow = infowindow;
-    }
-
-    public RequestRefuge getRequestrefuge() {
-        return requestrefuge;
-    }
-
-    public void setRequestrefuge(RequestRefuge requestrefuge) {
-        this.requestrefuge = requestrefuge;
-    }
-
-    public User getLoggeduser() {
-        return loggeduser;
-    }
-
-    public void setLoggeduser(User loggeduser) {
-        this.loggeduser = loggeduser;
-    }
-
-    public JPanel getPanelvisible() {
-        return panelvisible;
-    }
-
-    public void setPanelvisible(JPanel panelvisible) {
-        this.panelvisible = panelvisible;
-    }
-
-    public ArrayList<JPanel> getListapantallas() {
-        return listapantallas;
-    }
-
-    public void setListapantallas(ArrayList<JPanel> listapantallas) {
-        this.listapantallas = listapantallas;
-    }
 }

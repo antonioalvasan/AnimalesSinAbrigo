@@ -19,6 +19,7 @@ import java.util.Scanner;
 
 
 import org.is2.asa.control.AdopterController;
+import org.is2.asa.view.viewFactories.BuilderBasedWindowFactory;
 
 public class Main {
 
@@ -44,7 +45,6 @@ public class Main {
     //Scanner
     private static Scanner scanner;
 
-
     public static void main(String[] args) {
         try{
             scanner = new Scanner(System.in);
@@ -64,7 +64,7 @@ public class Main {
             } while(loggedUser == null);
 
             if(loggedUser.getRole() == Role.REFUGE){
-                //refugeCtrl = new RefugeController(loggedUser, );
+                refugeCtrl = new RefugeController(loggedUser, userDao, animalDao, _usersFile, _animalsFile);
                 refugeWindow();
             }
             else {
@@ -96,19 +96,7 @@ public class Main {
         adopterCtrl.run();
     }
 
-    private static void refugeWindow(){
-        SwingUtilities.invokeLater((new Runnable() {
-            @Override
-            public void run() {
-                String parametro= "Home";
-                refugeCtrl.mostrar(parametro);
-                refugeCtrl.setPreferredSize(new Dimension(1300, 600));
-                refugeCtrl.pack();
-                refugeCtrl.setLocationRelativeTo(null);
-                refugeCtrl.setVisible(true);
-            }
-        }));
-    }
+    private static void refugeWindow(){ refugeCtrl.run(); }
 
     private static Options buildOptions() {
         Options cmdLineOptions = new Options();
