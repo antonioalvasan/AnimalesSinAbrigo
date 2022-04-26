@@ -25,6 +25,7 @@ public class BuilderBasedWindowFactory {
         builders.add(new SecondaryAdoptionWindow1Builder());
         builders.add(new SecondaryAdoptionWindow2Builder());
         builders.add(new AdopterRefugeListWindowBuilder());
+        builders.add(new AvailableAnimalListWindowBuilder());
 
         //Adding Refuge Builders
         builders.add(new RefugeHomeWindowBuilder());
