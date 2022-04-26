@@ -22,7 +22,7 @@ public class BuilderBasedWindowFactory {
         builders.add(new SecondaryAdoptionWindow1Builder());
         builders.add(new SecondaryAdoptionWindow2Builder());
         builders.add(new AdopterRefugeListWindowBuilder());
-        builders.add(new RefugeAnimalListBuilder());
+        builders.add(new AvailableAnimalListWindowBuilder());
     }
 
     public windowClass createInstance(String key){

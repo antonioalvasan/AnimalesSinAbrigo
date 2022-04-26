@@ -45,7 +45,9 @@ public class AdopterRefugeListWindow extends windowClass {
             JButton viewAnimals = new JButton("Ver animales de este refugio");
 
             viewAnimals.addActionListener(e ->{
-
+                adopterController.setCurrentRefuge(user);
+                adopterController.changeWindow(AvailableAnimalListWindow.key);
+                adopterController.run();
             });
 
             this.add(center, BorderLayout.CENTER);

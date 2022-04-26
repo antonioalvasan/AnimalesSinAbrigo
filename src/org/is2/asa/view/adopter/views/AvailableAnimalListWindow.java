@@ -1,9 +1,7 @@
 package org.is2.asa.view.adopter.views;
 
 import org.is2.asa.control.AdopterController;
-import org.is2.asa.control.AnimalListController;
 import org.is2.asa.model.Animal;
-import org.is2.asa.model.User;
 import org.is2.asa.view.Utilities;
 import org.is2.asa.view.windowClass;
 
@@ -11,18 +9,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class RefugeAnimalList extends windowClass {
+public class AvailableAnimalListWindow extends windowClass {
 
-    public static final String key = "RAL";
-    User refuge;
-    AnimalListController animalListController;
-    AdopterController adopterController;
+    public final static String key = "AAL";
+    public AdopterController adopterController;
 
-    public RefugeAnimalList(AdopterController adopterController) {
+    public AvailableAnimalListWindow(AdopterController adopterController) {
         super(key);
-        this.refuge = adopterController.getCurrentRefuge();
-        this.animalListController = adopterController.getAnimalList();
         this.adopterController = adopterController;
+
+
     }
 
     public void prepare_panel() {
@@ -39,12 +35,12 @@ public class RefugeAnimalList extends windowClass {
         panel_sup0.setBackground(Color.LIGHT_GRAY);
         panel_sup1.setBackground(Color.LIGHT_GRAY);
 
-        // superior panel
+        // top panel
 
         AdopterBar aB = new AdopterBar(adopterController);
         aB.prepare_panel();
 
-        // Inferior panel
+        // bottom panel
 
         JTextField searchBar = new JTextField("Search...");
         searchBar.setPreferredSize(new Dimension(300, 20));
@@ -59,8 +55,14 @@ public class RefugeAnimalList extends windowClass {
         z.add(searchBar);
         z.add(search_button);
 
+        //Upper panel mods
         panel_sup1.add(z, BorderLayout.WEST);
         panel_sup1.add(filters, BorderLayout.EAST);
+
+        JLabel refugeName = new JLabel("REFUGIO: " + adopterController.getCurrentRefuge().getName());
+        refugeName.setFont(new Font("Arial", Font.BOLD, 30));
+
+        panel_sup1.add(refugeName, BorderLayout.CENTER);
 
         panel_sup1.setBorder(BorderFactory.createLineBorder(Color.black));
 
@@ -80,12 +82,13 @@ public class RefugeAnimalList extends windowClass {
         animal_panel.setLayout(new BoxLayout(animal_panel, BoxLayout.Y_AXIS));
 
         //adding animal vector
-        ArrayList<Animal> animalList = (ArrayList<Animal>) animalListController.getAll();
-        ArrayList<AnimalPanel> animal_panels = new ArrayList<>();
+        ArrayList<Animal> animalListAux = (ArrayList<Animal>) adopterController.getAnimalsFromRefuge();
+        AnimalPanel[] animal_vector = new AnimalPanel[animalListAux.size()];
 
-        for(int i =0; i < animalList.size(); i++) {
-            animal_panels.add(new AnimalPanel(animalList.get(i)));
-            animal_panels.get(i).prepare_panel();
+        for(int i =0; i < animal_vector.length; i++) {
+            animal_vector[i] = new AnimalPanel(animalListAux.get(i), adopterController);
+            animal_vector[i].prepare_panel();
+            animal_panel.add(animal_vector[i]);
         }
 
         JScrollPane scroll = new JScrollPane();
