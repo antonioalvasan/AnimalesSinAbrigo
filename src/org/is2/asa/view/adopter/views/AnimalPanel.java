@@ -2,6 +2,7 @@ package org.is2.asa.view.adopter.views;
 
 import org.is2.asa.control.AnimalController;
 import org.is2.asa.model.Animal;
+import org.is2.asa.model.states.AdoptionRequestedState;
 import org.is2.asa.view.Utilities;
 
 import java.awt.*;
@@ -38,7 +39,6 @@ public class AnimalPanel extends JPanel {
 
 		this.add(panel_centre);
 
-
 		JButton adopt = new JButton("Adopt");
 		JButton info = new JButton("info");
 
@@ -50,6 +50,7 @@ public class AnimalPanel extends JPanel {
 		this.add(adopt, FlowLayout.RIGHT);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setPreferredSize(new Dimension(600, 100));
+
 	}
 
 	public AnimalPanel(LayoutManager layout) {
