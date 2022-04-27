@@ -20,26 +20,17 @@ public class RefugeModifyWindow extends windowClass {
         this.refugeCtrl = refugeController;
     }
 
-    private static class Pair {
-
-        private JLabel label;
-        private JTextField button;
-
-        public Pair(JLabel label, JTextField button) {
-            this.label = label;
-            this.button = button;
-        }
+    private record Pair(JLabel label, JTextField textField) {
 
         public JLabel getLabel() {
             return label;
         }
 
-        public JTextField getButton() {
-            return button;
+        public JTextField getTextField() {
+            return textField;
         }
 
     }
-
 
     public void prepare_panel() {
         this.setLayout(new BorderLayout());
@@ -54,47 +45,44 @@ public class RefugeModifyWindow extends windowClass {
         modify.setOpaque(true);
         modify.setBorder(BorderFactory.createLineBorder(Color.black));
 
-        JButton save = new JButton("Save data");
-        save.addActionListener(new ActionListener() {
+        Pair username = new Pair( new JLabel("Username:"), new JTextField("Write your new username here..."));
+        Pair password = new Pair( new JLabel("Password:"),new JTextField("Write your new password"));
+        Pair name = new Pair( new JLabel("Name:"),new JTextField("Write your new name here..."));
+        Pair province = new Pair( new JLabel("Province:"), new JTextField("Write your new province here..."));
+        Pair address = new Pair( new JLabel("Address:"), new JTextField("Write your new address here..."));
+        Pair tlf = new Pair( new JLabel("Phone number:"), new JTextField("Write your new phone number here..."));
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ocultar();
-
-            }
-
-
-
-        });
-        save.setOpaque(true);
-        save.setBackground(Color.LIGHT_GRAY);
-
-
-       Pair username = new Pair( new JLabel("Username:"), new JTextField("gilleGamer"));
-       Pair password = new Pair( new JLabel("Password:"),new JTextField("1234"));
-        Pair name = new Pair( new JLabel("Name:"),new JTextField("a"));
-        Pair province = new Pair( new JLabel("Province:"), new JTextField("Valladolid"));
-        Pair address = new Pair( new JLabel("Address:"), new JTextField("Av. Mundial 82, s/n, 47014 Valladolid"));
-        Pair tlf = new Pair( new JLabel("Phone number:"), new JTextField("633 33 33 33"));
-        Pair description = new Pair( new JLabel("Description:"), new JTextField("....."));
-        ArrayList<Pair> data = new ArrayList<>(Arrays.asList(username, password, name, province, address, tlf,description));
+        ArrayList<Pair> data = new ArrayList<>(Arrays.asList(username, password, name, province, address, tlf));
         ArrayList<JPanel> panels = new ArrayList<>();
 
-        for(int i =0; i < 7; i++) {
+        for(int i =0; i < 6; i++) {
             panels.add(new JPanel(new FlowLayout()));
             panels.get(i).setBackground(Color.GRAY);
             panels.get(i).add(data.get(i).getLabel());
-            panels.get(i).add(data.get(i).getButton());
+            panels.get(i).add(data.get(i).getTextField());
             change_data_here.add(panels.get(i));
         }
+
+        JButton save = new JButton("Save data");
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                refugeCtrl.changeUserData(username.getTextField().getText(),
+                        password.getTextField().getText(),
+                        name.getTextField().getText(),
+                        province.getTextField().getText(),
+                        address.getTextField().getText(),
+                        tlf.getTextField().getText());
+                refugeCtrl.changeWindow(RefugeInfoWindow.key);
+                refugeCtrl.run();
+            }
+        });
+        save.setOpaque(true);
+        save.setBackground(Color.LIGHT_GRAY);
 
         this.add(modify, BorderLayout.NORTH);
         this.add(change_data_here, BorderLayout.CENTER);
         this.add(save, BorderLayout.SOUTH);
 
     }
-    private void ocultar() {
-        this.setVisible(false);
-    }
-
 }

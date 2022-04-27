@@ -59,9 +59,6 @@ public class AdopterBar extends JPanel {
 		JButton user_icon = new JButton(new ImageIcon("imagen.png"));
 
 		user_name.addActionListener(e ->{
-			/*Esto se folla la POO, quiza el controler deberia tener una funcion que fuera (info) y ya que se
-			* encargue de pillar los keyCodes el propio controler. Me ralla el hecho de que una ventana pueda
-			* acceder a la key de otra ventana.*/
 			adopterController.changeWindow(AdopterUserInfoWindow.keyCode);
 			adopterController.run();
 		});

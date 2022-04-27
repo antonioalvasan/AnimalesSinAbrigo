@@ -50,9 +50,6 @@ public class AddAnimal extends JDialog {
                 ocultar();
 
             }
-
-
-
         });
         save.setOpaque(true);
         save.setBackground(Color.LIGHT_GRAY);

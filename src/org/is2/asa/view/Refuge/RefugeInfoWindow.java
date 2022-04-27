@@ -42,24 +42,10 @@ public class RefugeInfoWindow extends windowClass {
         bar.prepare_panel();
 
         JButton modify = new JButton("Change your data here");
-        RefugeModifyWindow info= new RefugeModifyWindow(refugeCtrl);
-        info.prepare_panel();
-        info.setSize(500,400);
-        //fo.setLocationRelativeTo(null);
-        modify.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                info.setVisible(true);
-            }
-
-        });
-
-
-
         modify.setBackground(Color.LIGHT_GRAY);
         modify.addActionListener(e -> {
-
+            refugeCtrl.changeWindow(RefugeModifyWindow.key);
+            refugeCtrl.run();
         });
 
         JPanel center = new JPanel(new BorderLayout());
@@ -70,19 +56,20 @@ public class RefugeInfoWindow extends windowClass {
 
         center.add(user_image, BorderLayout.WEST);
 
-        Pair username = new Pair( new JLabel("Username:"), new JLabel("gilleGamer"));
-        Pair password = new Pair( new JLabel("Password:"),new JLabel("1234"));
-        Pair name = new Pair( new JLabel("Name:"),new JLabel("a"));
-        Pair province = new Pair( new JLabel("Province:"), new JLabel("Valladolid"));
-        Pair address = new Pair( new JLabel("Address:"), new JLabel("Av. Mundial 82, s/n, 47014 Valladolid"));
-        Pair tlf = new Pair( new JLabel("Phone number:"), new JLabel("633 33 33 33"));
-        Pair description = new Pair( new JLabel("Description:"), new JLabel("....."));
-        ArrayList<Pair> data = new ArrayList<>(Arrays.asList(username, password, name, province, address, tlf,description));
+        Pair username = new Pair( new JLabel("Username:"), new JLabel(refugeCtrl.getUsername()));
+        Pair password = new Pair( new JLabel("Password:"),new JLabel(refugeCtrl.getPassword()));
+        Pair name = new Pair( new JLabel("Name:"),new JLabel(refugeCtrl.getName()));
+        Pair province = new Pair( new JLabel("Province:"), new JLabel(refugeCtrl.getProvince()));
+        Pair address = new Pair( new JLabel("Address:"), new JLabel(refugeCtrl.getAddress()));
+        Pair tlf = new Pair( new JLabel("Phone number:"), new JLabel(refugeCtrl.getTlf()));
+        //Pair description = new Pair( new JLabel("Description:"), new JLabel(refugeCtrl.getDescription()));
+
+        ArrayList<Pair> data = new ArrayList<>(Arrays.asList(username, password, name, province, address, tlf));
         ArrayList<JPanel> panels = new ArrayList<>();
         JPanel leftP = new JPanel();
         leftP.setLayout(new BoxLayout(leftP, BoxLayout.Y_AXIS));
 
-        for(int i =0; i < 7; i++) {
+        for(int i =0; i < 6; i++) {
             panels.add(new JPanel(new FlowLayout()));
             panels.get(i).setBackground(Color.GRAY);
             data.get(i).getFirst().setFont(new Font("Arial", Font.BOLD, 25));

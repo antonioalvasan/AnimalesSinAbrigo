@@ -44,10 +44,6 @@ public class AdopterUserInfoWindow2 extends windowClass {
         modify.setOpaque(true);
         modify.setBorder(BorderFactory.createLineBorder(Color.black));
 
-
-
-
-
         Pair username = new Pair( new JLabel("Username"), new JTextField("Write your new username here..."));
         Pair password = new Pair( new JLabel("Password"),new JPasswordField("Write your new password"));
         Pair name = new Pair( new JLabel("Name"), new JTextField("Write your new name here..."));
@@ -82,6 +78,4 @@ public class AdopterUserInfoWindow2 extends windowClass {
         this.add(change_data_here, BorderLayout.CENTER);
         this.add(save, BorderLayout.SOUTH);
     }
-
-
 }

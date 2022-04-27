@@ -4,7 +4,6 @@ import org.is2.asa.dao.AnimalDao;
 import org.is2.asa.dao.UserDao;
 import org.is2.asa.model.User;
 import org.is2.asa.view.Refuge.RefugeHomeWindow;
-import org.is2.asa.view.viewFactories.AdopterHomeWindowBuilder;
 import org.is2.asa.view.viewFactories.BuilderBasedWindowFactory;
 import org.is2.asa.view.windowClass;
 
@@ -31,7 +30,7 @@ public class RefugeController extends JFrame {
     private String animalsFile;
 
     //LoggedUser info
-    private User loggeduser;
+    private User loggedUser;
 
     //Frame and windows info
     private final JFrame viewFrame; //Global Frame. Is always visible.
@@ -39,7 +38,7 @@ public class RefugeController extends JFrame {
     BuilderBasedWindowFactory builderBasedWindowFactory;
 
     public RefugeController(User user, UserDao userDao, AnimalDao animalDao, String usersFile, String animalsFile) {
-        this.loggeduser = user;
+        this.loggedUser = user;
         this.userDao = userDao;
         this.animalDao = animalDao;
         this.usersFile = usersFile;
@@ -127,6 +126,44 @@ public class RefugeController extends JFrame {
     public void changeWindow(String key) {
         currentView = builderBasedWindowFactory.createInstance(key);
         viewFrame.getContentPane().removeAll();
+    }
+
+    public void changeUserData(String username, String password, String name, String province,
+                               String address, String tlf) {
+        loggedUser.setUsername(username);
+        loggedUser.setPassword(password);
+        loggedUser.setName(name);
+        loggedUser.setProvince(province);
+        loggedUser.setAddress(address);
+        loggedUser.setTlf(tlf);
+    }
+
+    public String getUsername() {
+        return loggedUser.getUsername();
+    }
+
+    public String getPassword() {
+        return loggedUser.getPassword();
+    }
+
+    public String getProvince() {
+        return loggedUser.getProvince();
+    }
+
+    public String getAddress(){
+        return loggedUser.getAddress();
+    }
+
+    public String getTlf() {
+        return loggedUser.getTlf();
+    }
+
+    public String getName() {
+        return loggedUser.getName();
+    }
+
+    public String getDescription() {
+        return loggedUser.getDescription();
     }
 
 }
