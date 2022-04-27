@@ -11,6 +11,7 @@ import org.is2.asa.view.adopter.views.AdopterHomeWindow;
 //import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -72,13 +73,16 @@ public class AdopterController {
 
                 JDialog saveDataDialog = new JDialog();
                 JLabel label = new JLabel("Do you want to save data before closing? Data will be overwritten!");
+
+                JPanel buttonPanel = new JPanel(new FlowLayout());
                 JButton yesButton = new JButton("Yes");
                 JButton noButton = new JButton("No");
 
 
                 saveDataDialog.add(label, BorderLayout.NORTH);
-                saveDataDialog.add(yesButton, BorderLayout.WEST);
-                saveDataDialog.add(noButton, BorderLayout.EAST);
+                buttonPanel.add(yesButton, BorderLayout.WEST);
+                buttonPanel.add(noButton, BorderLayout.EAST);
+                saveDataDialog.add(buttonPanel, BorderLayout.CENTER);
 
                 yesButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent ae) {

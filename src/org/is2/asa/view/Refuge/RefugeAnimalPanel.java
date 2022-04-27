@@ -62,7 +62,7 @@ public class RefugeAnimalPanel extends JPanel {
 
         infoButton.addActionListener(e->{
             JDialog infoDialog = new JDialog();
-            JPanel infoPanel = new JPanel(new BorderLayout());
+            JPanel infoPanel = new JPanel();
 
             Pair namePair = new Pair( new JLabel("Name:"), new JLabel(animal.getName()));
             Pair agePair = new Pair( new JLabel("Age:"), new JLabel(String.valueOf(animal.getAge())));
@@ -82,9 +82,8 @@ public class RefugeAnimalPanel extends JPanel {
                 panels.get(i).add(data.get(i).getSecond());
                 infoPanel.add(panels.get(i));
             }
-
             infoDialog.setSize(new Dimension(500, 500));
-            infoDialog.add(infoPanel);
+            infoDialog.add(infoPanel, BorderLayout.CENTER);
             infoDialog.setVisible(true);
         });
 

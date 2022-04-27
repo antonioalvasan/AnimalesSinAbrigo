@@ -40,12 +40,21 @@ public class RefugeAddAnimalWindow extends windowClass {
         JPanel changeDataPanel = new JPanel();
         changeDataPanel.setLayout(new BoxLayout(changeDataPanel, BoxLayout.Y_AXIS));
 
+        JPanel topPanel = new JPanel(new BorderLayout());
         JLabel modify = new JLabel("<html><body>Añadir datos animal<br> <body><html>");
         modify.setFont(new Font("Arial",Font.BOLD,30));
         modify.setHorizontalAlignment(JLabel.CENTER);
         modify.setBackground(Color.LIGHT_GRAY);
         modify.setOpaque(true);
         modify.setBorder(BorderFactory.createLineBorder(Color.black));
+        topPanel.add(modify, BorderLayout.CENTER);
+
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener(e->{
+            refugeCtrl.changeWindow(RefugeAnimalsWindow.key);
+            refugeCtrl.run();
+        });
+        topPanel.add(backButton, BorderLayout.LINE_START);
 
         Pair name = new Pair( new JLabel("Name"), new JTextField("Write the name..."));
         Pair age = new Pair( new JLabel("Age"), new JTextField("Write the age..."));
@@ -85,7 +94,7 @@ public class RefugeAddAnimalWindow extends windowClass {
         save.setOpaque(true);
         save.setBackground(Color.LIGHT_GRAY);
 
-        this.add(modify, BorderLayout.NORTH);
+        this.add(topPanel, BorderLayout.NORTH);
         this.add(changeDataPanel, BorderLayout.CENTER);
         this.add(save, BorderLayout.SOUTH);
 

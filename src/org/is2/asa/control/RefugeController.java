@@ -79,13 +79,16 @@ public class RefugeController extends JFrame {
 
                 JDialog saveDataDialog = new JDialog();
                 JLabel label = new JLabel("Do you want to save data before closing? Data will be overwritten!");
+
+                JPanel buttonPanel = new JPanel(new FlowLayout());
                 JButton yesButton = new JButton("Yes");
                 JButton noButton = new JButton("No");
 
 
                 saveDataDialog.add(label, BorderLayout.NORTH);
-                saveDataDialog.add(yesButton, BorderLayout.WEST);
-                saveDataDialog.add(noButton, BorderLayout.EAST);
+                buttonPanel.add(yesButton, BorderLayout.WEST);
+                buttonPanel.add(noButton, BorderLayout.EAST);
+                saveDataDialog.add(buttonPanel, BorderLayout.CENTER);
 
                 yesButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent ae) {
@@ -166,10 +169,6 @@ public class RefugeController extends JFrame {
 
     public String getDescription() {
         return loggedUser.getDescription();
-    }
-
-    public void createAnimal() {
-
     }
 
     public void createAnimal(String name, String age, String weight, String specie, String race, String desc) {
