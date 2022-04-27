@@ -12,6 +12,12 @@ public class Dog extends Animal{
         this.race = race;
     }
 
+    public Dog(int identifier, int linkedUser, String name, int age, double weight, String description, DogRace race,
+               String img, int originalRefuge, String state) {
+        super(identifier, linkedUser, name, age, weight, description, img, originalRefuge, state);
+        this.race = race;
+    }
+
     @Override
     public String getRace() {
         return this.race.DisplayName();
@@ -39,6 +45,8 @@ public class Dog extends Animal{
         data.put("weight", getWeight());
         data.put("description", getDescription());
         data.put("img", getImg());
+        data.put("state", getState().toString());
+        data.put("originalRefuge", getOrginalRefuge());
         dog.put("data", data);
 
         return dog;

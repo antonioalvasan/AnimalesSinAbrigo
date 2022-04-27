@@ -15,8 +15,21 @@ public abstract class Animal {
     private double weight;
     private String description;
     private String img;
-
+    private int orginalRefuge;
     private AnimalState state;
+
+    public Animal(int identifier, int linkedUser, String name, int age, double weight, String description, String img,
+                  int orginalRefuge, String state) {
+        this.identifier = identifier;
+        this.linkedUser = linkedUser;
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+        this.description = description;
+        this.state= new NotAdoptedState(this);
+        this.img = img;
+        this.orginalRefuge = orginalRefuge;
+    }
 
     public Animal(int identifier, int linkedUser, String name, int age, double weight, String description, String img) {
         this.identifier = identifier;
@@ -27,6 +40,7 @@ public abstract class Animal {
         this.description = description;
         this.state= new NotAdoptedState(this);
         this.img = img;
+        this.orginalRefuge = linkedUser;
     }
 
 
@@ -94,6 +108,10 @@ public abstract class Animal {
 
     public String getRace(){
         return null;
+    }
+
+    public int getOrginalRefuge() {
+        return orginalRefuge;
     }
 
     public abstract String getSpecies();

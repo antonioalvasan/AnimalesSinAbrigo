@@ -1,7 +1,6 @@
 package org.is2.asa.view.adopter.views;
 
 import org.is2.asa.control.AdopterController;
-import org.is2.asa.control.AnimalController;
 import org.is2.asa.model.Animal;
 import org.is2.asa.model.states.AdoptionRequestedState;
 import org.is2.asa.view.Utilities;
@@ -9,12 +8,12 @@ import org.is2.asa.view.Utilities;
 import java.awt.*;
 import javax.swing.*;
 
-public class AnimalPanel extends JPanel {
+public class AdopterAnimalPanel extends JPanel {
 
 	Animal animal;
 	AdopterController adopterController;
 
-	public AnimalPanel(Animal animal, AdopterController adopterController) {
+	public AdopterAnimalPanel(Animal animal, AdopterController adopterController) {
 		this.animal = animal;
 		this.adopterController = adopterController;
 	}
@@ -31,14 +30,14 @@ public class AnimalPanel extends JPanel {
 
 		JPanel panel_centre = new JPanel(new BorderLayout());
 
-		Label dog_name = new Label(animal.getName());
-		Label dog_description = new Label(animal.getDescription());
-		dog_name.setBackground(Color.GRAY);
-		dog_description.setBackground(Color.GRAY);
+		Label animalName = new Label(animal.getName());
+		Label animalDesc = new Label(animal.getDescription());
+		animalName.setBackground(Color.GRAY);
+		animalDesc.setBackground(Color.GRAY);
 
 
-		panel_centre.add(dog_name, BorderLayout.NORTH);
-		panel_centre.add(dog_description, BorderLayout.CENTER);
+		panel_centre.add(animalName, BorderLayout.NORTH);
+		panel_centre.add(animalDesc, BorderLayout.CENTER);
 
 		this.add(panel_centre);
 
@@ -88,20 +87,4 @@ public class AnimalPanel extends JPanel {
 		this.setPreferredSize(new Dimension(600, 100));
 
 	}
-
-	public AnimalPanel(LayoutManager layout) {
-		super(layout);
-		// TODO Auto-generated constructor stub
-	}
-
-	public AnimalPanel(boolean isDoubleBuffered) {
-		super(isDoubleBuffered);
-		// TODO Auto-generated constructor stub
-	}
-
-	public AnimalPanel(LayoutManager layout, boolean isDoubleBuffered) {
-		super(layout, isDoubleBuffered);
-		// TODO Auto-generated constructor stub
-	}
-
 }

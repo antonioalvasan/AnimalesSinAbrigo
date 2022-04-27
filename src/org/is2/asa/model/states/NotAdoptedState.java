@@ -8,8 +8,6 @@ public class NotAdoptedState extends AnimalState {
         super(animal);
     }
 
-
-
     @Override
     public String adoptionRequested() {
         animal.changeState(new AdoptionRequestedState(animal));

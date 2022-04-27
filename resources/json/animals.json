@@ -6,10 +6,11 @@
         "img": "/images/animals/dogs/goldenRetriever1.jpg",
         "race": "GOLDEN_RETRIEVER",
         "linkedUser": 2,
-        "initRefuge" : 2,
         "name": "Toby",
         "weight": 80.03,
         "description": "Soy bueno :)",
+        "state": "Not adopted",
+        "originalRefuge": 2,
         "age": 40
       },
       "species": "DOG"
@@ -20,10 +21,11 @@
         "img": "/images/animals/cats/persian.jpg",
         "race": "PERSIAN",
         "linkedUser": 2,
-        "initRefuge" : 2,
         "name": "Amancio",
         "weight": 140.03,
         "description": "jeje",
+        "state": "Not adopted",
+        "originalRefuge": 2,
         "age": 10
       },
       "species": "CAT"
@@ -34,10 +36,11 @@
         "img": "/images/animals/dogs/goldenRetriever2.jpg",
         "race": "GOLDEN_RETRIEVER",
         "linkedUser": 1,
-        "initRefuge" : 2,
         "name": "Marcelino",
         "weight": 80.03,
         "description": "Soy bueno :)",
+        "state": "Not adopted",
+        "originalRefuge": 2,
         "age": 40
       },
       "species": "DOG"
@@ -48,11 +51,42 @@
         "img": "/images/animals/cats/abisinio.jpg",
         "race": "AKITA",
         "linkedUser": 2,
-        "initRefuge" : 2,
         "name": "Gato",
         "weight": 80.03,
         "description": "Soy bueno :)",
+        "state": "Not adopted",
+        "originalRefuge": 9,
         "age": 40
+      },
+      "species": "CAT"
+    },
+    {
+      "data": {
+        "identifier": 5,
+        "img": "Hola soy muy malo :(",
+        "race": "BULLDOG",
+        "linkedUser": 9,
+        "name": "TobiasNicolas",
+        "weight": 80,
+        "description": "Hola soy muy malo",
+        "state": "Not adopted",
+        "originalRefuge": 9,
+        "age": 23
+      },
+      "species": "DOG"
+    },
+    {
+      "data": {
+        "identifier": 6,
+        "img": "enekoGato enekoGato",
+        "race": "AKITA",
+        "linkedUser": 9,
+        "name": "enekoGato",
+        "weight": 100,
+        "description": "CAT",
+        "state": "Not adopted",
+        "originalRefuge": 9,
+        "age": 33
       },
       "species": "CAT"
     }

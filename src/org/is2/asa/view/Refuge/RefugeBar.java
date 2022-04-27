@@ -34,6 +34,11 @@ public class RefugeBar extends windowClass {
 
         JButton animals = new JButton("Animals");
 
+        animals.addActionListener(e->{
+            refugeCtrl.changeWindow(RefugeAnimalsWindow.key);
+            refugeCtrl.run();
+        });
+
         JButton requests = new JButton("Requests");
 
         requests.addActionListener(e->{

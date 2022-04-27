@@ -2,7 +2,7 @@ package org.is2.asa.control;
 
 import org.is2.asa.dao.AnimalDao;
 import org.is2.asa.dao.UserDao;
-import org.is2.asa.model.User;
+import org.is2.asa.model.*;
 import org.is2.asa.view.Refuge.RefugeHomeWindow;
 import org.is2.asa.view.viewFactories.BuilderBasedWindowFactory;
 import org.is2.asa.view.windowClass;
@@ -18,6 +18,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RefugeController extends JFrame {
 
@@ -166,4 +168,37 @@ public class RefugeController extends JFrame {
         return loggedUser.getDescription();
     }
 
+    public void createAnimal() {
+
+    }
+
+    public void createAnimal(String name, String age, String weight, String specie, String race, String desc) {
+        int id = animalDao.getAll().size() + 1;
+
+        if(specie.equals("DOG")){
+            Dog newDog = new Dog(id, loggedUser.getID(), name, Integer.parseInt(age),
+                    Double.parseDouble(weight), specie, DogRace.valueOf(race), desc);
+            animalDao.add(newDog);
+        }
+        else if(specie.equals("CAT")){
+            Cat newCat = new Cat(id, loggedUser.getID(), name, Integer.parseInt(age),
+                    Double.parseDouble(weight), specie, CatRace.valueOf(race), desc);
+            animalDao.add(newCat);
+        }
+        else{
+            System.out.println("[ERROR] Can't identify this specie.");
+        }
+    }
+
+    public List<Animal> getRefugeAnimals() {
+        List<Animal> refugeAnimals = new ArrayList<>();
+
+        for(Animal a: animalDao.getAll()){
+            if(a.getOrginalRefuge() == loggedUser.getID()){
+                refugeAnimals.add(a);
+            }
+        }
+
+        return refugeAnimals;
+    }
 }

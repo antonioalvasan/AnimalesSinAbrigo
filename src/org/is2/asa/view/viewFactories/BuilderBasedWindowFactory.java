@@ -2,6 +2,7 @@ package org.is2.asa.view.viewFactories;
 
 import org.is2.asa.control.AdopterController;
 import org.is2.asa.control.RefugeController;
+import org.is2.asa.view.Refuge.RefugeAnimalsWindow;
 import org.is2.asa.view.windowClass;
 
 import java.util.ArrayList;
@@ -32,6 +33,8 @@ public class BuilderBasedWindowFactory {
         builders.add(new RefugeInfoWindowBuilder());
         builders.add(new RefugeModifyWindowBuilder());
         builders.add(new RefugeRequestWindowBuilder());
+        builders.add(new RefugeAnimalsWindowBuilder());
+        builders.add(new RefugeAddAnimalWindowBuilder());
     }
 
     public windowClass createInstance(String key){

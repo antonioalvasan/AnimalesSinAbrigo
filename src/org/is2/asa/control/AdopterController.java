@@ -207,6 +207,7 @@ public class AdopterController {
 
     public List<Animal> getAnimalsFromRefuge(){
         List<Animal> availableAnimals = new ArrayList<>();
+
         for(Animal a: animalDao.getAll()){
             if(a.getLinkedUser() == currentRefuge.getID() && a.getState().toString().equals("Not adopted")){
                 availableAnimals.add(a);

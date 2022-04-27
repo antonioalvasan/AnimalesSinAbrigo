@@ -51,7 +51,6 @@ public class AnimalDao implements Dao<Animal>{
             animals.get(animal.getIdentifier()).setWeight(animal.getWeight());
             animals.get(animal.getIdentifier()).setDescription(animal.getDescription());
             animals.get(animal.getIdentifier()).changeState(animal.getState());
-            animals.get(animal.getIdentifier()).setLinkedUser(animal.getLinkedUser());
         }
     }
 
@@ -74,7 +73,6 @@ public class AnimalDao implements Dao<Animal>{
     public void load(InputStream in) {
         JSONObject jsonInput = new JSONObject(new JSONTokener(in));
         JSONArray animalArray = jsonInput.getJSONArray("animals");
-        Animal animalAux;
 
         for(int i = 0; i < animalArray.length(); i++){
             add(animalAbstractFactory.generateObject(animalArray.getJSONObject(i)));
