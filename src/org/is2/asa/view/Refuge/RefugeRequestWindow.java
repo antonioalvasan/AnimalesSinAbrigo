@@ -1,7 +1,5 @@
 package org.is2.asa.view.Refuge;
 
-
-
 import org.is2.asa.control.RefugeController;
 import org.is2.asa.view.windowClass;
 
@@ -9,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class RefugeRequestWindow extends windowClass {
+
     public static final String key = "RRW";
     public RefugeController refugeCtrl;
 
