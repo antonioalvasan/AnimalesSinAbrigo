@@ -1,5 +1,7 @@
 package org.is2.asa.view.Refuge;
 
+import org.is2.asa.control.RefugeController;
+import org.is2.asa.model.Animal;
 import org.is2.asa.view.Utilities;
 
 
@@ -9,11 +11,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RequestPanel extends JPanel{
-    public RequestPanel( ) {
 
+    Animal animal;
+    RefugeController refugeCtrl;
 
+    public RequestPanel(Animal animal, RefugeController refugeCtrl) {
+        this.animal = animal;
+        this.refugeCtrl = refugeCtrl;
     }
-    public void prepare_panel(String name) {
+    public void prepare_panel() {
 
         this.setBackground(Color.GRAY);
         this.setLayout(new FlowLayout());
@@ -25,7 +31,7 @@ public class RequestPanel extends JPanel{
 
         JPanel panel_centre = new JPanel(new BorderLayout());
 
-        Label dog_name = new Label(name);
+        Label dog_name = new Label();
         Label dog_description = new Label(
                 "Request data ");
         dog_name.setBackground(Color.GRAY);

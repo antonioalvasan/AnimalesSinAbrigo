@@ -1,11 +1,13 @@
 package org.is2.asa.view.adopter.views;
 
 import org.is2.asa.control.AdopterController;
+import org.is2.asa.model.Animal;
 import org.is2.asa.view.Utilities;
 import org.is2.asa.view.windowClass;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class AdopterAnimalsWindow extends windowClass {
 
@@ -41,11 +43,28 @@ public class AdopterAnimalsWindow extends windowClass {
         topPanel.add(adopterBar, BorderLayout.NORTH);
         topPanel.add(searchPanel, BorderLayout.SOUTH);
 
-
         //Main Panel
-        JPanel mainPanel = new JPanel();
+        JPanel animalsPanel = new JPanel();
+        animalsPanel.setBackground(Color.LIGHT_GRAY);
+        animalsPanel.setLayout(new BoxLayout(animalsPanel, BoxLayout.Y_AXIS));
+
+        //adding animal vector
+        ArrayList<Animal> animalListAux = (ArrayList<Animal>) adopterController.getAnimalsOwned();
+        AdopterAnimalPanel[] animal_vector = new AdopterAnimalPanel[animalListAux.size()];
+
+        for(int i =0; i < animal_vector.length; i++) {
+            animal_vector[i] = new AdopterAnimalPanel(animalListAux.get(i), adopterController, "owned");
+            animal_vector[i].prepare_panel();
+            animalsPanel.add(animal_vector[i]);
+        }
+
+        JScrollPane scroll = new JScrollPane();
+        scroll.setPreferredSize(new Dimension(500,300));
+        scroll.setViewportView(animalsPanel);
+
 
         this.add(topPanel, BorderLayout.NORTH);
+        this.add(animalsPanel, BorderLayout.CENTER);
 
     }
 

@@ -84,7 +84,7 @@
         "name": "enekoGato",
         "weight": 100,
         "description": "CAT",
-        "state": "Not adopted",
+        "state": "Adoption requested",
         "originalRefuge": 9,
         "age": 33
       },

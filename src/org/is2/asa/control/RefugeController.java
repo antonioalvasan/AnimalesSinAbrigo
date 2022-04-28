@@ -78,14 +78,18 @@ public class RefugeController extends JFrame {
             public void windowClosing(WindowEvent e) {
 
                 JDialog saveDataDialog = new JDialog();
+                JPanel topPanel = new JPanel();
+                topPanel.setBackground(Color.lightGray);
                 JLabel label = new JLabel("Do you want to save data before closing? Data will be overwritten!");
+                topPanel.add(label);
 
                 JPanel buttonPanel = new JPanel(new FlowLayout());
+                buttonPanel.setBackground(Color.lightGray);
                 JButton yesButton = new JButton("Yes");
                 JButton noButton = new JButton("No");
 
 
-                saveDataDialog.add(label, BorderLayout.NORTH);
+                saveDataDialog.add(topPanel, BorderLayout.NORTH);
                 buttonPanel.add(yesButton, BorderLayout.WEST);
                 buttonPanel.add(noButton, BorderLayout.EAST);
                 saveDataDialog.add(buttonPanel, BorderLayout.CENTER);
@@ -199,5 +203,17 @@ public class RefugeController extends JFrame {
         }
 
         return refugeAnimals;
+    }
+
+    public List<Animal> getRequestedAnimals() {
+        List<Animal> requestedAnimals = new ArrayList<>();
+
+        for(Animal a: animalDao.getAll()){
+            if(a.getOrginalRefuge() == loggedUser.getID() && a.getState().toString().equals("Adoption requested")){
+                requestedAnimals.add(a);
+            }
+        }
+
+        return requestedAnimals;
     }
 }

@@ -2,6 +2,8 @@ package org.is2.asa.model;
 
 //State design pattern is used
 
+import org.is2.asa.model.states.AdoptedState;
+import org.is2.asa.model.states.AdoptionRequestedState;
 import org.is2.asa.model.states.AnimalState;
 import org.is2.asa.model.states.NotAdoptedState;
 import org.json.JSONObject;
@@ -26,7 +28,11 @@ public abstract class Animal {
         this.age = age;
         this.weight = weight;
         this.description = description;
-        this.state= new NotAdoptedState(this);
+
+        if(state.equals("Not adopted")) this.state = new NotAdoptedState(this);
+        else if(state.equals("Adopted")) this.state = new AdoptedState(this);
+        else if(state.equals("Adoption requested")) this.state = new AdoptionRequestedState(this);
+
         this.img = img;
         this.orginalRefuge = orginalRefuge;
     }

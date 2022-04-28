@@ -84,7 +84,7 @@ public class AvailableAnimalListWindow extends windowClass {
         AdopterAnimalPanel[] animal_vector = new AdopterAnimalPanel[animalListAux.size()];
 
         for(int i =0; i < animal_vector.length; i++) {
-            animal_vector[i] = new AdopterAnimalPanel(animalListAux.get(i), adopterController);
+            animal_vector[i] = new AdopterAnimalPanel(animalListAux.get(i), adopterController, "adopt");
             animal_vector[i].prepare_panel();
             animal_panel.add(animal_vector[i]);
         }

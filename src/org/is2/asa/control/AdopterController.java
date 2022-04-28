@@ -39,7 +39,6 @@ public class AdopterController {
     private final JFrame viewFrame;
     private windowClass currentView;
     BuilderBasedWindowFactory builderBasedWindowFactory;
-    private AnimalListController animalListController;
     private User currentRefuge;
 
     /*
@@ -47,15 +46,13 @@ public class AdopterController {
     * Parameters: loggedUser, animalDao and userDao.
     * Initializes the frame and the viewList, with every existing AdopterWindow. Sets AdopterHomeWindow as default.
     * */
-    public AdopterController(User user, UserDao userDao, AnimalDao animalDao, String usersFile, String animalsFile,
-                             AnimalListController animalListController) {
+    public AdopterController(User user, UserDao userDao, AnimalDao animalDao, String usersFile, String animalsFile) {
         this.builderBasedWindowFactory = new BuilderBasedWindowFactory(this, null);
         this.loggedUser = user;
         this.userDao = userDao;
         this.animalDao = animalDao;
         this._usersFile = usersFile;
         this._animalsFile = animalsFile;
-        this.animalListController = animalListController;
         this.currentRefuge = null;
         this.viewFrame = new JFrame();
         prepareFrame();
@@ -72,14 +69,19 @@ public class AdopterController {
             public void windowClosing(WindowEvent e) {
 
                 JDialog saveDataDialog = new JDialog();
+                JPanel topPanel = new JPanel();
+                topPanel.setBackground(Color.LIGHT_GRAY);
+
                 JLabel label = new JLabel("Do you want to save data before closing? Data will be overwritten!");
+                topPanel.add(label);
 
                 JPanel buttonPanel = new JPanel(new FlowLayout());
+                buttonPanel.setBackground(Color.LIGHT_GRAY);
                 JButton yesButton = new JButton("Yes");
                 JButton noButton = new JButton("No");
 
 
-                saveDataDialog.add(label, BorderLayout.NORTH);
+                saveDataDialog.add(topPanel, BorderLayout.NORTH);
                 buttonPanel.add(yesButton, BorderLayout.WEST);
                 buttonPanel.add(noButton, BorderLayout.EAST);
                 saveDataDialog.add(buttonPanel, BorderLayout.CENTER);
@@ -191,10 +193,6 @@ public class AdopterController {
         return currentRefuge;
     }
 
-    public AnimalListController getAnimalList(){
-        return animalListController;
-    }
-
     public void setCurrentRefuge(User currentRefuge){
         this.currentRefuge = currentRefuge;
     }
@@ -218,6 +216,17 @@ public class AdopterController {
             }
         }
         return availableAnimals;
+    }
+
+    public List<Animal> getAnimalsOwned() {
+        List<Animal> ownedAnimals = new ArrayList<>();
+
+        for(Animal a: animalDao.getAll()){
+            if(a.getLinkedUser() == loggedUser.getID()){
+                ownedAnimals.add(a);
+            }
+        }
+        return ownedAnimals;
     }
 }
 

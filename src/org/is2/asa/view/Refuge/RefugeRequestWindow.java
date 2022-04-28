@@ -1,10 +1,12 @@
 package org.is2.asa.view.Refuge;
 
 import org.is2.asa.control.RefugeController;
+import org.is2.asa.model.Animal;
 import org.is2.asa.view.windowClass;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class RefugeRequestWindow extends windowClass {
 
@@ -50,14 +52,13 @@ public class RefugeRequestWindow extends windowClass {
         animal_panel.setLayout(new BoxLayout(animal_panel, BoxLayout.Y_AXIS));
 
         //adding animal vector
-        String[] names = {"Toby", "Marcelino", "Amadeo", "Juan", "Eneko", "Antonio", "Fabri", "Javi", "Salgueiro"};
-        RequestPanel[] request_vector = new RequestPanel[names.length];
+        ArrayList<Animal> requestedAnimals = (ArrayList<Animal>) refugeCtrl.getRequestedAnimals();
+        RequestPanel[] request_vector = new RequestPanel[requestedAnimals.size()];
 
         for(int i =0; i < request_vector.length; i++) {
-            request_vector[i] = new RequestPanel();
-            request_vector[i].prepare_panel(names[i]);
+            request_vector[i] = new RequestPanel(requestedAnimals.get(i), refugeCtrl);
+            request_vector[i].prepare_panel();
             animal_panel.add(request_vector[i]);
-
         }
 
         JScrollPane scroll = new JScrollPane();
