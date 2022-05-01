@@ -228,6 +228,20 @@ public class AdopterController {
         }
         return ownedAnimals;
     }
+
+    //Cada animal del usuario y que esté adoptado por este usuario vuelve al refugio original con el estado "Not Adopted"
+    public void deleteUser() {
+        for(int i = 0; i < this.animalDao.getAll().size(); i++){
+            if(this.animalDao.get(i).getLinkedUser() == loggedUser.getID()){
+                //this.animalDao.delete(this.animalDao.get(i));
+                this.animalDao.get(i).changeState(new NotAdoptedState(this.animalDao.get(i)));
+                this.animalDao.get(i).setLinkedUser(this.animalDao.get(i).getOrginalRefuge());
+            }
+        }
+        this.userDao.delete(loggedUser);
+    }
+
+
 }
 
 

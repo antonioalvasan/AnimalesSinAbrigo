@@ -128,4 +128,13 @@ public class User {
 
         return user;
     }
+
+    public void changeUserData(String username, String password, String name, String province, String address, String tlf) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.province = province;
+        this.address = address;
+        this.tlf = tlf;
+    }
 }

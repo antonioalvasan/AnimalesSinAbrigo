@@ -216,4 +216,9 @@ public class RefugeController extends JFrame {
 
         return requestedAnimals;
     }
+
+    public void deleteUser() {
+        this.userDao.delete(loggedUser);
+    }
+
 }
