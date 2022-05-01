@@ -5,6 +5,7 @@ import org.is2.asa.dao.UserDao;
 import org.is2.asa.model.Animal;
 import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
+import org.is2.asa.model.states.NotAdoptedState;
 import org.is2.asa.view.*;
 import org.is2.asa.view.viewFactories.BuilderBasedWindowFactory;
 import org.is2.asa.view.adopter.views.AdopterHomeWindow;
@@ -114,7 +115,7 @@ public class AdopterController {
     /*
     * Stores data into the files given as input if the user chooses to do so.
     */
-    private void saveData() throws FileNotFoundException {
+    public void saveData() throws FileNotFoundException {
         OutputStream outUsers = new FileOutputStream(_usersFile);
         PrintStream printUsers = new PrintStream(outUsers);
         printUsers.print(userDao.storeAsJSON());
@@ -136,7 +137,6 @@ public class AdopterController {
             viewFrame.setPreferredSize(new Dimension(1300, 600));
             viewFrame.add(currentView);
             viewFrame.pack();
-            viewFrame.setLocationRelativeTo(null);
             viewFrame.setVisible(true);
         }));
     }
@@ -229,6 +229,20 @@ public class AdopterController {
         }
         return ownedAnimals;
     }
+
+    //Cada animal del usuario y que esté adoptado por este usuario vuelve al refugio original con el estado "Not Adopted"
+    public void deleteUser() {
+        for(int i = 0; i < this.animalDao.getAll().size(); i++){
+            if(this.animalDao.get(i).getLinkedUser() == loggedUser.getID()){
+                //this.animalDao.delete(this.animalDao.get(i));
+                this.animalDao.get(i).changeState(new NotAdoptedState(this.animalDao.get(i)));
+                this.animalDao.get(i).setLinkedUser(this.animalDao.get(i).getOrginalRefuge());
+            }
+        }
+        this.userDao.delete(loggedUser);
+    }
+
+
 }
 
 

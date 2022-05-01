@@ -1,1 +1,108 @@
-{"users":[{"data":{"password":"1234","address":"Av. de Concha Espina, 1, 28036 Madrid","province":"Ondarroa","name":"x","description":"600 00 00 00","ID":1,"username":"xX_TheEnekoKiller_Xx","tlf":"Lorem ipsum"},"type":"ADOPTER"},{"data":{"password":"1234","address":"Av. del Decano del Fútbol Español, 21001 Huelva","province":"Huelva","name":"y","description":"611 11 11 11","ID":2,"username":"huelvarecre1889","tlf":"Lorem ipsum"},"type":"REFUGE"},{"data":{"password":"1234","address":"Calle las garzas 24","province":"Madrid","name":"z","description":"622 22 22 22","ID":3,"username":"betasniper42","tlf":"622 22 22 22"},"type":"ADOPTER"},{"data":{"password":"1234","address":"Av. Mundial 82, s/n, 47014 Valladolid","province":"Valladolid","name":"a","description":"633 33 33 33","ID":4,"username":"gilleGamer","tlf":"Lorem ipsum"},"type":"ADOPTER"},{"data":{"password":"1234","address":"Calle las urracas 24","province":"Madrid","name":"b","description":"644 44 44 44","ID":5,"username":"_chessmaster23","tlf":"Lorem ipsum"},"type":"ADOPTER"},{"data":{"password":"1234","address":"Rúa Manuel Murguía, S/N, 15011 A Coruña","province":"La Coruña","name":"c","description":"655 55 55 55","ID":6,"username":"riazorblue_01","tlf":"Lorem ipsum"},"type":"ADOPTER"},{"data":{"password":"1234","address":"Calle las gaviotas 24","province":"Madrid","name":"d","description":"666 66 66 66","ID":7,"username":"alberpipi","tlf":"Lorem ipsum"},"type":"ADOPTER"},{"data":{"password":"1234","address":"Gran via","province":"Valencia","name":"d","description":"677 77 77 77","ID":8,"username":"adopterTest","tlf":"Lorem ipsum"},"type":"ADOPTER"},{"data":{"password":"1234","address":"Gran via","province":"Granada","name":"d","description":"688 88 88 88","ID":9,"username":"refugeTest","tlf":"Lorem ipsum"},"type":"REFUGE"},{"data":{"password":"motomami","address":"Calle Coqueta","province":"motomami","name":"motomami","description":"A de alta, altura, alien","ID":10,"username":"motomami","tlf":"123 45 67 89"},"type":"REFUGE"}]}
+{
+  "users": [
+    {
+      "data": {
+        "password": "1234",
+        "address": "Av. de Concha Espina, 1, 28036 Madrid",
+        "province": "Ondarroa",
+        "name": "x",
+        "description": "600 00 00 00",
+        "ID": 1,
+        "username": "xX_TheEnekoKiller_Xx",
+        "tlf": "Lorem ipsum"
+      },
+      "type": "ADOPTER"
+    },
+    {
+      "data": {
+        "password": "1234",
+        "address": "Av. del Decano del Fútbol Español, 21001 Huelva",
+        "province": "Huelva",
+        "name": "y",
+        "description": "611 11 11 11",
+        "ID": 2,
+        "username": "huelvarecre1889",
+        "tlf": "Lorem ipsum"
+      },
+      "type": "REFUGE"
+    },
+    {
+      "data": {
+        "password": "1234",
+        "address": "Calle las garzas 24",
+        "province": "Madrid",
+        "name": "z",
+        "description": "622 22 22 22",
+        "ID": 3,
+        "username": "betasniper42",
+        "tlf": "622 22 22 22"
+      },
+      "type": "ADOPTER"
+    },
+    {
+      "data": {
+        "password": "1234",
+        "address": "Rúa Manuel Murguía, S/N, 15011 A Coruña",
+        "province": "La Coruña",
+        "name": "c",
+        "description": "655 55 55 55",
+        "ID": 6,
+        "username": "riazorblue_01",
+        "tlf": "Lorem ipsum"
+      },
+      "type": "ADOPTER"
+    },
+    {
+      "data": {
+        "password": "1234",
+        "address": "Calle las gaviotas 24",
+        "province": "Madrid",
+        "name": "d",
+        "description": "666 66 66 66",
+        "ID": 7,
+        "username": "alberpipi",
+        "tlf": "Lorem ipsum"
+      },
+      "type": "ADOPTER"
+    },
+    {
+      "data": {
+        "password": "1234",
+        "address": "Gran via",
+        "province": "Valencia",
+        "name": "d",
+        "description": "677 77 77 77",
+        "ID": 8,
+        "username": "adopterTest",
+        "tlf": "Lorem ipsum"
+      },
+      "type": "ADOPTER"
+    },
+    {
+      "data": {
+        "password": "1234",
+        "address": "Gran via",
+        "province": "Granada",
+        "name": "d",
+        "description": "688 88 88 88",
+        "ID": 9,
+        "username": "refugeTest",
+        "tlf": "Lorem ipsum"
+      },
+      "type": "REFUGE"
+    },
+    {
+      "data": {
+        "password": "motomami",
+        "address": "Calle Coqueta",
+        "province": "motomami",
+        "name": "motomami",
+        "description": "A de alta, altura, alien",
+        "ID": 10,
+        "username": "motomami",
+        "tlf": "123 45 67 89"
+      },
+      "type": "REFUGE"
+    }
+  ]
+}

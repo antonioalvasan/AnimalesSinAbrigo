@@ -34,10 +34,8 @@ public class RefugeController extends JFrame {
     //LoggedUser info
     private User loggedUser;
 
-    private Animal currentAnimal;
-
     //Frame and windows info
-    public final JFrame viewFrame; //Global Frame. Is always visible.
+    private final JFrame viewFrame; //Global Frame. Is always visible.
     private windowClass currentView; //Panel visible inside frame. It changes depending on the window.
     BuilderBasedWindowFactory builderBasedWindowFactory;
 
@@ -66,7 +64,6 @@ public class RefugeController extends JFrame {
             viewFrame.setPreferredSize(new Dimension(1300, 600));
             viewFrame.add(currentView);
             viewFrame.pack();
-            viewFrame.setLocationRelativeTo(null);
             viewFrame.setVisible(true);
         }));
     }
@@ -122,6 +119,11 @@ public class RefugeController extends JFrame {
         });
     }
 
+
+    public void changeUserData(String username, String password, String name, String province, String address, String tlf) {
+        loggedUser.changeUserData(username, password,name,province,address, tlf);
+    }
+
     /*
      * Stores data into the files given as input if the user chooses to do so.
      */
@@ -138,16 +140,6 @@ public class RefugeController extends JFrame {
     public void changeWindow(String key) {
         currentView = builderBasedWindowFactory.createInstance(key);
         viewFrame.getContentPane().removeAll();
-    }
-
-    public void changeUserData(String username, String password, String name, String province,
-                               String address, String tlf) {
-        loggedUser.setUsername(username);
-        loggedUser.setPassword(password);
-        loggedUser.setName(name);
-        loggedUser.setProvince(province);
-        loggedUser.setAddress(address);
-        loggedUser.setTlf(tlf);
     }
 
     public String getUsername() {
@@ -179,6 +171,7 @@ public class RefugeController extends JFrame {
     }
 
     public void createAnimal(String name, String age, String weight, String specie, String race, String desc) {
+
         int id = animalDao.getAll().size() + 1;
 
         if(specie.equals("DOG")){
@@ -220,19 +213,8 @@ public class RefugeController extends JFrame {
         return requestedAnimals;
     }
 
-    public void setAnimal(Animal animal) {
-        currentAnimal=animal;
+    public void deleteUser() {
+        this.userDao.delete(loggedUser);
     }
-    public Animal getAnimal() {
-        return currentAnimal;
-    }
-    public void removeanimal(Animal animal){
-        animalDao.delete(animal);
-    }
-    public void updateanimal(Animal animal){
-        animalDao.update(animal);
 
-
-    }
 }
-

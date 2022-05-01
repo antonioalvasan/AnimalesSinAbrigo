@@ -30,6 +30,7 @@ public class AdopterBar extends JPanel {
 		JButton contact = new JButton("Contact");
 		JButton myAnimals = new JButton("My Animals");
 
+
 		home.addActionListener(e -> {
 			adopterController.changeWindow(AdopterHomeWindow.key);
 			adopterController.run();
@@ -44,6 +45,7 @@ public class AdopterBar extends JPanel {
 			adopterController.changeWindow(AdopterAnimalsWindow.key);
 			adopterController.run();
 		});
+
 
 		//MenuPanel is used for home button and such. Is located at top left corner.
 		JPanel menuPanel = new JPanel(new FlowLayout());

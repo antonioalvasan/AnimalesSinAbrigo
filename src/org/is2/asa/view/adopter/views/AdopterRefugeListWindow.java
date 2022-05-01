@@ -71,7 +71,7 @@ public class AdopterRefugeListWindow extends windowClass {
 
         this.setLayout(new BorderLayout());
 
-        /**** TOP SECTION  ****/
+        /**** UPPER SECTION  ****/
 
         JPanel top = new JPanel();
         top.setLayout(new BoxLayout(top, BoxLayout.Y_AXIS));
@@ -93,7 +93,7 @@ public class AdopterRefugeListWindow extends windowClass {
         top.add(searchPanel);
 
 
-        /**** BOTTOM SECTION ****/
+        /**** LOWER SECTION ****/
 
         JPanel bottom = new JPanel();
         bottom.setLayout(new BoxLayout(bottom, BoxLayout.Y_AXIS));

@@ -6,6 +6,8 @@ import org.is2.asa.view.windowClass;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -86,6 +88,49 @@ public class AdopterUserInfoWindow2 extends windowClass {
             panels.get(i).add(data.get(i).getTextField());
             change_data_here.add(panels.get(i));
         }
+        //adding delete user button
+        JButton deleteUser = new JButton("Delete User");
+
+        deleteUser.addActionListener(e -> {
+            Dialog deleteDialog = new JDialog();
+            JPanel buttons = new JPanel(new FlowLayout());
+            JButton yesButton = new JButton("Yes");
+            JButton noButton = new JButton("No");
+            buttons.add(yesButton);
+            buttons.add(noButton);
+            deleteDialog.add(buttons);
+            //deleteDialog.setShape(new Ellipse2D.Double(0,0,300,300));
+            deleteDialog.setSize(300,300);
+            deleteDialog.setVisible(true);
+
+            yesButton.addActionListener(e1 -> {
+                adopterController.deleteUser();
+                try {
+                    adopterController.saveData();
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                System.exit(0);
+            });
+
+            noButton.addActionListener(e1 -> {
+                deleteDialog.dispose();
+            });
+
+
+        });
+
+        change_data_here.add(deleteUser);
+        //example
+        /*
+        panels.add(new JPanel(new FlowLayout()));
+        panels.get(i).setBackground(Color.GRAY);
+        data.get(i).getFirst().setFont(new Font("Arial", Font.BOLD, 25));
+        data.get(i).getSecond().setFont(new Font("Arial", Font.BOLD, 25));
+        panels.get(i).add(data.get(i).getFirst());
+        panels.get(i).add(data.get(i).getSecond());
+        leftP.add(panels.get(i));*/
+        //
 
         save.setOpaque(true);
         save.setBackground(Color.LIGHT_GRAY);
