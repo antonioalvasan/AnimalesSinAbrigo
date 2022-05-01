@@ -47,8 +47,9 @@ public class RefugeHomeWindow extends windowClass {
         //Welcome panel
         welcomePanel.setBackground(Color.LIGHT_GRAY);
 
-        JLabel welcomeLabel = new JLabel("<html><body><br>Welcome," + refugeCtrl.getName() + "<body><html>");
-        JLabel descriptionLabel = new JLabel("<html><body>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt " +
+        JLabel welcomeLabel = new JLabel("<html><body><br>Welcome, " + refugeCtrl.getName() + "<body><html>");
+        JLabel descriptionLabel = new JLabel(
+                "<html><body>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt " +
                 "<br>ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip " +
                 "<br>ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
                 "<br>nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim " +
@@ -60,7 +61,6 @@ public class RefugeHomeWindow extends windowClass {
 
         welcomePanel.add(welcomeLabel, BorderLayout.NORTH);
         welcomePanel.add(descriptionLabel, BorderLayout.CENTER);
-
 
         mainPanel.add(titlePanel, BorderLayout.CENTER);
         mainPanel.add(welcomePanel, BorderLayout.SOUTH);

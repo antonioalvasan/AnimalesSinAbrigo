@@ -34,8 +34,11 @@ public class RefugeController extends JFrame {
     //LoggedUser info
     private User loggedUser;
 
+    //Animal info (in case you want to add, change or delete an animal)
+    Animal animal;
+
     //Frame and windows info
-    private final JFrame viewFrame; //Global Frame. Is always visible.
+    public final JFrame viewFrame; //Global Frame. Is always visible.
     private windowClass currentView; //Panel visible inside frame. It changes depending on the window.
     BuilderBasedWindowFactory builderBasedWindowFactory;
 
@@ -118,7 +121,6 @@ public class RefugeController extends JFrame {
             }
         });
     }
-
 
     public void changeUserData(String username, String password, String name, String province, String address, String tlf) {
         loggedUser.changeUserData(username, password,name,province,address, tlf);
@@ -217,4 +219,19 @@ public class RefugeController extends JFrame {
         this.userDao.delete(loggedUser);
     }
 
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
+    }
+
+    public void deleteAnimal(Animal animal) {
+        animalDao.delete(animal);
+    }
+
+    public void updateAnimal(Animal animal) {
+        animalDao.update(animal);
+    }
 }

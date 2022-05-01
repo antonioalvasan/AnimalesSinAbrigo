@@ -47,35 +47,30 @@ public class AdopterUserInfoWindow2 extends windowClass {
         modify.setOpaque(true);
         modify.setBorder(BorderFactory.createLineBorder(Color.black));
 
-        JTextField field1= new JTextField();
-        field1.setColumns(10);
-        field1.setText(adopterController.getUsername());
-        Pair username = new Pair( new JLabel("Username:"), field1);
+        JTextField usernameText= new JTextField(adopterController.getUsername());
+        usernameText.setColumns(10);
+        Pair username = new Pair( new JLabel("Username:"), usernameText);
 
-        JTextField field2= new JTextField();
-        field2.setColumns(10);
-        field2.setText(adopterController.getPassword());
-        Pair password = new Pair( new JLabel("Password:"),field2);
+        JTextField passwordText= new JTextField(adopterController.getPassword());
+        passwordText.setColumns(10);
+        Pair password = new Pair( new JLabel("Password:"),passwordText);
 
-        JTextField field6= new JTextField();
-        field6.setColumns(10);
-        field6.setText(adopterController.getName());
-        Pair name = new Pair( new JLabel("Name:"),field6);
+        JTextField nameText= new JTextField(adopterController.getName());
+        nameText.setColumns(10);
+        Pair name = new Pair( new JLabel("Name:"),nameText);
 
-        JTextField field3= new JTextField();
-        field3.setColumns(10);
-        field3.setText(adopterController.getProvince());
-        Pair province = new Pair( new JLabel("Province:"),field3);
+        JTextField provinceText= new JTextField(adopterController.getProvince());
+        provinceText.setColumns(10);
+        Pair province = new Pair( new JLabel("Province:"),provinceText);
 
-        JTextField field4= new JTextField();
-        field4.setColumns(10);
-        field4.setText(adopterController.getUsername());
-        Pair address = new Pair( new JLabel("Address:"),field4);
+        JTextField addressText= new JTextField(adopterController.getUsername());
+        addressText.setColumns(10);
+        Pair address = new Pair( new JLabel("Address:"),addressText);
 
-        JTextField field5= new JTextField();
-        field5.setColumns(10);
-        field5.setText(adopterController.getTlf());
-        Pair tlf = new Pair( new JLabel("Phone number:"),field5);
+        JTextField tlfText= new JTextField(adopterController.getTlf());
+        tlfText.setColumns(10);
+        Pair tlf = new Pair( new JLabel("Phone number:"),tlfText);
+
         JButton save = new JButton("Save data");
 
         ArrayList<Pair> data = new ArrayList<>(Arrays.asList(username, password, name, province, address, tlf));

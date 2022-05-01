@@ -22,18 +22,6 @@ public class RefugeAnimalPanel extends JPanel {
         this.animal = animal;
     }
 
-    private record Pair(JLabel first, JLabel second) {
-
-        public JLabel getFirst() {
-            return first;
-        }
-
-        public JLabel getSecond() {
-            return second;
-        }
-
-    }
-
     public void prepare_panel() {
 
         this.setBackground(Color.GRAY);
