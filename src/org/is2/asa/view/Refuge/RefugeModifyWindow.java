@@ -32,6 +32,8 @@ public class RefugeModifyWindow extends windowClass {
 
     }
 
+
+
     public void prepare_panel() {
         this.setLayout(new BorderLayout());
 
@@ -45,12 +47,36 @@ public class RefugeModifyWindow extends windowClass {
         modify.setOpaque(true);
         modify.setBorder(BorderFactory.createLineBorder(Color.black));
 
-        Pair username = new Pair( new JLabel("Username:"), new JTextField("Write your new username here..."));
-        Pair password = new Pair( new JLabel("Password:"),new JTextField("Write your new password"));
-        Pair name = new Pair( new JLabel("Name:"),new JTextField("Write your new name here..."));
-        Pair province = new Pair( new JLabel("Province:"), new JTextField("Write your new province here..."));
-        Pair address = new Pair( new JLabel("Address:"), new JTextField("Write your new address here..."));
-        Pair tlf = new Pair( new JLabel("Phone number:"), new JTextField("Write your new phone number here..."));
+
+        JTextField field1= new JTextField();
+        field1.setColumns(10);
+        field1.setText(refugeCtrl.getUsername());
+        Pair username = new Pair( new JLabel("Username:"), field1);
+
+        JTextField field2= new JTextField();
+        field2.setColumns(10);
+        field2.setText(refugeCtrl.getPassword());
+        Pair password = new Pair( new JLabel("Password:"),field2);
+
+        JTextField field6= new JTextField();
+        field6.setColumns(10);
+        field6.setText(refugeCtrl.getName());
+        Pair name = new Pair( new JLabel("Name:"),field6);
+
+        JTextField field3= new JTextField();
+        field3.setColumns(10);
+        field3.setText(refugeCtrl.getProvince());
+        Pair province = new Pair( new JLabel("Province:"),field3);
+
+        JTextField field4= new JTextField();
+        field4.setColumns(10);
+        field4.setText(refugeCtrl.getUsername());
+        Pair address = new Pair( new JLabel("Address:"),field4);
+
+        JTextField field5= new JTextField();
+        field5.setColumns(10);
+        field5.setText(refugeCtrl.getTlf());
+        Pair tlf = new Pair( new JLabel("Phone number:"),field5);
 
         ArrayList<Pair> data = new ArrayList<>(Arrays.asList(username, password, name, province, address, tlf));
         ArrayList<JPanel> panels = new ArrayList<>();
