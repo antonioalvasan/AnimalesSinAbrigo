@@ -36,6 +36,8 @@ public class BuilderBasedWindowFactory {
         builders.add(new RefugeRequestWindowBuilder());
         builders.add(new RefugeAnimalsWindowBuilder());
         builders.add(new RefugeAddAnimalWindowBuilder());
+        builders.add(new InfoAnimalRefugeBuilder());
+        builders.add(new ModifyInfoAnimalRefugeBuilder());
     }
 
     public windowClass createInstance(String key){

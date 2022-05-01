@@ -45,12 +45,14 @@ public class AnimalDao implements Dao<Animal>{
 
     @Override
     public void update(Animal animal) {
+
         if(existsAnimal(animal)){
-            animals.get(animal.getIdentifier()).setName(animal.getName());
-            animals.get(animal.getIdentifier()).setAge(animal.getAge());
-            animals.get(animal.getIdentifier()).setWeight(animal.getWeight());
-            animals.get(animal.getIdentifier()).setDescription(animal.getDescription());
-            animals.get(animal.getIdentifier()).changeState(animal.getState());
+            int i=findanimal(animal);
+            animals.get(i).setName(animal.getName());
+            animals.get(i).setAge(animal.getAge());
+            animals.get(i).setWeight(animal.getWeight());
+            animals.get(i).setDescription(animal.getDescription());
+            animals.get(i).changeState(animal.getState());
         }
     }
 
@@ -90,6 +92,16 @@ public class AnimalDao implements Dao<Animal>{
         animalsJSON.put("animals", animalsJSONArray);
 
         return animalsJSON.toString();
+    }
+    public int findanimal(Animal animal){
+        int i = 0;
+        boolean exists = false;
+        while(!exists && i < animals.size()){
+            if(Objects.equals(animals.get(i).getIdentifier(), animal.getIdentifier())) exists = true; // Null safe equals
+            else i++;
+        }
+        if (i==animals.size()) return -1;
+        return i;
     }
 
 }

@@ -83,9 +83,11 @@ public class AdopterAnimalPanel extends JPanel {
 				panel.setBackground(Color.LIGHT_GRAY);
 				centre.setBackground(Color.lightGray);
 
-				request.setSize(new Dimension(500, 500));
+				request.setSize(new Dimension(500, 200));
 				request.add(panel);
+				request.setLocationRelativeTo(null);
 				request.setVisible(true);
+
 
 				yes.addActionListener(e1 -> {
 					animal.changeState(new AdoptionRequestedState(animal));
