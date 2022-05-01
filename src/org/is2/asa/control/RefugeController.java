@@ -119,6 +119,11 @@ public class RefugeController extends JFrame {
         });
     }
 
+
+    public void changeUserData(String username, String password, String name, String province, String address, String tlf) {
+        loggedUser.changeUserData(username, password,name,province,address, tlf);
+    }
+
     /*
      * Stores data into the files given as input if the user chooses to do so.
      */
@@ -135,16 +140,6 @@ public class RefugeController extends JFrame {
     public void changeWindow(String key) {
         currentView = builderBasedWindowFactory.createInstance(key);
         viewFrame.getContentPane().removeAll();
-    }
-
-    public void changeUserData(String username, String password, String name, String province,
-                               String address, String tlf) {
-        loggedUser.setUsername(username);
-        loggedUser.setPassword(password);
-        loggedUser.setName(name);
-        loggedUser.setProvince(province);
-        loggedUser.setAddress(address);
-        loggedUser.setTlf(tlf);
     }
 
     public String getUsername() {
@@ -176,6 +171,7 @@ public class RefugeController extends JFrame {
     }
 
     public void createAnimal(String name, String age, String weight, String specie, String race, String desc) {
+
         int id = animalDao.getAll().size() + 1;
 
         if(specie.equals("DOG")){

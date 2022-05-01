@@ -93,7 +93,8 @@ public class RefugeModifyWindow extends windowClass {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                refugeCtrl.changeUserData(username.getTextField().getText(),
+                refugeCtrl.changeUserData(
+                        username.getTextField().getText(),
                         password.getTextField().getText(),
                         name.getTextField().getText(),
                         province.getTextField().getText(),

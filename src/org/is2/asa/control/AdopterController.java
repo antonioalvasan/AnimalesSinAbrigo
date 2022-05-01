@@ -5,6 +5,7 @@ import org.is2.asa.dao.UserDao;
 import org.is2.asa.model.Animal;
 import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
+import org.is2.asa.model.states.NotAdoptedState;
 import org.is2.asa.view.*;
 import org.is2.asa.view.viewFactories.BuilderBasedWindowFactory;
 import org.is2.asa.view.adopter.views.AdopterHomeWindow;
@@ -114,7 +115,7 @@ public class AdopterController {
     /*
     * Stores data into the files given as input if the user chooses to do so.
     */
-    private void saveData() throws FileNotFoundException {
+    public void saveData() throws FileNotFoundException {
         OutputStream outUsers = new FileOutputStream(_usersFile);
         PrintStream printUsers = new PrintStream(outUsers);
         printUsers.print(userDao.storeAsJSON());

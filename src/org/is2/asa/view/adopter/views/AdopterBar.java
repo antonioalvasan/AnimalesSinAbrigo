@@ -46,6 +46,7 @@ public class AdopterBar extends JPanel {
 			adopterController.run();
 		});
 
+
 		//MenuPanel is used for home button and such. Is located at top left corner.
 		JPanel menuPanel = new JPanel(new FlowLayout());
 		menuPanel.setBackground(Color.LIGHT_GRAY);
