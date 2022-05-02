@@ -49,7 +49,7 @@ public class AdopterBar extends JPanel {
 
 		//MenuPanel is used for home button and such. Is located at top left corner.
 		JPanel menuPanel = new JPanel(new FlowLayout());
-		menuPanel.setBackground(Color.LIGHT_GRAY);
+		menuPanel.setBackground(new Color(197, 237, 253, 207));
 		
 		menuPanel.add(home);
 		menuPanel.add(refuge);
@@ -63,7 +63,7 @@ public class AdopterBar extends JPanel {
 
 		//UserPanel is set for username and userIcon and is located at top right corner.
 		JPanel userPanel = new JPanel(new FlowLayout());
-		userPanel.setBackground(Color.LIGHT_GRAY);
+		userPanel.setBackground(new Color(197, 237, 253, 207));
 		
 		JButton user_name = new JButton(adopterController.getUsername());
 		JButton user_icon = new JButton(new ImageIcon("imagen.png"));
@@ -85,7 +85,7 @@ public class AdopterBar extends JPanel {
 		
 		this.add(menuPanel, BorderLayout.WEST);
 		this.add(userPanel, BorderLayout.EAST);
-		this.setBackground(Color.LIGHT_GRAY);
+		this.setBackground(new Color(197, 237, 253, 207));
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 	}

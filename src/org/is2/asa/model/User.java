@@ -14,11 +14,25 @@ public class User {
     private String address;
     private String tlf;
     private String description;
+    public static int createdUsers;
 
-    public User(Role role, int ID, String username, String password, String name,
-                String province, String address, String phone, String desc){
+    public User(Role role, int ID, String username, String password, String name, String province, String address, String phone, String desc){
         this.role = role;
         this.ID=ID;
+        this.username=username;
+        this.password=password;
+        this.name = name;
+        this.province = province;
+        this.address = address;
+        this.tlf = phone;
+        this.description = desc;
+        this.createdUsers = ID;
+    }
+
+    public User(Role role, String username, String password, String name, String province, String address, String phone, String desc){
+        this.role = role;
+        this.createdUsers++;
+        this.ID=createdUsers;
         this.username=username;
         this.password=password;
         this.name = name;

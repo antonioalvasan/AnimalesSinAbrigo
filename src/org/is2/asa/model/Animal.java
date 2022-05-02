@@ -19,26 +19,31 @@ public abstract class Animal {
     private String img;
     private int originalRefuge;
     private AnimalState state;
+    public static int createdAnimals;
 
     public Animal(int identifier, int linkedUser, String name, int age, double weight, String description, String img,
                   int orginalRefuge, String state) {
         this.identifier = identifier;
+        this.createdAnimals = identifier;
         this.linkedUser = linkedUser;
         this.name = name;
         this.age = age;
         this.weight = weight;
         this.description = description;
 
-        if(state.equals("Not adopted")) this.state = new NotAdoptedState(this);
-        else if(state.equals("Adopted")) this.state = new AdoptedState(this);
-        else if(state.equals("Adoption requested")) this.state = new AdoptionRequestedState(this);
+        switch (state) {
+            case "Not adopted" -> this.state = new NotAdoptedState(this);
+            case "Adopted" -> this.state = new AdoptedState(this);
+            case "Adoption requested" -> this.state = new AdoptionRequestedState(this);
+        }
 
         this.img = img;
         this.originalRefuge = orginalRefuge;
     }
 
-    public Animal(int identifier, int linkedUser, String name, int age, double weight, String description, String img) {
-        this.identifier = identifier;
+    public Animal(int linkedUser, String name, int age, double weight, String description, String img) {
+        this.createdAnimals++;
+        this.identifier = createdAnimals;
         this.linkedUser = linkedUser;
         this.name = name;
         this.age = age;
@@ -48,7 +53,6 @@ public abstract class Animal {
         this.img = img;
         this.originalRefuge = linkedUser;
     }
-
 
     public void changeState(AnimalState state){
         this.state = state;

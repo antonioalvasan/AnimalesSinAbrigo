@@ -49,7 +49,7 @@ public class RefugeBar extends windowClass {
         JButton contact = new JButton("Contact");
 
         JPanel left = new JPanel(new FlowLayout());
-        left.setBackground(Color.LIGHT_GRAY);
+        left.setBackground(new Color(197, 237, 253, 207));
 
         left.add(home);
         left.add(animals);
@@ -62,7 +62,7 @@ public class RefugeBar extends windowClass {
         Utilities.setTransparent(contact);
 
         JPanel right = new JPanel(new FlowLayout());
-        right.setBackground(Color.LIGHT_GRAY);
+        right.setBackground(new Color(197, 237, 253, 207));
 
         JButton user_name = new JButton(refugeCtrl.getUsername());
         JButton user_icon = new JButton(new ImageIcon("imagen.png"));
@@ -84,7 +84,7 @@ public class RefugeBar extends windowClass {
 
         this.add(left, BorderLayout.WEST);
         this.add(right, BorderLayout.EAST);
-        this.setBackground(Color.LIGHT_GRAY);
+        this.setBackground(new Color(197, 237, 253, 207));
         this.setBorder(BorderFactory.createLineBorder(Color.black));
 
     }

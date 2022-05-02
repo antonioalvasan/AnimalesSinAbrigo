@@ -37,15 +37,30 @@ public class RefugeModifyWindow extends windowClass {
     public void prepare_panel() {
         this.setLayout(new BorderLayout());
 
+
+        RefugeBar bar = new RefugeBar(refugeCtrl);
+        bar.prepare_panel();
+        this.add(bar, BorderLayout.NORTH);
+
+        JPanel centerPanel = new JPanel(new BorderLayout());
         JPanel change_data_here = new JPanel();
         change_data_here.setLayout(new BoxLayout(change_data_here, BoxLayout.Y_AXIS));
 
+        JPanel topPanel = new JPanel(new BorderLayout());
         JLabel modify = new JLabel("<html><body>Modificar datos<br> <body><html>");
         modify.setFont(new Font("Arial",Font.BOLD,30));
         modify.setHorizontalAlignment(JLabel.CENTER);
         modify.setBackground(Color.LIGHT_GRAY);
         modify.setOpaque(true);
         modify.setBorder(BorderFactory.createLineBorder(Color.black));
+        topPanel.add(modify, BorderLayout.CENTER);
+
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener(e->{
+            refugeCtrl.changeWindow(RefugeInfoWindow.key);
+            refugeCtrl.run();
+        });
+        topPanel.add(backButton, BorderLayout.LINE_START);
 
 
         JTextField usernameText = new JTextField(refugeCtrl.getUsername());
@@ -101,9 +116,11 @@ public class RefugeModifyWindow extends windowClass {
         save.setOpaque(true);
         save.setBackground(Color.LIGHT_GRAY);
 
-        this.add(modify, BorderLayout.NORTH);
-        this.add(change_data_here, BorderLayout.CENTER);
-        this.add(save, BorderLayout.SOUTH);
 
+        centerPanel.add(topPanel, BorderLayout.NORTH);
+        centerPanel.add(change_data_here, BorderLayout.CENTER);
+        centerPanel.add(save, BorderLayout.SOUTH);
+
+        this.add(centerPanel, BorderLayout.CENTER);
     }
 }

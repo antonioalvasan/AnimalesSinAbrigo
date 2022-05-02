@@ -177,15 +177,15 @@ public class RefugeController extends JFrame {
 
     public void createAnimal(String name, String age, String weight, String specie, String race, String desc) {
 
-        int id = animalDao.getAll().size() + 1;
+
 
         if(specie.equals("DOG")){
-            Dog newDog = new Dog(id, loggedUser.getID(), name, Integer.parseInt(age),
+            Dog newDog = new Dog(loggedUser.getID(), name, Integer.parseInt(age),
                     Double.parseDouble(weight), specie, DogRace.valueOf(race), desc);
             animalDao.add(newDog);
         }
         else if(specie.equals("CAT")){
-            Cat newCat = new Cat(id, loggedUser.getID(), name, Integer.parseInt(age),
+            Cat newCat = new Cat( loggedUser.getID(), name, Integer.parseInt(age),
                     Double.parseDouble(weight), specie, CatRace.valueOf(race), desc);
             animalDao.add(newCat);
         }
@@ -220,7 +220,6 @@ public class RefugeController extends JFrame {
     public String getusername(int ID) {
         for (User u : userDao.getAll()) {
             if (u.getID() == ID) return u.getUsername();
-
         }
         return null;
     }

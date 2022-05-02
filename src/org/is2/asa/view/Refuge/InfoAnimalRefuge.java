@@ -103,9 +103,9 @@ public class InfoAnimalRefuge extends windowClass {
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
 
         Pair namePair = new Pair(new JLabel("Name:"), new JLabel(refugeCtrl.getAnimal().getName()));
-        Pair agePair = new Pair(new JLabel("Age:"), new JLabel(String.valueOf(refugeCtrl.getAnimal().getAge())));
+        Pair agePair = new Pair(new JLabel("Age:"), new JLabel(String.valueOf(refugeCtrl.getAnimal().getAge())+" Years"));
         Pair weightPair = new Pair(new JLabel("Weight:"), new JLabel(String.valueOf(
-                refugeCtrl.getAnimal().getWeight())));
+                refugeCtrl.getAnimal().getWeight()) + " Kg"));
         Pair speciePair = new Pair(new JLabel("Specie:"), new JLabel(refugeCtrl.getAnimal().getSpecies()));
         Pair racePair = new Pair(new JLabel("Race:"), new JLabel(refugeCtrl.getAnimal().getRace()));
 

@@ -40,7 +40,7 @@ public class NewRefugeCommand extends Command{
         System.out.print("Description (optional): ");
         String desc = scanner.nextLine();
 
-        User loggedUser = new User(Role.REFUGE, userDao.getAll().size()+1, username, password, name, province,
+        User loggedUser = new User(Role.REFUGE, username, password, name, province,
                 address, tlf, desc);
         userDao.add(loggedUser);
 

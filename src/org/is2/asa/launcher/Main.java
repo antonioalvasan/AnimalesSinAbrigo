@@ -6,6 +6,7 @@ import org.is2.asa.control.commands.Command;
 import org.is2.asa.control.commands.CommandGenerator;
 import org.is2.asa.dao.AnimalDao;
 import org.is2.asa.dao.UserDao;
+import org.is2.asa.model.Animal;
 import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
 
@@ -75,12 +76,14 @@ public class Main {
     }
 
     private static void initUserDatabase() throws FileNotFoundException {
+        User.createdUsers = 0;
         userDao = new UserDao(); //Initialize the user database.
         InputStream inFile = new FileInputStream(_usersFile); //Load input stream.
         userDao.load(inFile);
     }
 
     private static void initAnimalsDatabase() throws FileNotFoundException {
+        Animal.createdAnimals = 0;
         animalDao = new AnimalDao(); //Initialize the user database.
         InputStream inFile = new FileInputStream(_animalsFile); //Load input stream.
         animalDao.load(inFile);
