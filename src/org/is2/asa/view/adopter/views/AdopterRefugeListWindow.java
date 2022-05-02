@@ -3,14 +3,11 @@ package org.is2.asa.view.adopter.views;
 import org.is2.asa.control.AdopterController;
 import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
-import org.is2.asa.view.adopter.AdopterWindowCodes;
 import org.is2.asa.view.windowClass;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.util.*;
-import java.util.List;
 
 public class AdopterRefugeListWindow extends windowClass {
 
