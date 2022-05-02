@@ -10,6 +10,7 @@ import org.is2.asa.model.Animal;
 import org.is2.asa.model.Role;
 import org.is2.asa.model.User;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -42,7 +43,8 @@ public class Main {
     private static Scanner scanner;
 
     public static void main(String[] args) {
-        try{
+        try {
+
             scanner = new Scanner(System.in);
             parseArgs(args);
             initUserDatabase();
@@ -55,23 +57,22 @@ public class Main {
                 String[] input = s.toLowerCase().trim().split(" ");
 
                 Command command = CommandGenerator.parse(input);
-                loggedUser = command.execute(userDao, scanner);
+                if (command == null) System.out.println("[ERROR] This command dosen't exist. Please try again");
+                else loggedUser = command.execute(userDao, scanner);
 
-            } while(loggedUser == null);
+            } while (loggedUser == null);
 
-            if(loggedUser.getRole() == Role.REFUGE){
+            if (loggedUser.getRole() == Role.REFUGE) {
                 refugeCtrl = new RefugeController(loggedUser, userDao, animalDao, _usersFile, _animalsFile);
                 refugeWindow();
-            }
-            else {
+            } else {
                 adopterCtrl = new AdopterController(loggedUser, userDao, animalDao, _usersFile, _animalsFile);
                 adopterWindow();
             }
         }
-        catch(Exception e){
-            System.err.println("Something went wrong ...");
-            System.err.println();
+        catch(FileNotFoundException e){
             e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
