@@ -39,7 +39,7 @@ public class RefugeAnimalsWindow extends windowClass {
         searchTextField.setPreferredSize(new Dimension(300, 20));
 
         JButton searchButton = new JButton("Search");
-        JButton filters = new JButton("Filters");
+
         JButton addAnimalButton = new JButton("Add animal");
 
         addAnimalButton.addActionListener(e->{
@@ -54,7 +54,7 @@ public class RefugeAnimalsWindow extends windowClass {
         bar.add(addAnimalButton);
 
         searchPanel.add(bar, BorderLayout.WEST);
-        searchPanel.add(filters, BorderLayout.EAST);
+
         searchPanel.setVisible(true);
         searchPanel.setBackground(Color.LIGHT_GRAY);
         searchPanel.setBorder(BorderFactory.createLineBorder(Color.black));

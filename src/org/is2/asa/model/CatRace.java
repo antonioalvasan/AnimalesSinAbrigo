@@ -4,12 +4,10 @@ package org.is2.asa.model;
 //Cambiar...
 public enum CatRace {
     PERSIAN("Persian"),
-    BORDER_COLLIE ("Border Collie"),
-    ALASKAN_MALAMUTE ("Alaskan Malamute"),
-    BULLDOG ("Perro toro"),
-    AKITA ("Akita"),
-    BULLTERRIER ("Bull Terrier"),
-    LABRADOR ("Labrador");
+    SIAMES ("Siames"),
+    SPHYNX ("Sphynx"),
+    AKITA ("Akita");
+
 
 
     private String displayName;

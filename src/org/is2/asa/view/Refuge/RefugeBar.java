@@ -46,7 +46,7 @@ public class RefugeBar extends windowClass {
             refugeCtrl.run();
         });
 
-        JButton contact = new JButton("Contact");
+
 
         JPanel left = new JPanel(new FlowLayout());
         left.setBackground(new Color(197, 237, 253, 207));
@@ -54,12 +54,12 @@ public class RefugeBar extends windowClass {
         left.add(home);
         left.add(animals);
         left.add(requests);
-        left.add(contact);
+
 
         Utilities.setTransparent(home);
         Utilities.setTransparent(animals);
         Utilities.setTransparent(requests);
-        Utilities.setTransparent(contact);
+
 
         JPanel right = new JPanel(new FlowLayout());
         right.setBackground(new Color(197, 237, 253, 207));

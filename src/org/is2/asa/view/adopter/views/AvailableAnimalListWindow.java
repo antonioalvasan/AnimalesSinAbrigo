@@ -43,10 +43,10 @@ public class AvailableAnimalListWindow extends windowClass {
         JTextField searchBar = new JTextField("Search...");
         searchBar.setPreferredSize(new Dimension(300, 20));
         JButton search_button = new JButton("Search");
-        JButton filters = new JButton("Filters");
+
 
         Utilities.setTransparent(search_button);
-        Utilities.setTransparent(filters);
+
 
         JPanel z = new JPanel(new FlowLayout());
         z.setBackground(Color.LIGHT_GRAY);
@@ -55,10 +55,10 @@ public class AvailableAnimalListWindow extends windowClass {
 
         //Upper panel mods
         panel_sup1.add(z, BorderLayout.WEST);
-        panel_sup1.add(filters, BorderLayout.EAST);
 
-        JLabel refugeName = new JLabel("REFUGIO: " + adopterController.getCurrentRefuge().getName());
-        refugeName.setFont(new Font("Arial", Font.BOLD, 30));
+
+        JLabel refugeName = new JLabel("Refugio: " + adopterController.getCurrentRefuge().getName() + "            Contacto: "+adopterController.getCurrentRefuge().getDescription());
+        refugeName.setFont(new Font("Arial", Font.BOLD, 25));
 
         panel_sup1.add(refugeName, BorderLayout.CENTER);
 

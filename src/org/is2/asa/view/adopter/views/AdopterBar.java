@@ -26,8 +26,8 @@ public class AdopterBar extends JPanel {
 		this.setLayout(new BorderLayout());
 		
 		JButton home = new JButton("Home");
-		JButton refuge = new JButton("Refuge");
-		JButton contact = new JButton("Contact");
+		JButton refuge = new JButton("Refuges");
+
 		JButton myAnimals = new JButton("My Animals");
 
 
@@ -53,12 +53,12 @@ public class AdopterBar extends JPanel {
 		
 		menuPanel.add(home);
 		menuPanel.add(refuge);
-		menuPanel.add(contact);
+
 		menuPanel.add(myAnimals);
 		
 		Utilities.setTransparent(home);
 		Utilities.setTransparent(refuge);
-		Utilities.setTransparent(contact);
+
 		Utilities.setTransparent(myAnimals);
 
 		//UserPanel is set for username and userIcon and is located at top right corner.

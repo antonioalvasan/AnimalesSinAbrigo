@@ -21,7 +21,6 @@ public class BuilderBasedWindowFactory {
         builders.add(new AdopterHomeWindowBuilder());
         builders.add(new AdopterUserInfoWindowBuilder());
         builders.add(new AdopterUserInfoWindow2Builder());
-        builders.add(new RefugeContactWindowBuilder());
         builders.add(new SecondaryAdoptionWindow1Builder());
         builders.add(new SecondaryAdoptionWindow2Builder());
         builders.add(new AdopterRefugeListWindowBuilder());

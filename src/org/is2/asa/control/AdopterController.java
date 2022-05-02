@@ -36,10 +36,11 @@ public class AdopterController {
     private final String _usersFile;
     private final String _animalsFile;
     private ArrayList<windowClass> viewList;
-    private final JFrame viewFrame;
+    public final JFrame viewFrame;
     private windowClass currentView;
     BuilderBasedWindowFactory builderBasedWindowFactory;
     private User currentRefuge;
+    Animal animal;
 
     /*
     * ADOPTER CONTROLLER CONSTRUCTOR
@@ -244,7 +245,13 @@ public class AdopterController {
         this.userDao.delete(loggedUser);
     }
 
+    public Animal getAnimal() {
+        return animal;
+    }
 
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
+    }
 }
 
 

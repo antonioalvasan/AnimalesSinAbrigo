@@ -3,7 +3,10 @@ package org.is2.asa.view.adopter.views;
 import org.is2.asa.control.AdopterController;
 import org.is2.asa.model.Animal;
 import org.is2.asa.model.states.AdoptionRequestedState;
+import org.is2.asa.view.Refuge.InfoAnimalRefuge;
+import org.is2.asa.view.Refuge.ModifyAnimalWindow;
 import org.is2.asa.view.Refuge.RefugeAnimalPanel;
+import org.is2.asa.view.Refuge.RefugeAnimalsWindow;
 import org.is2.asa.view.Utilities;
 
 import java.awt.*;
@@ -37,7 +40,7 @@ public class AdopterAnimalPanel extends JPanel {
 
 	public void prepare_panel() {
 
-		this.setBackground(Color.WHITE);
+		this.setBackground(Color.GRAY);
 		this.setLayout(new FlowLayout());
 
 		JButton animalImg = new JButton(new ImageIcon(animal.getImg()));
@@ -52,8 +55,8 @@ public class AdopterAnimalPanel extends JPanel {
 		Label animalDesc = new Label(animal.getDescription());
 		animalName.setMinimumSize(new Dimension(100,30));
 		animalDesc.setMinimumSize(new Dimension(100,30));
-		animalName.setBackground(Color.LIGHT_GRAY);
-		animalDesc.setBackground(Color.LIGHT_GRAY);
+		animalName.setBackground(Color.gray);
+		animalDesc.setBackground(Color.gray);
 
 
 		panel_centre.add(animalName, BorderLayout.NORTH);
@@ -65,20 +68,42 @@ public class AdopterAnimalPanel extends JPanel {
 		infoButton.setBackground(Color.LIGHT_GRAY);
 
 		infoButton.addActionListener(e->{
+
+			adopterController.setAnimal(animal);
+
 			JDialog infoDialog = new JDialog();
+
+
+			JPanel mainPanel = new JPanel(new BorderLayout());
+
+
+			//Top Panel
+			JPanel topPanel = new JPanel();
+
+			JLabel topMessage = new JLabel(adopterController.getAnimal().getName() + "'s data");
+			topMessage.setFont(new Font("Arial", Font.BOLD, 30));
+			topMessage.setHorizontalAlignment(JLabel.CENTER);
+
+			topPanel.add(topMessage);
+			topPanel.setBackground(Color.LIGHT_GRAY);
+			topPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+
+
+			//Info Panel
 			JPanel infoPanel = new JPanel();
+			infoPanel.setBackground(Color.GRAY);
+			infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
 
-			Pair namePair = new Pair( new JLabel("Name:"), new JLabel(animal.getName()));
-			Pair agePair = new Pair( new JLabel("Age:"), new JLabel(String.valueOf(animal.getAge())));
-			Pair weightPair = new Pair( new JLabel("Weight:"), new JLabel(String.valueOf(animal.getWeight())));
-			Pair speciePair = new Pair( new JLabel("Specie:"), new JLabel(animal.getSpecies()));
-			Pair racePair = new Pair( new JLabel("Race:"), new JLabel(animal.getRace()));
+			Pair namePair = new Pair(new JLabel("Name:"), new JLabel(adopterController.getAnimal().getName()));
+			Pair agePair = new Pair(new JLabel("Age:"), new JLabel(String.valueOf(adopterController.getAnimal().getAge())+" Years"));
+			Pair weightPair = new Pair(new JLabel("Weight:"), new JLabel(String.valueOf(adopterController.getAnimal().getWeight()) + " Kg"));
+			Pair speciePair = new Pair(new JLabel("Specie:"), new JLabel(adopterController.getAnimal().getSpecies()));
+			Pair racePair = new Pair(new JLabel("Race:"), new JLabel(adopterController.getAnimal().getRace()));
 
-			ArrayList<Pair> data = new ArrayList<>(Arrays.asList(namePair, agePair, weightPair, speciePair,
-					racePair));
+			ArrayList<Pair> data = new ArrayList<>(Arrays.asList(namePair, agePair, weightPair, speciePair, racePair));
 			ArrayList<JPanel> panels = new ArrayList<>();
 
-			for(int i = 0; i<data.size(); i++){
+			for (int i = 0; i < data.size(); i++) {
 				panels.add(new JPanel(new FlowLayout()));
 				panels.get(i).setBackground(Color.GRAY);
 				data.get(i).getFirst().setFont(new Font("Arial", Font.BOLD, 25));
@@ -87,8 +112,15 @@ public class AdopterAnimalPanel extends JPanel {
 				panels.get(i).add(data.get(i).getSecond());
 				infoPanel.add(panels.get(i));
 			}
-			infoDialog.setSize(new Dimension(500, 500));
+
+
+
+
+			mainPanel.add(topPanel, BorderLayout.NORTH);
+			mainPanel.add(infoPanel, BorderLayout.CENTER);
+			infoDialog.setSize(new Dimension(500, 300));
 			infoDialog.add(infoPanel, BorderLayout.CENTER);
+			infoDialog.setLocationRelativeTo(null);
 			infoDialog.setVisible(true);
 		});
 		this.add(infoButton);
@@ -144,7 +176,7 @@ public class AdopterAnimalPanel extends JPanel {
 
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setMinimumSize(new Dimension(this.getWidth(),200));
-		this.setPreferredSize(new Dimension(600, 200));
+		this.setPreferredSize(new Dimension(600, 230));
 
 
 	}

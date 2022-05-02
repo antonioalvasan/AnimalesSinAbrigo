@@ -24,6 +24,8 @@ public class RefugeAnimalPanel extends JPanel {
 
     public void prepare_panel() {
 
+
+
         this.setBackground(Color.GRAY);
         this.setLayout(new FlowLayout());
 
@@ -57,7 +59,7 @@ public class RefugeAnimalPanel extends JPanel {
 
         this.add(infoButton, FlowLayout.RIGHT);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
-        this.setPreferredSize(new Dimension(600, 100));
+        this.setPreferredSize(new Dimension(600, 230));
 
     }
 }
