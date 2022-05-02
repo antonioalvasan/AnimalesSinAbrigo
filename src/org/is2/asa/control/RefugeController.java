@@ -232,9 +232,9 @@ public class RefugeController extends JFrame {
         * deleted from the app.
         */
 
-        for(Animal a: animalDao.getAll()){
-            if(a.getOriginalRefuge() == loggedUser.getID()){
-                animalDao.delete(a);
+        for(int i = 0; i < animalDao.getAll().size(); i++){
+            if(animalDao.get(i).getOriginalRefuge() == loggedUser.getID()){
+                animalDao.delete(animalDao.get(i));
             }
         }
 
