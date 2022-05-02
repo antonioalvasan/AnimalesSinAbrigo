@@ -46,7 +46,7 @@ public class Dog extends Animal{
         data.put("description", getDescription());
         data.put("img", getImg());
         data.put("state", getState().toString());
-        data.put("originalRefuge", getOrginalRefuge());
+        data.put("originalRefuge", getOriginalRefuge());
         dog.put("data", data);
 
         return dog;

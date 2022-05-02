@@ -17,7 +17,7 @@ public abstract class Animal {
     private double weight;
     private String description;
     private String img;
-    private int orginalRefuge;
+    private int originalRefuge;
     private AnimalState state;
 
     public Animal(int identifier, int linkedUser, String name, int age, double weight, String description, String img,
@@ -34,7 +34,7 @@ public abstract class Animal {
         else if(state.equals("Adoption requested")) this.state = new AdoptionRequestedState(this);
 
         this.img = img;
-        this.orginalRefuge = orginalRefuge;
+        this.originalRefuge = orginalRefuge;
     }
 
     public Animal(int identifier, int linkedUser, String name, int age, double weight, String description, String img) {
@@ -46,7 +46,7 @@ public abstract class Animal {
         this.description = description;
         this.state= new NotAdoptedState(this);
         this.img = img;
-        this.orginalRefuge = linkedUser;
+        this.originalRefuge = linkedUser;
     }
 
 
@@ -116,8 +116,8 @@ public abstract class Animal {
         return null;
     }
 
-    public int getOrginalRefuge() {
-        return orginalRefuge;
+    public int getOriginalRefuge() {
+        return originalRefuge;
     }
 
     public abstract String getSpecies();

@@ -198,7 +198,7 @@ public class RefugeController extends JFrame {
         List<Animal> refugeAnimals = new ArrayList<>();
 
         for(Animal a: animalDao.getAll()){
-            if(a.getOrginalRefuge() == loggedUser.getID()){
+            if(a.getOriginalRefuge() == loggedUser.getID()){
                 refugeAnimals.add(a);
             }
         }
@@ -210,7 +210,7 @@ public class RefugeController extends JFrame {
         List<Animal> requestedAnimals = new ArrayList<>();
 
         for(Animal a: animalDao.getAll()){
-            if(a.getOrginalRefuge() == loggedUser.getID() && a.getState().toString().equals("Adoption requested")){
+            if(a.getOriginalRefuge() == loggedUser.getID() && a.getState().toString().equals("Adoption requested")){
                 requestedAnimals.add(a);
             }
         }

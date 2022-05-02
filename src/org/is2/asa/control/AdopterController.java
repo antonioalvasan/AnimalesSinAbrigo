@@ -12,7 +12,6 @@ import org.is2.asa.view.adopter.views.AdopterHomeWindow;
 //import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -239,7 +238,7 @@ public class AdopterController {
             if(this.animalDao.get(i).getLinkedUser() == loggedUser.getID()){
                 //this.animalDao.delete(this.animalDao.get(i));
                 this.animalDao.get(i).changeState(new NotAdoptedState(this.animalDao.get(i)));
-                this.animalDao.get(i).setLinkedUser(this.animalDao.get(i).getOrginalRefuge());
+                this.animalDao.get(i).setLinkedUser(this.animalDao.get(i).getOriginalRefuge());
             }
         }
         this.userDao.delete(loggedUser);

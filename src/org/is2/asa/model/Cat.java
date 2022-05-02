@@ -46,7 +46,7 @@ public class Cat extends Animal{
         data.put("description", getDescription());
         data.put("img", getImg());
         data.put("state", getState().toString());
-        data.put("originalRefuge", getOrginalRefuge());
+        data.put("originalRefuge", getOriginalRefuge());
         cat.put("data", data);
 
         return cat;
