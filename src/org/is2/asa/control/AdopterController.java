@@ -152,6 +152,9 @@ public class AdopterController {
     public String getUsername() {
         return loggedUser.getUsername();
     }
+    public int getID() {
+        return loggedUser.getID();
+    }
 
     public String getPassword() {
         return loggedUser.getPassword();
@@ -223,7 +226,7 @@ public class AdopterController {
         List<Animal> ownedAnimals = new ArrayList<>();
 
         for(Animal a: animalDao.getAll()){
-            if(a.getLinkedUser() == loggedUser.getID()){
+            if(a.getLinkedUser() == loggedUser.getID() && a.getState().toString().equals("Adopted")){
                 ownedAnimals.add(a);
             }
         }

@@ -91,6 +91,7 @@ public class AdopterAnimalPanel extends JPanel {
 
 				yes.addActionListener(e1 -> {
 					animal.changeState(new AdoptionRequestedState(animal));
+					animal.setLinkedUser(adopterController.getID());
 					request.dispose();
 					adopterController.changeWindow(AdopterRefugeListWindow.key);
 					adopterController.run();

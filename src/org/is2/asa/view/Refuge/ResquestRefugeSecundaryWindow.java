@@ -1,5 +1,11 @@
 package org.is2.asa.view.Refuge;
 
+import org.is2.asa.control.RefugeController;
+import org.is2.asa.model.Animal;
+import org.is2.asa.model.states.AdoptedState;
+import org.is2.asa.model.states.AdoptionRequestedState;
+import org.is2.asa.model.states.NotAdoptedState;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,6 +14,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ResquestRefugeSecundaryWindow extends JDialog {
+    private RefugeController refugeCtrl;
+    public ResquestRefugeSecundaryWindow(RefugeController ctrl){
+        this.refugeCtrl=ctrl;
+
+    }
+    private record Pair(JLabel first, JLabel second) {
+
+        public JLabel getFirst() {
+            return first;
+        }
+
+        public JLabel getSecond() {
+            return second;
+        }
+
+    }
     public void prepare_panel() {
 
 
@@ -16,7 +38,7 @@ public class ResquestRefugeSecundaryWindow extends JDialog {
         //Panel superior
         JPanel topPanel = new JPanel();
 
-        JLabel topMessage = new JLabel("Request Data");
+        JLabel topMessage = new JLabel(refugeCtrl.getusername(refugeCtrl.getAnimal().getLinkedUser())+"'s Request ");
         topMessage.setFont(new Font("Arial", Font.BOLD, 30));
         topMessage.setHorizontalAlignment(JLabel.CENTER);
         topMessage.setBackground(Color.LIGHT_GRAY);
@@ -41,7 +63,10 @@ public class ResquestRefugeSecundaryWindow extends JDialog {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                refugeCtrl.getAnimal().changeState(new AdoptedState(refugeCtrl.getAnimal()));
 
+                refugeCtrl.changeWindow(RefugeRequestWindow.key);
+                refugeCtrl.run();
                 ocultar();
             }
 
@@ -61,7 +86,10 @@ public class ResquestRefugeSecundaryWindow extends JDialog {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                refugeCtrl.getAnimal().changeState(new NotAdoptedState(refugeCtrl.getAnimal()));
+                refugeCtrl.getAnimal().setLinkedUser(refugeCtrl.getID());
+                refugeCtrl.changeWindow(RefugeRequestWindow.key);
+                refugeCtrl.run();
                 ocultar();
             }
 
@@ -72,22 +100,23 @@ public class ResquestRefugeSecundaryWindow extends JDialog {
         supButton2.setBackground(Color.LIGHT_GRAY);
 
 
-        JLabel specie = new JLabel("Specie: Dog");
-        JLabel Race = new JLabel("Race: Golden Retriever");
-        JLabel Identifier = new JLabel("Identifier: 1");
-        JLabel LinkedUser = new JLabel("LinkedUser: null");
-        JLabel Name = new JLabel("Name: Toby");
-        JLabel Age = new JLabel("Age: 10");
-        JLabel Weight = new JLabel("Weight: 80.03");
-        JLabel Description = new JLabel("Description: Soy bueno :)");
-        ArrayList<JLabel > data = new ArrayList<>(Arrays.asList(specie, Race, Identifier, LinkedUser, Name,Weight,Description));
+       Pair namePair = new Pair(new JLabel("Name:"), new JLabel(refugeCtrl.getAnimal().getName()));
+        Pair agePair = new Pair(new JLabel("Age:"), new JLabel(String.valueOf(refugeCtrl.getAnimal().getAge())));
+        Pair weightPair = new Pair(new JLabel("Weight:"), new JLabel(String.valueOf(refugeCtrl.getAnimal().getWeight())));
+        Pair speciePair = new Pair(new JLabel("Specie:"), new JLabel(refugeCtrl.getAnimal().getSpecies()));
+       Pair racePair = new Pair(new JLabel("Race:"), new JLabel(refugeCtrl.getAnimal().getRace()));
+
+
+        ArrayList<Pair> data = new ArrayList<>(Arrays.asList(namePair, agePair, weightPair, speciePair, racePair));
         ArrayList<JPanel> panels = new ArrayList<>();
 
-        for(int i =0; i < 6; i++) {
+        for (int i = 0; i < data.size(); i++) {
             panels.add(new JPanel(new FlowLayout()));
             panels.get(i).setBackground(Color.GRAY);
-            panels.get(i).add(data.get(i));
-            panels.get(i).add(data.get(i));
+            data.get(i).getFirst().setFont(new Font("Arial", Font.BOLD, 25));
+            data.get(i).getSecond().setFont(new Font("Arial", Font.BOLD, 25));
+            panels.get(i).add(data.get(i).getFirst());
+            panels.get(i).add(data.get(i).getSecond());
             datos.add(panels.get(i));
         }
 

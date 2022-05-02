@@ -31,9 +31,8 @@ public class RequestPanel extends JPanel{
 
         JPanel panel_centre = new JPanel(new BorderLayout());
 
-        Label dog_name = new Label();
-        Label dog_description = new Label(
-                "Request data ");
+        Label dog_name = new Label(animal.getName());
+        Label dog_description = new Label(animal.getDescription());
         dog_name.setBackground(Color.GRAY);
         dog_description.setBackground(Color.GRAY);
 
@@ -47,15 +46,16 @@ public class RequestPanel extends JPanel{
 
         JButton info = new JButton("info");
 
-        ResquestRefugeSecundaryWindow dialogo3= new ResquestRefugeSecundaryWindow();
-        dialogo3.prepare_panel();
-        dialogo3.setSize(500,300);
-        dialogo3.setLocationRelativeTo(null);
+
         info.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                refugeCtrl.setAnimal(animal);
+                ResquestRefugeSecundaryWindow dialogo3= new ResquestRefugeSecundaryWindow(refugeCtrl);
+                dialogo3.prepare_panel();
+                dialogo3.setSize(800,400);
+                dialogo3.setLocationRelativeTo(null);
                 dialogo3.setVisible(true);
 
             }

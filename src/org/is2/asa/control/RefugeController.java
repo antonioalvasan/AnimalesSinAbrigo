@@ -147,6 +147,9 @@ public class RefugeController extends JFrame {
     public String getUsername() {
         return loggedUser.getUsername();
     }
+    public int getID() {
+        return loggedUser.getID();
+    }
 
     public String getPassword() {
         return loggedUser.getPassword();
@@ -213,6 +216,13 @@ public class RefugeController extends JFrame {
         }
 
         return requestedAnimals;
+    }
+    public String getusername(int ID) {
+        for (User u : userDao.getAll()) {
+            if (u.getID() == ID) return u.getUsername();
+
+        }
+        return null;
     }
 
     public void deleteUser() {
