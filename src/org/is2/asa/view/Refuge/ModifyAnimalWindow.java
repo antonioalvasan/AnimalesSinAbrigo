@@ -1,12 +1,15 @@
 package org.is2.asa.view.Refuge;
 
 import org.is2.asa.control.RefugeController;
+import org.is2.asa.view.adopter.views.AdopterUserInfoWindow;
 import org.is2.asa.view.windowClass;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.BrokenBarrierException;
 
 public class ModifyAnimalWindow extends windowClass {
 
@@ -36,10 +39,21 @@ public class ModifyAnimalWindow extends windowClass {
         JPanel change_data_here = new JPanel();
         change_data_here.setLayout(new BoxLayout(change_data_here, BoxLayout.Y_AXIS));
 
+        JPanel topPanel = new JPanel(new BorderLayout());
+
         JLabel modify = new JLabel("<html><body>Modificar datos<br> <body><html>");
         modify.setFont(new Font("Arial",Font.BOLD,30));
         modify.setHorizontalAlignment(JLabel.CENTER);
         modify.setBorder(BorderFactory.createLineBorder(Color.black));
+
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener(e->{
+            refugeCtrl.changeWindow(RefugeAnimalsWindow.key);
+            refugeCtrl.run();
+        });
+
+        topPanel.add(backButton, BorderLayout.WEST);
+        topPanel.add(modify, BorderLayout.CENTER);
 
         //JTextField to change animals' data.
         JTextField nameField= new JTextField(refugeCtrl.getAnimal().getName());
@@ -86,7 +100,7 @@ public class ModifyAnimalWindow extends windowClass {
             change_data_here.add(panels.get(i));
         }
 
-        this.add(modify, BorderLayout.NORTH);
+        this.add(topPanel, BorderLayout.NORTH);
         this.add(change_data_here, BorderLayout.CENTER);
         this.add(save, BorderLayout.SOUTH);
     }

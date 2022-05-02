@@ -129,7 +129,7 @@ public class RefugeController extends JFrame {
     /*
      * Stores data into the files given as input if the user chooses to do so.
      */
-    private void saveData() throws FileNotFoundException {
+    public void saveData() throws FileNotFoundException {
         OutputStream outUsers = new FileOutputStream(usersFile);
         PrintStream printUsers = new PrintStream(outUsers);
         printUsers.print(userDao.storeAsJSON());
@@ -225,6 +225,19 @@ public class RefugeController extends JFrame {
     }
 
     public void deleteUser() {
+
+        /*
+        * If you delete a refuge, we assume that, even though the animal still exists, this app is not useful
+        * for the adopter anymore, as he can't contact or check the previous refuge. That's why the animal is
+        * deleted from the app.
+        */
+
+        for(Animal a: animalDao.getAll()){
+            if(a.getOriginalRefuge() == loggedUser.getID()){
+                animalDao.delete(a);
+            }
+        }
+
         this.userDao.delete(loggedUser);
     }
 

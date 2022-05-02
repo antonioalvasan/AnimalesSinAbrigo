@@ -116,7 +116,6 @@ public class RefugeModifyWindow extends windowClass {
         save.setOpaque(true);
         save.setBackground(Color.LIGHT_GRAY);
 
-
         centerPanel.add(topPanel, BorderLayout.NORTH);
         centerPanel.add(change_data_here, BorderLayout.CENTER);
         centerPanel.add(save, BorderLayout.SOUTH);

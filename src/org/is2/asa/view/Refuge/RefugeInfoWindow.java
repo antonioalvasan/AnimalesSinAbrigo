@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -41,12 +42,56 @@ public class RefugeInfoWindow extends windowClass {
         RefugeBar bar = new RefugeBar(refugeCtrl);
         bar.prepare_panel();
 
+        JPanel bottomPanel = new JPanel(new FlowLayout());
+
         JButton modify = new JButton("Change your data here");
         modify.setBackground(Color.LIGHT_GRAY);
         modify.addActionListener(e -> {
             refugeCtrl.changeWindow(RefugeModifyWindow.key);
             refugeCtrl.run();
         });
+
+        JButton deleteButton = new JButton("Delete User");
+
+        deleteButton.addActionListener(e -> {
+            Dialog deleteDialog = new JDialog();
+
+            JPanel mainPanel = new JPanel(new BorderLayout());
+
+            JLabel messageLabel = new JLabel("Are you sure you want to delete this user?");
+
+            JPanel buttons = new JPanel(new FlowLayout());
+
+            JButton yesButton = new JButton("Yes");
+            JButton noButton = new JButton("No");
+
+            buttons.add(yesButton);
+            buttons.add(noButton);
+
+            mainPanel.add(messageLabel, BorderLayout.CENTER);
+            mainPanel.add(buttons, BorderLayout.SOUTH);
+
+            deleteDialog.add(mainPanel);
+            deleteDialog.setSize(300,300);
+            deleteDialog.setVisible(true);
+
+            yesButton.addActionListener(e1 -> {
+                refugeCtrl.deleteUser();
+                try {
+                    refugeCtrl.saveData();
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                System.exit(0);
+            });
+
+            noButton.addActionListener(e1 -> {
+                deleteDialog.dispose();
+            });
+        });
+
+        bottomPanel.add(modify);
+        bottomPanel.add(deleteButton);
 
         JPanel center = new JPanel(new BorderLayout());
         center.setBackground(Color.gray);
@@ -86,7 +131,7 @@ public class RefugeInfoWindow extends windowClass {
 
         this.add(bar, BorderLayout.NORTH);
         this.add(center, BorderLayout.CENTER);
-        this.add(modify, BorderLayout.SOUTH);
+        this.add(bottomPanel, BorderLayout.SOUTH);
     }
 
 }

@@ -78,10 +78,10 @@
     {
       "data": {
         "identifier": 6,
-        "img": "enekoGato enekoGato",
+        "img": "",
         "race": "AKITA",
         "linkedUser": 3,
-        "name": "enekoGato",
+        "name": "Neeko",
         "weight": 100,
         "description": "CAT",
         "state": "Adopted",
@@ -93,10 +93,10 @@
     {
       "data": {
         "identifier": 7,
-        "img": "gatoEneko gatoEneko",
+        "img": "",
         "race": "AKITA",
         "linkedUser": 3,
-        "name": "gatoEneko",
+        "name": "Miaucat",
         "weight": 100,
         "description": "CAT",
         "state": "Adoption requested",
@@ -134,24 +134,10 @@
         "age": 10
       },
       "species": "CAT"
-    },    {
-      "data": {
-        "identifier": 10,
-        "img": "resources/images/animals/cats/abisinio.jpg",
-        "race": "PERSIAN",
-        "linkedUser": 2,
-        "name": "Amancio",
-        "weight": 140.03,
-        "description": "jeje",
-        "state": "Not adopted",
-        "originalRefuge": 2,
-        "age": 10
-      },
-      "species": "CAT"
     },
     {
       "data": {
-        "identifier": 11,
+        "identifier": 10,
         "img": "resources/images/animals/cats/abisinio.jpg",
         "race": "PERSIAN",
         "linkedUser": 2,
@@ -221,6 +207,66 @@
         "state": "Not adopted",
         "originalRefuge": 2,
         "age": 10
+      },
+      "species": "CAT"
+    },
+    {
+      "data": {
+        "identifier": 15,
+        "img": "Perro Muy Amigable",
+        "race": "GOLDEN_RETRIEVER",
+        "linkedUser": 11,
+        "name": "Frodo",
+        "weight": 15.36,
+        "description": "DOG",
+        "state": "Not adopted",
+        "originalRefuge": 11,
+        "age": 4
+      },
+      "species": "DOG"
+    },
+    {
+      "data": {
+        "identifier": 16,
+        "img": "",
+        "race": "BULLDOG",
+        "linkedUser": 11,
+        "name": "Yasuo",
+        "weight": 16.44,
+        "description": "DOG",
+        "state": "Not adopted",
+        "originalRefuge": 11,
+        "age": 7
+      },
+      "species": "DOG"
+    },
+    {
+      "data": {
+        "identifier": 17,
+        "img": "Gatito Recien Nacido",
+        "race": "AKITA",
+        "linkedUser": 11,
+        "name": "Michifu",
+        "weight": 9,
+        "description": "CAT",
+        "state": "Not adopted",
+        "originalRefuge": 11,
+        "age": 1
+      },
+      "species": "CAT"
+    },
+    {
+      "data": {
+        "identifier": 18,
+        "img": "",
+        "race": "PERSIAN",
+        "linkedUser": 11,
+        "name": "Pacuso",
+        "weight": 18,
+        "description": "CAT",
+        "state": "Not adopted",
+        "originalRefuge": 11,
+        "age": 8
       },
       "species": "CAT"
     }

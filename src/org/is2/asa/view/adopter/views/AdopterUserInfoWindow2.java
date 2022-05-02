@@ -1,6 +1,7 @@
 package org.is2.asa.view.adopter.views;
 
 import org.is2.asa.control.AdopterController;
+import org.is2.asa.view.Refuge.RefugeInfoWindow;
 import org.is2.asa.view.Refuge.RefugeModifyWindow;
 import org.is2.asa.view.windowClass;
 
@@ -40,12 +41,24 @@ public class AdopterUserInfoWindow2 extends windowClass {
         JPanel change_data_here = new JPanel();
         change_data_here.setLayout(new BoxLayout(change_data_here, BoxLayout.Y_AXIS));
 
+        JPanel topPanel = new JPanel(new BorderLayout());
+
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener(e->{
+            adopterController.changeWindow(AdopterUserInfoWindow.keyCode);
+            adopterController.run();
+        });
+        topPanel.add(backButton, BorderLayout.LINE_START);
+
         JLabel modify = new JLabel("<html><body>Modificar datos<br> <body><html>");
         modify.setFont(new Font("Arial",Font.BOLD,30));
         modify.setHorizontalAlignment(JLabel.CENTER);
         modify.setBackground(Color.LIGHT_GRAY);
         modify.setOpaque(true);
         modify.setBorder(BorderFactory.createLineBorder(Color.black));
+
+        topPanel.add(modify, BorderLayout.CENTER);
+        topPanel.add(backButton, BorderLayout.WEST);
 
         JTextField usernameText= new JTextField(adopterController.getUsername());
         usernameText.setColumns(10);
@@ -83,49 +96,6 @@ public class AdopterUserInfoWindow2 extends windowClass {
             panels.get(i).add(data.get(i).getTextField());
             change_data_here.add(panels.get(i));
         }
-        //adding delete user button
-        JButton deleteUser = new JButton("Delete User");
-
-        deleteUser.addActionListener(e -> {
-            Dialog deleteDialog = new JDialog();
-            JPanel buttons = new JPanel(new FlowLayout());
-            JButton yesButton = new JButton("Yes");
-            JButton noButton = new JButton("No");
-            buttons.add(yesButton);
-            buttons.add(noButton);
-            deleteDialog.add(buttons);
-            //deleteDialog.setShape(new Ellipse2D.Double(0,0,300,300));
-            deleteDialog.setSize(300,300);
-            deleteDialog.setVisible(true);
-
-            yesButton.addActionListener(e1 -> {
-                adopterController.deleteUser();
-                try {
-                    adopterController.saveData();
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
-                System.exit(0);
-            });
-
-            noButton.addActionListener(e1 -> {
-                deleteDialog.dispose();
-            });
-
-
-        });
-
-        change_data_here.add(deleteUser);
-        //example
-        /*
-        panels.add(new JPanel(new FlowLayout()));
-        panels.get(i).setBackground(Color.GRAY);
-        data.get(i).getFirst().setFont(new Font("Arial", Font.BOLD, 25));
-        data.get(i).getSecond().setFont(new Font("Arial", Font.BOLD, 25));
-        panels.get(i).add(data.get(i).getFirst());
-        panels.get(i).add(data.get(i).getSecond());
-        leftP.add(panels.get(i));*/
-        //
 
         save.setOpaque(true);
         save.setBackground(Color.LIGHT_GRAY);
@@ -137,8 +107,7 @@ public class AdopterUserInfoWindow2 extends windowClass {
             adopterController.run();
         });
 
-
-        this.add(modify, BorderLayout.NORTH);
+        this.add(topPanel, BorderLayout.NORTH);
         this.add(change_data_here, BorderLayout.CENTER);
         this.add(save, BorderLayout.SOUTH);
     }

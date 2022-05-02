@@ -5,6 +5,7 @@ import org.is2.asa.view.Utilities;
 import org.is2.asa.view.windowClass;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.*;
@@ -39,12 +40,56 @@ public class AdopterUserInfoWindow extends windowClass {
         AdopterBar bar = new AdopterBar(this.adopterController);
         bar.prepare_panel();
 
-        JButton modify = new JButton("Change your data here");
-        modify.setBackground(Color.LIGHT_GRAY);
+        JPanel bottomPanel = new JPanel(new FlowLayout());
+        bottomPanel.setBackground(Color.LIGHT_GRAY);
+
+        JButton modify = new JButton("Modify Data");
         modify.addActionListener(e -> {
             adopterController.changeWindow( AdopterUserInfoWindow2.key);
             adopterController.run();
         });
+
+        JButton deleteButton = new JButton("Delete User");
+
+        deleteButton.addActionListener(e -> {
+            Dialog deleteDialog = new JDialog();
+
+            JPanel mainPanel = new JPanel(new BorderLayout());
+
+            JLabel messageLabel = new JLabel("Are you sure you want to delete this user?");
+
+            JPanel buttons = new JPanel(new FlowLayout());
+
+            JButton yesButton = new JButton("Yes");
+            JButton noButton = new JButton("No");
+
+            buttons.add(yesButton);
+            buttons.add(noButton);
+
+            mainPanel.add(messageLabel, BorderLayout.CENTER);
+            mainPanel.add(buttons, BorderLayout.SOUTH);
+
+            deleteDialog.add(mainPanel);
+            deleteDialog.setSize(300,300);
+            deleteDialog.setVisible(true);
+
+            yesButton.addActionListener(e1 -> {
+                adopterController.deleteUser();
+                try {
+                    adopterController.saveData();
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                System.exit(0);
+            });
+
+            noButton.addActionListener(e1 -> {
+                deleteDialog.dispose();
+            });
+        });
+
+        bottomPanel.add(modify);
+        bottomPanel.add(deleteButton);
 
         JPanel center = new JPanel(new BorderLayout());
         center.setBackground(Color.gray);
@@ -83,7 +128,7 @@ public class AdopterUserInfoWindow extends windowClass {
 
         this.add(bar, BorderLayout.NORTH);
         this.add(center, BorderLayout.CENTER);
-        this.add(modify, BorderLayout.SOUTH);
+        this.add(bottomPanel, BorderLayout.SOUTH);
     }
 
 }
