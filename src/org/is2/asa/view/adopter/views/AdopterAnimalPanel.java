@@ -44,7 +44,7 @@ public class AdopterAnimalPanel extends JPanel {
 		this.setBackground(Color.GRAY);
 		this.setLayout(new FlowLayout());
 
-		JButton animalImg = new JButton(new ImageIcon(animal.getImg()));
+		JButton animalImg = new JButton(adopterController.imageIconAnimal(animal));
 //		animalImg.setMinimumSize(new Dimension(267,250));
 		this.add(animalImg, BorderLayout.EAST);
 

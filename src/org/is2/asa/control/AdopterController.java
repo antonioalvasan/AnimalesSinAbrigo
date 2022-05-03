@@ -266,6 +266,7 @@ public class AdopterController {
         this.userDao.delete(loggedUser);
     }
 
+
     //getters and setters for animal
     public Animal getAnimal() {
         return animal;

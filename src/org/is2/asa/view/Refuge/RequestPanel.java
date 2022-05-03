@@ -25,10 +25,10 @@ public class RequestPanel extends JPanel{
         this.setBackground(Color.GRAY);
         this.setLayout(new FlowLayout());
 
-        JButton dog_image = new JButton(new ImageIcon("perrillo.png"));
-        this.add(dog_image, BorderLayout.EAST);
+        JButton animalImage = new JButton(refugeCtrl.imageIconAnimal(animal));
+        this.add(animalImage, BorderLayout.EAST);
 
-        Utilities.setTransparent(dog_image);
+        Utilities.setTransparent(animalImage);
 
         JPanel panel_centre = new JPanel(new BorderLayout());
 

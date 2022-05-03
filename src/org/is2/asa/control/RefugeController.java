@@ -3,6 +3,9 @@ package org.is2.asa.control;
 import org.is2.asa.dao.AnimalDao;
 import org.is2.asa.dao.UserDao;
 import org.is2.asa.model.*;
+import org.is2.asa.model.states.AdoptedState;
+import org.is2.asa.model.states.AdoptionRequestedState;
+import org.is2.asa.model.states.AnimalState;
 import org.is2.asa.view.Refuge.RefugeHomeWindow;
 import org.is2.asa.view.viewFactories.BuilderBasedWindowFactory;
 import org.is2.asa.view.windowClass;
@@ -245,6 +248,13 @@ public class RefugeController extends JFrame {
     public Animal getAnimal() {
         return animal;
     }
+
+    public ImageIcon imageIconAnimal(Animal animal){
+        ImageIcon img = new ImageIcon(animal.getImg());
+        return img;
+    }
+
+
 
     public void setAnimal(Animal animal) {
         this.animal = animal;
