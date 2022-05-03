@@ -108,8 +108,9 @@ public class InfoAnimalRefuge extends windowClass {
                 refugeCtrl.getAnimal().getWeight()) + " Kg"));
         Pair speciePair = new Pair(new JLabel("Specie:"), new JLabel(refugeCtrl.getAnimal().getSpecies()));
         Pair racePair = new Pair(new JLabel("Race:"), new JLabel(refugeCtrl.getAnimal().getRace()));
+        Pair statePair = new Pair(new JLabel("Race:"), new JLabel(refugeCtrl.getAnimal().getState().toString()));
 
-        ArrayList<Pair> data = new ArrayList<>(Arrays.asList(namePair, agePair, weightPair, speciePair, racePair));
+        ArrayList<Pair> data = new ArrayList<>(Arrays.asList(namePair, agePair, weightPair, speciePair, racePair,statePair));
         ArrayList<JPanel> panels = new ArrayList<>();
 
         for (int i = 0; i < data.size(); i++) {
