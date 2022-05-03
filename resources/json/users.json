@@ -84,10 +84,10 @@
         "address": "Gran via",
         "province": "Granada",
         "name": "Refuge Test",
-        "description": "688 88 88 88",
+        "description": "Lorem Ipsum",
         "ID": 7,
         "username": "refugeTest",
-        "tlf": "Lorem ipsum"
+        "tlf": "688 88 88 88"
       },
       "type": "REFUGE"
     },
