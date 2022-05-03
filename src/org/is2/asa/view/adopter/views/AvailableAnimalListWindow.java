@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+//MVC design pattern used
 public class AvailableAnimalListWindow extends windowClass {
 
     public final static String key = "AAL";
@@ -26,19 +27,19 @@ public class AvailableAnimalListWindow extends windowClass {
         panel_sup.setBackground(Color.LIGHT_GRAY);
 
 
-        /********* Superior section **********/
+        /********* Upper section **********/
 
         JPanel panel_sup0 = new JPanel(new BorderLayout());
         JPanel panel_sup1 = new JPanel(new BorderLayout());
         panel_sup0.setBackground(Color.LIGHT_GRAY);
         panel_sup1.setBackground(Color.LIGHT_GRAY);
 
-        // top panel
+        // upper panel
 
         AdopterBar aB = new AdopterBar(adopterController);
         aB.prepare_panel();
 
-        // bottom panel
+        // lower panel
 
         JTextField searchBar = new JTextField("Search...");
         searchBar.setPreferredSize(new Dimension(300, 20));
@@ -72,9 +73,9 @@ public class AvailableAnimalListWindow extends windowClass {
 
         panel_sup.setVisible(true);
 
-        /********* End of superior section ***********/
+        /********* End of upper section ***********/
 
-        /********** Inferior section ***********/
+        /********** Lower section ***********/
 
         JPanel animal_panel = new JPanel();
         animal_panel.setLayout(new BoxLayout(animal_panel, BoxLayout.Y_AXIS));

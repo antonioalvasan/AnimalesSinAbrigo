@@ -1,5 +1,6 @@
 package org.is2.asa.model;
 
+//Species enum
 public enum Species {
     DOG("Dog"),
     CAT("Cat");

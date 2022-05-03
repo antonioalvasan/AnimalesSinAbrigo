@@ -6,6 +6,7 @@ import org.is2.asa.view.windowClass;
 import javax.swing.*;
 import java.awt.*;
 
+//MVC design pattern used
 public class AdopterHomeWindow extends windowClass {
 
     public static final String key = "AHW";

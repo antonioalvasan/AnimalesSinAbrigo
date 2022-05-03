@@ -9,6 +9,7 @@ import org.is2.asa.model.User;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//junit5 implemented tests
 class RefugeControllerTest {
 
     @org.junit.jupiter.api.Test

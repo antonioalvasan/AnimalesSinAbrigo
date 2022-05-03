@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+//MVC design pattern used
 public class RefugeModifyWindow extends windowClass {
 
     public final static String key = "RMW";

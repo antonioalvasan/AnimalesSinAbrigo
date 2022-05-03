@@ -10,6 +10,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+//DAO design pattern used
+
 public class UserDao implements Dao<User> {
 
     private List<User> users = new ArrayList<>();
@@ -28,6 +30,7 @@ public class UserDao implements Dao<User> {
         return users;
     }
 
+    //adding a user to users
     @Override
     public void add(User user) {
 
@@ -35,6 +38,7 @@ public class UserDao implements Dao<User> {
         else System.out.println("This username already exists. Please try again.");
     }
 
+    //user update
     @Override
     public void update(User user) {
         //Role and ID can´t be changed
@@ -44,11 +48,13 @@ public class UserDao implements Dao<User> {
         }
     }
 
+    //deleting a user from users
     @Override
     public void delete(User user) {
         users.remove(user);
     }
 
+    //loading users from json
     @Override
     public void load(InputStream in) {
         JSONObject jsonInput = new JSONObject(new JSONTokener(in));
@@ -61,6 +67,7 @@ public class UserDao implements Dao<User> {
         }
     }
 
+    //checking if user exists
     //This function searches for a user in the database. Returns false if user doesn't exist, true if it does.
     //This could be done with a try-catch method.
     private boolean existsUser(User user){
@@ -73,6 +80,7 @@ public class UserDao implements Dao<User> {
         return exists;
     }
 
+    //creates an instance of a user
     private User createInstance(JSONObject info){
         int ID;
         String username, password, name, province, address, desc, tlf;
@@ -95,6 +103,7 @@ public class UserDao implements Dao<User> {
         return new User(role, ID, username, password, name, province, address, tlf, desc);
     }
 
+    //storing users information into a json
     public String storeAsJSON(){
         JSONObject usersJSON = new JSONObject();
         JSONArray usersJSONArray = new JSONArray();

@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+//MVC design pattern used
 public class RefugeInfoWindow extends windowClass {
 
     public final static String key = "RIW";

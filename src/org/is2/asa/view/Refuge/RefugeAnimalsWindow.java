@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+//MVC design pattern used
 public class RefugeAnimalsWindow extends windowClass {
 
     public final static String key = "RAW";

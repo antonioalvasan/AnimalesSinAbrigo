@@ -2,6 +2,7 @@ package org.is2.asa.model.states;
 import org.is2.asa.model.Animal;
 
 //State design pattern is used
+//All pattern visual resources in resources/patternVisualDocs
 
 public abstract class AnimalState {
 

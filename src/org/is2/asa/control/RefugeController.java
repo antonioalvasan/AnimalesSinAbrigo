@@ -21,6 +21,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
+//MVC design pattern is used
 public class RefugeController extends JFrame {
 
     //Dao Info

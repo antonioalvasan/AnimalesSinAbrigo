@@ -6,6 +6,7 @@ import org.is2.asa.model.User;
 
 import java.util.Scanner;
 
+//Command design pattern is used
 public class NewRefugeCommand extends Command{
 
     protected final static String name = "RefugeRegister";

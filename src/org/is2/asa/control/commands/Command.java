@@ -5,6 +5,7 @@ import org.is2.asa.model.User;
 
 import java.util.Scanner;
 
+//Command design pattern is used
 public abstract class Command {
 
     protected final String name;
@@ -13,6 +14,7 @@ public abstract class Command {
     protected static final String incorrectNumberOfArgsMsg = "Incorrect number of arguments";
     protected static final String incorrectArgsMsg = "Incorrect arguments format";
 
+    //Command constructor
     public Command(String name,  String shortcut){
         this.name = name;
         this.shortcut = shortcut;

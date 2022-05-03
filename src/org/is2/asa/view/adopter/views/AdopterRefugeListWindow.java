@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
+//MVC design pattern used
 public class AdopterRefugeListWindow extends windowClass {
 
     public static final String key = "ARLW";

@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//MVC design pattern used
 public class RequestPanel extends JPanel{
 
     Animal animal;
@@ -52,7 +53,7 @@ public class RequestPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 refugeCtrl.setAnimal(animal);
-                ResquestRefugeSecundaryWindow dialogo3= new ResquestRefugeSecundaryWindow(refugeCtrl);
+                RequestRefugeSecondaryWindow dialogo3= new RequestRefugeSecondaryWindow(refugeCtrl);
                 dialogo3.prepare_panel();
                 dialogo3.setSize(800,400);
                 dialogo3.setLocationRelativeTo(null);

@@ -2,10 +2,12 @@ package org.is2.asa.model;
 
 import org.json.JSONObject;
 
+//dog animal object
 public class Dog extends Animal{
 
     DogRace race;
 
+    //constructor (one for each case)
     public Dog(int linkedUser, String name, int age, double weight, String description, DogRace race,
                String img) {
         super(linkedUser, name, age, weight, description, img);
@@ -31,6 +33,7 @@ public class Dog extends Animal{
         return Species.DOG.DisplayName();
     }
 
+    //create a json object from a Dog object
     @Override
     public JSONObject toJson(){
         JSONObject dog = new JSONObject();

@@ -6,6 +6,7 @@ import org.is2.asa.view.Utilities;
 import java.awt.*;
 import javax.swing.*;
 
+//MVC design pattern used
 public class AdopterBar extends JPanel {
 
 	/*

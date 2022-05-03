@@ -6,6 +6,7 @@ import org.is2.asa.view.windowClass;
 
 import java.util.ArrayList;
 
+//Builder design pattern used
 public class BuilderBasedWindowFactory {
 
     private final AdopterController adopterCtrl;
@@ -21,8 +22,6 @@ public class BuilderBasedWindowFactory {
         builders.add(new AdopterHomeWindowBuilder());
         builders.add(new AdopterUserInfoWindowBuilder());
         builders.add(new AdopterUserInfoWindow2Builder());
-        builders.add(new SecondaryAdoptionWindow1Builder());
-        builders.add(new SecondaryAdoptionWindow2Builder());
         builders.add(new AdopterRefugeListWindowBuilder());
         builders.add(new AvailableAnimalListWindowBuilder());
         builders.add(new AdopterAnimalsWindowBuilder());

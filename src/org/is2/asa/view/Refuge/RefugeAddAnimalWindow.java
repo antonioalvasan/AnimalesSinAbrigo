@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+//MVC design pattern used
 public class RefugeAddAnimalWindow extends windowClass {
 
     public static final String key = "RAAW";

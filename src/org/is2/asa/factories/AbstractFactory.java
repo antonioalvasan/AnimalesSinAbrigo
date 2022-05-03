@@ -5,6 +5,9 @@ import org.is2.asa.model.Animal;
 import org.is2.asa.model.Species;
 import org.json.JSONObject;
 
+//Factory design pattern is used
+
+//Abstract factory generator for T type
 public abstract class AbstractFactory <T>{
 
     private Species species;

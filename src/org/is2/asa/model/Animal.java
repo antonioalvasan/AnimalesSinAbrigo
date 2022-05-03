@@ -21,6 +21,7 @@ public abstract class Animal {
     private AnimalState state;
     public static int createdAnimals;
 
+    //constructor (one for each case)
     public Animal(int identifier, int linkedUser, String name, int age, double weight, String description, String img,
                   int orginalRefuge, String state) {
         this.identifier = identifier;
@@ -62,6 +63,7 @@ public abstract class Animal {
         return state.toString();
     }
 
+    //getters and setters
     public int getIdentifier() {
         return identifier;
     }

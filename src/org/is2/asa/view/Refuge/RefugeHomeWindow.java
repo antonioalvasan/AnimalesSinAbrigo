@@ -7,6 +7,7 @@ import org.is2.asa.view.windowClass;
 import javax.swing.*;
 import java.awt.*;
 
+//MVC design pattern used
 public class RefugeHomeWindow extends windowClass {
 
     public final static String key = "RHW";

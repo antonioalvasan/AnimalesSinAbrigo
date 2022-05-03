@@ -3,6 +3,9 @@ package org.is2.asa.factories;
 import org.is2.asa.model.*;
 import org.json.JSONObject;
 
+//Factory design pattern is used
+
+//Animal generator factory
 public class AnimalFactory extends AbstractFactory<Animal>{
 
 
@@ -21,6 +24,7 @@ public class AnimalFactory extends AbstractFactory<Animal>{
         return null;
     }
 
+    //creating a dog
     private Animal CreateDog(JSONObject dogData) {
 
         DogRace race = DogRace.valueOf(dogData.getString("race"));
@@ -37,6 +41,7 @@ public class AnimalFactory extends AbstractFactory<Animal>{
         return new Dog(ID, linkedUser, name, age, weight, desc, race, img, originalRefuge, state);
     }
 
+    //creating a cat
     private Animal CreateCat(JSONObject catData) {
         CatRace race = CatRace.valueOf(catData.getString("race"));
         int ID = catData.getInt("identifier");

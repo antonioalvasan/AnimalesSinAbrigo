@@ -3,8 +3,10 @@ package org.is2.asa.dao;
 import java.io.InputStream;
 import java.util.List;
 
-public interface Dao<T> {
+//DAO design pattern used
 
+public interface Dao<T> {
+    //all DAO must have funcs
     T get(int id); //Returns the item in id's position. This object can be null.
 
     List<T> getAll(); //Returns the list of objects.

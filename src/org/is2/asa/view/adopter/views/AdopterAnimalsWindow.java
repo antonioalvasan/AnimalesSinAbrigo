@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+//MVC design pattern used
 public class AdopterAnimalsWindow extends windowClass {
 
     public static final String key = "AAW";

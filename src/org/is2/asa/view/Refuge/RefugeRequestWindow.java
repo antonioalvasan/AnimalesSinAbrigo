@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+//MVC design pattern used
 public class RefugeRequestWindow extends windowClass {
 
     public static final String key = "RRW";

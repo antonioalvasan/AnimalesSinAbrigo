@@ -5,6 +5,7 @@ import org.is2.asa.model.User;
 
 import java.util.Scanner;
 
+//Command design pattern is used
 public class HelpCommand extends Command{
 
     protected final static String name = "help";

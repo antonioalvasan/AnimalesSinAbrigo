@@ -4,6 +4,7 @@ import org.is2.asa.control.AdopterController;
 import org.is2.asa.view.adopter.views.AdopterRefugeListWindow;
 import org.is2.asa.view.windowClass;
 
+//Builder design pattern used
 public class AdopterRefugeListWindowBuilder extends windowBuilder {
 
     public final static String code = AdopterRefugeListWindow.key;

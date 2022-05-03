@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.BrokenBarrierException;
 
+//MVC design pattern used
 public class ModifyAnimalWindow extends windowClass {
 
     public final static String key = "MAW";

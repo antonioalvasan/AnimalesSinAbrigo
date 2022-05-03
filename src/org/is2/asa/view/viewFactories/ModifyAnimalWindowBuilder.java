@@ -4,6 +4,7 @@ import org.is2.asa.control.RefugeController;
 import org.is2.asa.view.Refuge.ModifyAnimalWindow;
 import org.is2.asa.view.windowClass;
 
+//Builder design pattern used
 public class ModifyAnimalWindowBuilder extends windowBuilder {
     public final static String code = ModifyAnimalWindow.key;
 

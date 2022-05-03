@@ -1,5 +1,6 @@
 package org.is2.asa.model;
 
+//Enum for Dog razes
 public enum DogRace {
     GOLDEN_RETRIEVER ("Golden Retriever"),
     BORDER_COLLIE ("Border Collie"),

@@ -4,6 +4,7 @@ import org.is2.asa.control.AdopterController;
 import org.is2.asa.view.adopter.views.AdopterUserInfoWindow2;
 import org.is2.asa.view.windowClass;
 
+//Builder design pattern used
 public class AdopterUserInfoWindow2Builder  extends windowBuilder {
     public final static String code = AdopterUserInfoWindow2.key;
 

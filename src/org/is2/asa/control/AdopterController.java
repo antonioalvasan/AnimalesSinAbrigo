@@ -21,6 +21,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//MVC design pattern is used
 public class AdopterController {
 
     /*
@@ -47,6 +48,8 @@ public class AdopterController {
     * Parameters: loggedUser, animalDao and userDao.
     * Initializes the frame and the viewList, with every existing AdopterWindow. Sets AdopterHomeWindow as default.
     * */
+
+    //constructor
     public AdopterController(User user, UserDao userDao, AnimalDao animalDao, String usersFile, String animalsFile) {
         this.builderBasedWindowFactory = new BuilderBasedWindowFactory(this, null);
         this.loggedUser = user;
@@ -65,6 +68,8 @@ public class AdopterController {
     * This functions prepares the window behaviour. When closing, it appears a dialog to choose whether to save
     * data or not. In case of choosing 'yes', the data will overwrite the existing file.
     */
+
+    //window closing confirmation and save data logs
     private void prepareFrame() {
         viewFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -91,6 +96,7 @@ public class AdopterController {
                     public void actionPerformed(ActionEvent ae) {
                         try {
                             saveData();
+                            //exception for file not found case
                         } catch (FileNotFoundException ex) {
                             ex.printStackTrace();
                         }
@@ -115,6 +121,8 @@ public class AdopterController {
     /*
     * Stores data into the files given as input if the user chooses to do so.
     */
+
+    //saving data into json files
     public void saveData() throws FileNotFoundException {
         OutputStream outUsers = new FileOutputStream(_usersFile);
         PrintStream printUsers = new PrintStream(outUsers);
@@ -184,6 +192,7 @@ public class AdopterController {
         return (ArrayList<User>) userDao.getAll();
     }
 
+    //user data update
     public void changeUserData(String username, String password, String name, String province, String address, String tlf) {
         loggedUser.setUsername(username);
         loggedUser.setPassword(password);
@@ -193,14 +202,17 @@ public class AdopterController {
         loggedUser.setTlf(tlf);
     }
 
+    //getting currently using refuge
     public User getCurrentRefuge(){
         return currentRefuge;
     }
 
+    //setting currently using refuge
     public void setCurrentRefuge(User currentRefuge){
         this.currentRefuge = currentRefuge;
     }
 
+    //getting the entire list of refuges
     public List<User> getRefuges() {
         List<User> refugesList = new ArrayList<>();
 
@@ -211,6 +223,7 @@ public class AdopterController {
         return refugesList;
     }
 
+    //gathering all aniamals from a refuge
     public List<Animal> getAnimalsFromRefuge(){
         List<Animal> availableAnimals = new ArrayList<>();
 
@@ -222,6 +235,14 @@ public class AdopterController {
         return availableAnimals;
     }
 
+    //Image of animal
+    public ImageIcon imageIconAnimal(Animal animal){
+        ImageIcon img = new ImageIcon(animal.getImg());
+        return img;
+    }
+
+
+    //gathering all user owned animals
     public List<Animal> getAnimalsOwned() {
         List<Animal> ownedAnimals = new ArrayList<>();
 
@@ -233,7 +254,7 @@ public class AdopterController {
         return ownedAnimals;
     }
 
-    //Cada animal del usuario y que esté adoptado por este usuario vuelve al refugio original con el estado "Not Adopted"
+    //returning each user adopted animal, changing state to "Not adopted" state, state pattern in below classes
     public void deleteUser() {
         for(int i = 0; i < this.animalDao.getAll().size(); i++){
             if(this.animalDao.get(i).getLinkedUser() == loggedUser.getID()){
@@ -245,6 +266,7 @@ public class AdopterController {
         this.userDao.delete(loggedUser);
     }
 
+    //getters and setters for animal
     public Animal getAnimal() {
         return animal;
     }

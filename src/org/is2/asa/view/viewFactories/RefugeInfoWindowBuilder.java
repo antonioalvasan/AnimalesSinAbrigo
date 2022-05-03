@@ -5,6 +5,7 @@ import org.is2.asa.view.Refuge.RefugeHomeWindow;
 import org.is2.asa.view.Refuge.RefugeInfoWindow;
 import org.is2.asa.view.windowClass;
 
+//Builder design pattern used
 public class RefugeInfoWindowBuilder extends windowBuilder{
     public final static String code = RefugeInfoWindow.key;
 

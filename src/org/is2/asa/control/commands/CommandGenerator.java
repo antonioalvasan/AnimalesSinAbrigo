@@ -1,5 +1,6 @@
 package org.is2.asa.control.commands;
 
+//Command design pattern is used
 public class CommandGenerator {
     private static final Command[] availableCommands = {
             new LoginCommand(),

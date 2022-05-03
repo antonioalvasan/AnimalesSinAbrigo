@@ -19,6 +19,7 @@ import java.util.Scanner;
 
 import org.is2.asa.control.AdopterController;
 
+//Main launch class
 public class Main {
 
     //Standard Console Messages
@@ -45,6 +46,7 @@ public class Main {
     public static void main(String[] args) {
         try {
 
+            //generating initial necessary classes
             scanner = new Scanner(System.in);
             parseArgs(args);
             initUserDatabase();
@@ -52,6 +54,7 @@ public class Main {
 
             System.out.println(welcomeMsg);
 
+            //introduced command execution
             do {
                 String s = scanner.nextLine();
                 String[] input = s.toLowerCase().trim().split(" ");
@@ -62,9 +65,11 @@ public class Main {
 
             } while (loggedUser == null);
 
+            //creating a refuge controller if refuge logged in
             if (loggedUser.getRole() == Role.REFUGE) {
                 refugeCtrl = new RefugeController(loggedUser, userDao, animalDao, _usersFile, _animalsFile);
                 refugeWindow();
+            //creating a adopter controller if adopter logged in
             } else {
                 adopterCtrl = new AdopterController(loggedUser, userDao, animalDao, _usersFile, _animalsFile);
                 adopterWindow();
@@ -76,6 +81,7 @@ public class Main {
         }
     }
 
+    //users save data initialization
     private static void initUserDatabase() throws FileNotFoundException {
         User.createdUsers = 0;
         userDao = new UserDao(); //Initialize the user database.
@@ -83,6 +89,7 @@ public class Main {
         userDao.load(inFile);
     }
 
+    //animals save data initialization
     private static void initAnimalsDatabase() throws FileNotFoundException {
         Animal.createdAnimals = 0;
         animalDao = new AnimalDao(); //Initialize the user database.
@@ -90,12 +97,15 @@ public class Main {
         animalDao.load(inFile);
     }
 
+    //adopter window run
     private static void adopterWindow(){
         adopterCtrl.run();
     }
 
+    //refuge window run
     private static void refugeWindow(){ refugeCtrl.run(); }
 
+    //run configuration
     private static Options buildOptions() {
         Options cmdLineOptions = new Options();
 
@@ -110,6 +120,7 @@ public class Main {
         return cmdLineOptions;
     }
 
+    //arguments parsing
     private static void parseArgs(String[] args) {
         // define the valid command line options
         Options cmdLineOptions = buildOptions();
@@ -122,9 +133,9 @@ public class Main {
             parseInUsersOption(line);
             parseInAnimalsOption(line);
 
-            // if there are some remaining arguments, then something wrong is
+            // if arguments missing, something wrong
             // provided in the command line!
-            //
+
             String[] remaining = line.getArgs();
             if (remaining.length > 0) {
                 String error = "Illegal arguments:";
@@ -139,12 +150,14 @@ public class Main {
         }
     }
 
+    //user parsing
     private static void parseInUsersOption(CommandLine line) throws ParseException {
         _usersFile = line.getOptionValue("iusers");
         if(_usersFile == null) throw new ParseException("An input file is required for " +
                 "users data. This file must be a JSON file.");
     }
 
+    //animal parsing
     private static void parseInAnimalsOption(CommandLine line) throws ParseException {
         _animalsFile = line.getOptionValue("ianimals");
         if(_animalsFile == null) throw new ParseException("An input file is required for" +

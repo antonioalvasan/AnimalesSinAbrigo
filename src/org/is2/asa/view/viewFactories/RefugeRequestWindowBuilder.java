@@ -4,6 +4,7 @@ import org.is2.asa.control.RefugeController;
 import org.is2.asa.view.Refuge.RefugeRequestWindow;
 import org.is2.asa.view.windowClass;
 
+//Builder design pattern used
 public class RefugeRequestWindowBuilder extends windowBuilder{
     public final static String code = RefugeRequestWindow.key;
 

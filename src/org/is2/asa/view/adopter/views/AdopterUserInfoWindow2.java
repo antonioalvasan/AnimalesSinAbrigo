@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+//MVC design pattern used
 public class AdopterUserInfoWindow2 extends windowClass {
 
     public static final String key = "AUIW2";

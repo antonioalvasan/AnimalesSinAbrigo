@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.*;
 
+//MVC design pattern used
 public class AdopterUserInfoWindow extends windowClass {
 
     public static final String keyCode = "AUIW";

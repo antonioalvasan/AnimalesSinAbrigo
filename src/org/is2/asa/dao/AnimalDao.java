@@ -37,12 +37,14 @@ public class AnimalDao implements Dao<Animal>{
         return animals;
     }
 
+    //adding an animal to animals
     @Override
     public void add(Animal animal) {
         if(!existsAnimal(animal))  animals.add(animal);
         else System.out.println("This animal already exists. Please try again.");
     }
 
+    //animal update
     @Override
     public void update(Animal animal) {
 
@@ -56,6 +58,7 @@ public class AnimalDao implements Dao<Animal>{
         }
     }
 
+    //checking if animal exists
     public boolean existsAnimal(Animal animal){
         int i = 0;
         boolean exists = false;
@@ -66,11 +69,13 @@ public class AnimalDao implements Dao<Animal>{
         return exists;
     }
 
+    //deleting an animal from animals
     @Override
     public void delete(Animal animal) {
         animals.remove(animal);
     }
 
+    //loading animals from json
     @Override
     public void load(InputStream in) {
         JSONObject jsonInput = new JSONObject(new JSONTokener(in));
@@ -82,6 +87,7 @@ public class AnimalDao implements Dao<Animal>{
 
     }
 
+    //storing animals information into a json
     public String storeAsJSON(){
         JSONObject animalsJSON = new JSONObject();
         JSONArray animalsJSONArray = new JSONArray();
@@ -93,6 +99,8 @@ public class AnimalDao implements Dao<Animal>{
 
         return animalsJSON.toString();
     }
+
+    //finding animal in animals list
     public int findanimal(Animal animal){
         int i = 0;
         boolean exists = false;

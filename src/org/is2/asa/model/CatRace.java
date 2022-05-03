@@ -1,7 +1,7 @@
 package org.is2.asa.model;
 
 
-//Cambiar...
+//Enum for Cat razes
 public enum CatRace {
     PERSIAN("Persian"),
     SIAMES ("Siames"),

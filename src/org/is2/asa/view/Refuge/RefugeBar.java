@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+//MVC design pattern used
 public class RefugeBar extends windowClass {
 
     public final static String key = "RB";

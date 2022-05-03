@@ -16,6 +16,7 @@ public class User {
     private String description;
     public static int createdUsers;
 
+    //create a json object from a Cat object
     public User(Role role, int ID, String username, String password, String name, String province, String address, String phone, String desc){
         this.role = role;
         this.ID=ID;

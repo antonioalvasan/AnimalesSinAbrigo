@@ -1,6 +1,7 @@
 package org.is2.asa.model.states;
 
 //State design pattern is used
+//All pattern visual resources in resources/patternVisualDocs
 
 public class AdoptedState extends AnimalState {
 

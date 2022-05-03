@@ -6,6 +6,7 @@ import org.is2.asa.view.adopter.views.AvailableAnimalListWindow;
 import org.is2.asa.view.viewFactories.windowBuilder;
 import org.is2.asa.view.windowClass;
 
+//Builder design pattern used
 public class AvailableAnimalListWindowBuilder extends windowBuilder {
     public final static String code = AvailableAnimalListWindow.key;
 

@@ -2,6 +2,7 @@ package org.is2.asa.view;
 
 import javax.swing.*;
 
+//MVC design pattern used
 public abstract class windowClass extends JPanel {
 
     private final String key;
