@@ -37,12 +37,15 @@ public class RefugeAnimalPanel extends JPanel {
 
         Label animalName = new Label(animal.getName());
         Label animalDesc = new Label(animal.getDescription());
+        JLabel animalState = new JLabel(animal.getState().toString());
+        animalState.setBackground(Color.GRAY);
         animalName.setBackground(Color.GRAY);
         animalDesc.setBackground(Color.GRAY);
         panel_centre.setBackground(Color.GRAY);
 
         panel_centre.add(animalName, BorderLayout.NORTH);
         panel_centre.add(animalDesc, BorderLayout.CENTER);
+        panel_centre.add(animalState, BorderLayout.SOUTH);
 
         this.add(panel_centre);
 
