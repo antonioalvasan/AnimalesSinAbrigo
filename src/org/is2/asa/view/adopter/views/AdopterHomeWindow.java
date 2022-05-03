@@ -51,11 +51,11 @@ public class AdopterHomeWindow extends windowClass {
 
         JLabel welcomeLabel = new JLabel("<html><body><br>Welcome," + adopterController.getName() + "<body><html>");
         JLabel descriptionLabel = new JLabel("<html>Bienvenido! Somos Animales sin Abrigo, una organización sin ánimo de lucro que se especializa en ponerte <br>" +
-                        "en contacto con los mejores refugios de animales para que puedas encontrar a tu mejor amigo (o amigos) de la forma <br>" +
-                        "más rápida y amena. Todos nuestros refugios están certificados con el sello de calidad de la Comunidad de Madrid, y cuentan con las mejores<br>" +
-                        "instalaciones y trabajadores. <br>" +
-                        "<br>" +
-                        "¿A qué esperas?<html>");
+                "en contacto con los mejores adoptantes de animales para que tus peludos puedan encontrar un nuevo hogar con de la forma <br>" +
+                "más rápida y amena. Todos nuestros adoptantes han aprobado el examen de tenencia de animales de la Comunidad de Madrid, y <br>" +
+                "han pasado una entrevista personal con nosotros para asegurarnos que vuestros animales van a quedar en las mejores manos. <br>" +
+                "<br>" +
+                "¿A qué esperas?<html>");
 
         welcomeLabel.setFont(new Font("Arial",Font.BOLD,35));
         welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
