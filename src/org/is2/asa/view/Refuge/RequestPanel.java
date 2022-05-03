@@ -24,7 +24,7 @@ public class RequestPanel extends JPanel{
         this.setBackground(Color.GRAY);
         this.setLayout(new FlowLayout());
 
-        JButton dog_image = new JButton(new ImageIcon("perrillo.png"));
+        JButton dog_image = new JButton(new ImageIcon(animal.getImg()));
         this.add(dog_image, BorderLayout.EAST);
 
         Utilities.setTransparent(dog_image);
@@ -67,7 +67,7 @@ public class RequestPanel extends JPanel{
 
         this.add(info, FlowLayout.RIGHT);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
-        this.setPreferredSize(new Dimension(600, 100));
+        this.setPreferredSize(new Dimension(600, 270));
     }
 
 
