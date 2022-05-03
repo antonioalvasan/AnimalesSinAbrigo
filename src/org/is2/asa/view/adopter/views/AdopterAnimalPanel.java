@@ -44,7 +44,7 @@ public class AdopterAnimalPanel extends JPanel {
 		this.setLayout(new FlowLayout());
 
 		JButton animalImg = new JButton(new ImageIcon(animal.getImg()));
-//		animalImg.setMinimumSize(new Dimension(267,250));
+
 		this.add(animalImg, BorderLayout.EAST);
 
 		Utilities.setTransparent(animalImg);
@@ -176,7 +176,7 @@ public class AdopterAnimalPanel extends JPanel {
 
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setMinimumSize(new Dimension(this.getWidth(),200));
-		this.setPreferredSize(new Dimension(600, 230));
+		this.setPreferredSize(new Dimension(600, 270));
 
 
 	}

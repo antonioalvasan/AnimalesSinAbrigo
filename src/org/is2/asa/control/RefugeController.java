@@ -181,12 +181,12 @@ public class RefugeController extends JFrame {
 
         if(specie.equals("DOG")){
             Dog newDog = new Dog(loggedUser.getID(), name, Integer.parseInt(age),
-                    Double.parseDouble(weight), specie, DogRace.valueOf(race), desc);
+                    Double.parseDouble(weight), desc, DogRace.valueOf(race));
             animalDao.add(newDog);
         }
         else if(specie.equals("CAT")){
             Cat newCat = new Cat( loggedUser.getID(), name, Integer.parseInt(age),
-                    Double.parseDouble(weight), specie, CatRace.valueOf(race), desc);
+                    Double.parseDouble(weight), desc, CatRace.valueOf(race));
             animalDao.add(newCat);
         }
         else{

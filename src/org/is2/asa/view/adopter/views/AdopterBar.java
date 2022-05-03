@@ -66,7 +66,7 @@ public class AdopterBar extends JPanel {
 		userPanel.setBackground(new Color(197, 237, 253, 207));
 		
 		JButton user_name = new JButton(adopterController.getUsername());
-		JButton user_icon = new JButton(new ImageIcon("imagen.png"));
+		JButton user_icon = new JButton(new ImageIcon("resources/images/userIcon.png"));
 
 		user_name.addActionListener(e ->{
 			adopterController.changeWindow(AdopterUserInfoWindow.keyCode);

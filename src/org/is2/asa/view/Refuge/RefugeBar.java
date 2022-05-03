@@ -65,7 +65,7 @@ public class RefugeBar extends windowClass {
         right.setBackground(new Color(197, 237, 253, 207));
 
         JButton user_name = new JButton(refugeCtrl.getUsername());
-        JButton user_icon = new JButton(new ImageIcon("imagen.png"));
+        JButton user_icon = new JButton(new ImageIcon("resources/images/userIcon.png"));
 
         user_name.addActionListener(e ->{
             refugeCtrl.changeWindow(RefugeInfoWindow.key);

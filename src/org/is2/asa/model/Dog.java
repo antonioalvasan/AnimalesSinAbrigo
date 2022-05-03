@@ -6,9 +6,8 @@ public class Dog extends Animal{
 
     DogRace race;
 
-    public Dog(int linkedUser, String name, int age, double weight, String description, DogRace race,
-               String img) {
-        super(linkedUser, name, age, weight, description, img);
+    public Dog(int linkedUser, String name, int age, double weight, String description, DogRace race) {
+        super(linkedUser, name, age, weight, description,race.getImageLink());
         this.race = race;
     }
 

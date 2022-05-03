@@ -29,8 +29,13 @@ public class RefugeAnimalPanel extends JPanel {
         this.setBackground(Color.GRAY);
         this.setLayout(new FlowLayout());
 
+
+
         JButton animalImg = new JButton(new ImageIcon(animal.getImg()));
         this.add(animalImg, BorderLayout.EAST);
+
+
+
 
         Utilities.setTransparent(animalImg);
 
@@ -59,7 +64,7 @@ public class RefugeAnimalPanel extends JPanel {
 
         this.add(infoButton, FlowLayout.RIGHT);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
-        this.setPreferredSize(new Dimension(600, 230));
+        this.setPreferredSize(new Dimension(600, 270));
 
     }
 }
