@@ -70,8 +70,8 @@ public class RefugeController extends JFrame {
 
             viewFrame.setPreferredSize(new Dimension(1300, 600));
             viewFrame.add(currentView);
-            viewFrame.setLocationRelativeTo(null);
             viewFrame.pack();
+            viewFrame.setLocationRelativeTo(null);
             viewFrame.setVisible(true);
         }));
     }

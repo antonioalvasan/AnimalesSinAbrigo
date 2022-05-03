@@ -65,7 +65,7 @@ public class AdopterAnimalsWindow extends windowClass {
 
 
         this.add(topPanel, BorderLayout.NORTH);
-        this.add(animalsPanel, BorderLayout.CENTER);
+        this.add(scroll, BorderLayout.CENTER);
 
     }
 

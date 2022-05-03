@@ -249,7 +249,7 @@ public class AdopterController {
         List<Animal> ownedAnimals = new ArrayList<>();
 
         for(Animal a: animalDao.getAll()){
-            if(a.getLinkedUser() == loggedUser.getID() && a.getState().toString().equals("Adopted")){
+            if(a.getLinkedUser() == loggedUser.getID()) {
                 ownedAnimals.add(a);
             }
         }

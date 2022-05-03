@@ -53,14 +53,17 @@ public class AdopterAnimalPanel extends JPanel {
 
 		Label animalName = new Label(animal.getName());
 		Label animalDesc = new Label(animal.getDescription());
+		Label animalState = new Label(animal.getState().toString());
 		animalName.setMinimumSize(new Dimension(100,30));
 		animalDesc.setMinimumSize(new Dimension(100,30));
 		animalName.setBackground(Color.gray);
 		animalDesc.setBackground(Color.gray);
+		animalState.setBackground(Color.gray);
 
 
 		panel_centre.add(animalName, BorderLayout.NORTH);
 		panel_centre.add(animalDesc, BorderLayout.CENTER);
+		panel_centre.add(animalState, BorderLayout.SOUTH);
 
 		this.add(panel_centre);
 

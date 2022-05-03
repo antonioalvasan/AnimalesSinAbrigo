@@ -50,11 +50,12 @@ public class AdopterHomeWindow extends windowClass {
         welcomePanel.setBackground(Color.LIGHT_GRAY);
 
         JLabel welcomeLabel = new JLabel("<html><body><br>Welcome," + adopterController.getName() + "<body><html>");
-        JLabel descriptionLabel = new JLabel("<html><body>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt " +
-                "<br>ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip " +
-                "<br>ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                "<br>nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim " +
-                "<br>id est laborum.<body><html>");
+        JLabel descriptionLabel = new JLabel("<html>Bienvenido! Somos Animales sin Abrigo, una organización sin ánimo de lucro que se especializa en ponerte <br>" +
+                        "en contacto con los mejores refugios de animales para que puedas encontrar a tu mejor amigo (o amigos) de la forma <br>" +
+                        "más rápida y amena. Todos nuestros refugios están certificados con el sello de calidad de la Comunidad de Madrid, y cuentan con las mejores<br>" +
+                        "instalaciones y trabajadores. <br>" +
+                        "<br>" +
+                        "¿A qué esperas?<html>");
 
         welcomeLabel.setFont(new Font("Arial",Font.BOLD,35));
         welcomeLabel.setHorizontalAlignment(JLabel.CENTER);

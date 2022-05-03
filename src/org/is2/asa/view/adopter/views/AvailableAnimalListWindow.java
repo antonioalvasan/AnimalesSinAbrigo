@@ -58,7 +58,7 @@ public class AvailableAnimalListWindow extends windowClass {
         panel_sup1.add(z, BorderLayout.WEST);
 
 
-        JLabel refugeName = new JLabel("Refugio: " + adopterController.getCurrentRefuge().getName() + "            Contacto: "+adopterController.getCurrentRefuge().getDescription());
+        JLabel refugeName = new JLabel("Refugio: " + adopterController.getCurrentRefuge().getName() + "            Contacto: "+adopterController.getCurrentRefuge().getTlf());
         refugeName.setFont(new Font("Arial", Font.BOLD, 25));
 
         panel_sup1.add(refugeName, BorderLayout.CENTER);
